@@ -1,2 +1,2 @@
-# sample-java-todo
-Sample system using Java and Spring
+# sample-nodejs-todo
+Sample system using NodeJS 
