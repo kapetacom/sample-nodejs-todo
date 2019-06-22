@@ -1,0 +1,93 @@
+kind: core.blockware.com/v1/Block/Service
+metadata:
+  name: Todo
+  version: 1.0.0
+spec:
+  target:
+    kind: targets.blockware.com/v1/nodejs9
+
+  entities:
+  - name: Task
+    properties:
+      id:
+        type: string
+      userId:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      done:
+        type: boolean
+
+  - name: User
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+
+  consumers:
+  - kind: nosql.blockware.com/v1/mongodb
+    metadata:
+      name: todo
+  - kind: rest.blockware.com/v1/Client
+    metadata:
+      name: users
+    spec:
+      methods:
+        getUserById:
+          description: Get users by id
+          method: GET
+          path: /users/{id}
+
+          arguments:
+            id:
+              type: string
+              transport: path
+
+          responseType: User
+
+  providers:
+  - kind: rest.blockware.com/v1/Resource
+    metadata:
+      name: tasks
+    spec:
+      methods:
+        addTask:
+          description: Add task for user
+          method: POST
+          path: /tasks/{userId}/{id}
+
+          arguments:
+            userId:
+              type: string
+              transport: path
+            id:
+              type: string
+              transport: path
+            task:
+              type: Task
+              transport: body
+
+      markAsDone:
+        description: Mark task as done
+        method: POST
+        path: /tasks/{id}/done
+
+        arguments:
+          id:
+            type: string
+            transport: path
+
+      removeTask:
+        description: Delete task
+        method: DELETE
+        path: /tasks/{id}
+
+        arguments:
+          id:
+            type: string
+            transport: path

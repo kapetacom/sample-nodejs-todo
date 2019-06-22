@@ -1,0 +1,64 @@
+kind: core.blockware.com/v1/Block/Service
+metadata:
+  name: Users
+  version: 1.0.0
+spec:
+  target:
+    kind: targets.blockware.com/v1/nodejs9
+
+  entities:
+  - name: User
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+
+  consumers:
+  - kind: sqldb.blockware.com/v1/postgresql
+    metadata:
+      name: users
+
+  providers:
+  - kind: rest.blockware.com/v1/Resource
+    metadata:
+      name: users
+    spec:
+      methods:
+        createUser:
+          description: Create user
+          method: POST
+          path: /users/{id}
+          arguments:
+            id:
+              type: string
+              transport: path
+            user:
+              type: User
+              transport: body
+
+          responseType: User
+
+        getUser:
+          description: Get user by id
+          method: GET
+          path: /users/{id}
+
+          arguments:
+            id:
+              type: string
+              transport: path
+
+          responseType: User
+
+        deleteUser:
+          description: Delete user by id
+          method: DELETE
+          path: /users/{id}
+
+          arguments:
+            id:
+              type: string
+              transport: path

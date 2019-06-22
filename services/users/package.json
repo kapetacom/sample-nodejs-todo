@@ -1,0 +1,9 @@
+{
+    "name": "block-service-users",
+    "version": "1.0.0",
+    "dependencies": {
+        "@blockware/server": "0.0.1",
+        "@blockware/rest-route": "0.0.1",
+        "@blockware/sqldb-postgresql": "0.0.1"
+    }
+}
