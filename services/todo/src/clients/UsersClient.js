@@ -1,7 +1,7 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const RestClient = require("@blockware/rest-client");
+const RestClient = require("@blockware/sdk-rest-client");
 
 class UsersClient {
     constructor() {

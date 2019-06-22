@@ -1,7 +1,7 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const RestRoute = require("@blockware/rest-route");
+const RestRoute = require("@blockware/sdk-rest-route");
 
 class TasksRoute extends RestRoute {
     constructor(service) {

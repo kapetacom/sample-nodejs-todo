@@ -1,7 +1,9 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const { AbstractPostgresRepository } = require("@blockware/sqldb-postgresql");
+const {
+    AbstractPostgresRepository
+} = require("@blockware/sdk-sqldb-postgresql");
 
 class UsersRepository extends AbstractPostgresRepository {
     constructor() {

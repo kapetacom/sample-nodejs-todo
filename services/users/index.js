@@ -1,7 +1,7 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const Server = require("@blockware/server");
+const Server = require("@blockware/sdk-server");
 
 const UsersRoute = require("./src/rest/UsersRoute");
 const UsersRouteService = require("./src/service/UsersRouteService");

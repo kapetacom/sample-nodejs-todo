@@ -1,7 +1,7 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const Server = require("@blockware/server");
+const Server = require("@blockware/sdk-server");
 
 const TasksRoute = require("./src/rest/TasksRoute");
 const TasksRouteService = require("./src/service/TasksRouteService");
