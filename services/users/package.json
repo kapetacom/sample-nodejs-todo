@@ -2,8 +2,8 @@
     "name": "block-service-users",
     "version": "1.0.0",
     "dependencies": {
-        "@blockware/sdk-server": "0.0.1",
-        "@blockware/sdk-rest-route": "0.0.1",
-        "@blockware/sdk-sqldb-postgresql": "0.0.1"
+        "@blockware/sdk-server": "0.0.3",
+        "@blockware/sdk-rest-route": "0.0.2",
+        "@blockware/sdk-sqldb-postgresql": "0.0.2"
     }
 }

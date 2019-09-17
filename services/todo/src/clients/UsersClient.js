@@ -12,13 +12,13 @@ class UsersClient {
      * Get users by id
      * HTTP: GET /users/{id}
      *
-     * @param {String} id
+     * @param {String} Id
      * @return {Promise<User>}
      */
-    getUserById(id) {
-        return this._client.execute("GET", "/users/{id}", {
-            id: { value: id, transport: "path" }
-        });
+    getUserById(Id) {
+        return this._client.execute("GET", "/users/{id}", [
+            { name: "id", value: Id, transport: "path" }
+        ]);
     }
 }
 

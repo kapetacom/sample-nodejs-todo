@@ -18,17 +18,17 @@ class UsersRoute extends RestRoute {
         }
 
         //createUser: Verify the method is implemented correctly
-        this.validateMethod(service.createUser, "createUser", ["id", "user"]);
+        this.validateMethod(service.createUser, "createUser", ["Id", "User"]);
 
         //createUser: Add route to server
         this.addEndpoint({
             method: "POST",
             path: "/users/{id}",
             description: "Create user",
-            arguments: {
-                id: "path",
-                user: "body"
-            },
+            arguments: [
+                { name: "id", transport: "path" },
+                { name: "user", transport: "body" }
+            ],
             handler: service.createUser.bind(service)
         });
 
@@ -40,16 +40,14 @@ class UsersRoute extends RestRoute {
         }
 
         //getUser: Verify the method is implemented correctly
-        this.validateMethod(service.getUser, "getUser", ["id"]);
+        this.validateMethod(service.getUser, "getUser", ["Id"]);
 
         //getUser: Add route to server
         this.addEndpoint({
             method: "GET",
             path: "/users/{id}",
             description: "Get user by id",
-            arguments: {
-                id: "path"
-            },
+            arguments: [{ name: "id", transport: "path" }],
             handler: service.getUser.bind(service)
         });
 
@@ -61,16 +59,14 @@ class UsersRoute extends RestRoute {
         }
 
         //deleteUser: Verify the method is implemented correctly
-        this.validateMethod(service.deleteUser, "deleteUser", ["id"]);
+        this.validateMethod(service.deleteUser, "deleteUser", ["Id"]);
 
         //deleteUser: Add route to server
         this.addEndpoint({
             method: "DELETE",
             path: "/users/{id}",
             description: "Delete user by id",
-            arguments: {
-                id: "path"
-            },
+            arguments: [{ name: "id", transport: "path" }],
             handler: service.deleteUser.bind(service)
         });
     }

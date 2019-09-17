@@ -1,7 +1,10 @@
+const TABLE = 'users';
+const PRIMARY_KEY = 'id';
+
 class UsersRouteService {
 
     constructor() {
-        this._userDB = require('../data/UsersRepository');
+        this._userDB = require('../data/UsersDB');
     }
 
     /**
@@ -14,7 +17,7 @@ class UsersRouteService {
      */
     async createUser(id, user) {
         user.id = id;
-        return this._userDB.insert(user);
+        return this._userDB.insertRow(TABLE, user);
     }
 
     /**
@@ -25,7 +28,7 @@ class UsersRouteService {
      * @return {Promise<User>}
      */
     async getUser(id) {
-        return this._userDB.findById(id);
+        return this._userDB.findRowById(TABLE, id, PRIMARY_KEY)
     }
 
     /**
@@ -36,7 +39,7 @@ class UsersRouteService {
      * @return {Promise<void>}
      */
     async deleteUser(id) {
-        return this._userDB.deleteById(id);
+        return this._userDB.deleteRowById(TABLE, id, PRIMARY_KEY);
     }
 }
 

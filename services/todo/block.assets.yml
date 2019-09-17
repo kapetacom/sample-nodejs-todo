@@ -1,0 +1,39 @@
+# BLOCKWARE ASSETS
+# This file keeps track of generated files in your block.
+# You should add this to your version control system but avoid
+# modifying it manually
+
+version: 1.0.0
+assets:
+  - filename: index.js
+    mode: write-always
+    checksum: 9e3a7f5d048f072c376c995f8224c721ee47b3d5
+    modified: 1568755283063
+  - filename: package.json
+    mode: merge
+    checksum: bc1204756bfdbad158ca1495e8643a5086d14928
+    modified: 1568755283065
+  - filename: src/entities/Task.d.ts
+    mode: write-always
+    checksum: 1ff0e6607ff35b3ca28a5ca99173fda7ceaa136c
+    modified: 1568755283066
+  - filename: src/entities/User.d.ts
+    mode: write-always
+    checksum: 0c1e61d61b64de1d1bf4fd5c0e0cd47d24bfefbd
+    modified: 1568755283067
+  - filename: src/data/TodoDB.js
+    mode: write-always
+    checksum: 09c6acd5e00d31b52dda7c6e82e7a54cfb7f1474
+    modified: 1568755283068
+  - filename: src/clients/UsersClient.js
+    mode: write-always
+    checksum: 6eea23a11f9b125579c604693c69e6b558be3af1
+    modified: 1568755283069
+  - filename: src/rest/TasksRoute.js
+    mode: write-always
+    checksum: f5e0e6961859be479b7e5a571746d74250c5dae4
+    modified: 1568755283070
+  - filename: src/service/TasksRouteService.js
+    mode: create-only
+    checksum: aa4aa4dff0137307f8cb1ad9ca721c6851687194
+    modified: 1568752994042

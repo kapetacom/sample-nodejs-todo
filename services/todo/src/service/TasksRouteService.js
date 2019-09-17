@@ -1,7 +1,7 @@
 class TasksRouteService {
 
     constructor() {
-        this._todoDB = require('../data/TodoRepository');
+        this._todoDB = require('../data/TodoDB');
         this._users = require('../clients/UsersClient');
     }
 
@@ -16,7 +16,9 @@ class TasksRouteService {
      */
     async addTask(userId, id, task) {
 
-        const user = await this._users.getUserById(userId);
+        const {body:user} = await this._users.getUserById(userId);
+
+        console.log('user',user);
         if (!user) {
             throw new Error('User not found - ' + userId);
         }

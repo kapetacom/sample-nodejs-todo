@@ -1,0 +1,34 @@
+kind: core.blockware.com/v1/Plan
+metadata:
+  name: Sample NodeJS Plan
+spec:
+  blocks:
+    - block:
+        ref: file:///Users/henrikhofmeister/git/blockware/sample-nodejs-todo/services/todo/block.yml
+      name: Todo
+      dimensions:
+        height: -1
+        top: 52
+        left: 1022
+        width: 150
+      id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+    - block:
+        ref: file:///Users/henrikhofmeister/git/blockware/sample-nodejs-todo/services/users/block.yml
+      name: Users
+      dimensions:
+        height: -1
+        top: 277
+        left: 286
+        width: 150
+      id: 929f6297-cd04-904b-6bff-04a72eb2a88f
+  connections:
+    - from:
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+        resourceName: users
+      to:
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+        resourceName: users
+      mapping:
+        getUser:
+          targetId: getUserById
+          type: EXACT

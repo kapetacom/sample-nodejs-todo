@@ -19,9 +19,9 @@ class TasksRoute extends RestRoute {
 
         //addTask: Verify the method is implemented correctly
         this.validateMethod(service.addTask, "addTask", [
-            "userId",
-            "id",
-            "task"
+            "UserId",
+            "Id",
+            "Task"
         ]);
 
         //addTask: Add route to server
@@ -29,11 +29,11 @@ class TasksRoute extends RestRoute {
             method: "POST",
             path: "/tasks/{userId}/{id}",
             description: "Add task for user",
-            arguments: {
-                userId: "path",
-                id: "path",
-                task: "body"
-            },
+            arguments: [
+                { name: "userId", transport: "path" },
+                { name: "id", transport: "path" },
+                { name: "task", transport: "body" }
+            ],
             handler: service.addTask.bind(service)
         });
     }

@@ -1,0 +1,31 @@
+# BLOCKWARE ASSETS
+# This file keeps track of generated files in your block.
+# You should add this to your version control system but avoid
+# modifying it manually
+
+version: 1.0.0
+assets:
+  - filename: index.js
+    mode: write-always
+    checksum: 7261314820a0657ae7348949468d4747b41868b0
+    modified: 1568754077204
+  - filename: package.json
+    mode: merge
+    checksum: f18f8067f4a455b7ac31a0e427d88c133724a3fd
+    modified: 1568754077206
+  - filename: src/entities/User.d.ts
+    mode: write-always
+    checksum: 0c1e61d61b64de1d1bf4fd5c0e0cd47d24bfefbd
+    modified: 1568754077206
+  - filename: src/data/UsersDB.js
+    mode: write-always
+    checksum: c4f6678d02d76b71c51fe872c55c9991217fc6a9
+    modified: 1568754077207
+  - filename: src/rest/UsersRoute.js
+    mode: write-always
+    checksum: 48a17dc8ebcc16bfed1a86d1d910e3ce0afabd9b
+    modified: 1568754077207
+  - filename: src/service/UsersRouteService.js
+    mode: create-only
+    checksum: 717f0e982ab9c1bfffeeb0f0be548882550bc318
+    modified: 1568753308004
