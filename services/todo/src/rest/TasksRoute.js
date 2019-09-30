@@ -19,9 +19,9 @@ class TasksRoute extends RestRoute {
 
         //addTask: Verify the method is implemented correctly
         this.validateMethod(service.addTask, "addTask", [
-            "UserId",
-            "Id",
-            "Task"
+            "userId",
+            "id",
+            "task"
         ]);
 
         //addTask: Add route to server

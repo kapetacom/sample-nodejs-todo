@@ -2,9 +2,9 @@
     "name": "block-service-todo",
     "version": "1.0.0",
     "dependencies": {
-        "@blockware/sdk-server": "0.0.3",
-        "@blockware/sdk-rest-client": "0.0.2",
+        "@blockware/sdk-server": "0.0.4",
+        "@blockware/sdk-rest-client": "0.0.3",
         "@blockware/sdk-rest-route": "0.0.2",
-        "@blockware/sdk-nosql-mongodb": "0.0.3"
+        "@blockware/sdk-nosql-mongodb": "0.0.4"
     }
 }

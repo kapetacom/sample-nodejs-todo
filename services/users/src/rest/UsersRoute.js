@@ -18,7 +18,7 @@ class UsersRoute extends RestRoute {
         }
 
         //createUser: Verify the method is implemented correctly
-        this.validateMethod(service.createUser, "createUser", ["Id", "User"]);
+        this.validateMethod(service.createUser, "createUser", ["id", "user"]);
 
         //createUser: Add route to server
         this.addEndpoint({
@@ -40,7 +40,7 @@ class UsersRoute extends RestRoute {
         }
 
         //getUser: Verify the method is implemented correctly
-        this.validateMethod(service.getUser, "getUser", ["Id"]);
+        this.validateMethod(service.getUser, "getUser", ["id"]);
 
         //getUser: Add route to server
         this.addEndpoint({
@@ -59,7 +59,7 @@ class UsersRoute extends RestRoute {
         }
 
         //deleteUser: Verify the method is implemented correctly
-        this.validateMethod(service.deleteUser, "deleteUser", ["Id"]);
+        this.validateMethod(service.deleteUser, "deleteUser", ["id"]);
 
         //deleteUser: Add route to server
         this.addEndpoint({
