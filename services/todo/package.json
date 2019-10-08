@@ -1,6 +1,10 @@
 {
     "name": "block-service-todo",
     "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
     "dependencies": {
         "@blockware/sdk-server": "0.0.4",
         "@blockware/sdk-rest-client": "0.0.3",
