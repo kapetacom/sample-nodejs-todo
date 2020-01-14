@@ -1,4 +1,4 @@
-kind: core.blockware.com/v1/Block/Service
+kind: blocks.blockware.com/v1/Service
 metadata:
   name: Users
   version: 1.0.0
@@ -22,7 +22,7 @@ spec:
       name: users
 
   providers:
-  - kind: rest.blockware.com/v1/Resource
+  - kind: rest.blockware.com/v1/API
     metadata:
       name: users
     spec:

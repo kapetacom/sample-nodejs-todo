@@ -1,4 +1,4 @@
-kind: core.blockware.com/v1/Block/Service
+kind: blocks.blockware.com/v1/Service
 metadata:
   name: Todo
   version: 1.0.0
@@ -30,7 +30,7 @@ spec:
         type: string
 
   consumers:
-  - kind: nosql.blockware.com/v1/mongodb
+  - kind: nosqldb.blockware.com/v1/mongodb
     metadata:
       name: todo
   - kind: rest.blockware.com/v1/Client
@@ -51,7 +51,7 @@ spec:
           responseType: User
 
   providers:
-  - kind: rest.blockware.com/v1/Resource
+  - kind: rest.blockware.com/v1/API
     metadata:
       name: tasks
     spec:
