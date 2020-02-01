@@ -4,7 +4,7 @@ metadata:
 spec:
   blocks:
     - block:
-        ref: file:///Users/henrikhofmeister/git/blockware/sample-nodejs-todo/services/todo/block.yml
+        ref: file://services/todo/block.yml
       name: Todo
       dimensions:
         height: -1
@@ -13,12 +13,12 @@ spec:
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: file:///Users/henrikhofmeister/git/blockware/sample-nodejs-todo/services/users/block.yml
+        ref: file://services/users/block.yml
       name: Users
       dimensions:
         height: -1
-        top: 277
-        left: 286
+        top: 115.85694885253906
+        left: 489.5
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
   connections:
