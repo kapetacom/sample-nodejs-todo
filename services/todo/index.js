@@ -9,6 +9,6 @@ const TasksRouteService = require("./src/service/TasksRouteService");
 
 const server = new Server("Todo", __dirname);
 
-server.addRESTRoute(new TasksRoute(new TasksRouteService()));
+server.addRoute(new TasksRoute(new TasksRouteService()));
 
 server.start();

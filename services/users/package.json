@@ -6,8 +6,9 @@
         "start": "node index.js"
     },
     "dependencies": {
-        "@blockware/sdk-server": "0.0.4",
-        "@blockware/sdk-rest-route": "0.0.2",
-        "@blockware/sdk-sqldb-postgresql": "0.0.3"
+        "@blockware/sdk-config": "0.0.5",
+        "@blockware/sdk-server": "0.0.8",
+        "@blockware/sdk-rest-route": "0.0.4",
+        "@blockware/sdk-sqldb-postgresql": "0.0.4"
     }
 }

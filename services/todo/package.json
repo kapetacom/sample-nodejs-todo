@@ -6,9 +6,10 @@
         "start": "node index.js"
     },
     "dependencies": {
-        "@blockware/sdk-server": "0.0.4",
-        "@blockware/sdk-rest-client": "0.0.3",
-        "@blockware/sdk-rest-route": "0.0.2",
-        "@blockware/sdk-nosql-mongodb": "0.0.4"
+        "@blockware/sdk-config": "0.0.5",
+        "@blockware/sdk-server": "0.0.8",
+        "@blockware/sdk-rest-client": "0.0.4",
+        "@blockware/sdk-rest-route": "0.0.4",
+        "@blockware/sdk-nosql-mongodb": "0.0.5"
     }
 }

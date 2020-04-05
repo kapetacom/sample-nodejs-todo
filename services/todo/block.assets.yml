@@ -5,51 +5,61 @@
 
 version: 1.0.0
 assets:
+  - filename: Dockerfile
+    mode: merge
+    checksum: 6909ee1a1ca60b61087e505b61a08538f5b7424b
+    permissions: "644"
+    modified: 1586091790240
   - filename: scripts/build.sh
     mode: write-always
-    checksum: 8edecf8614101ecc3dccb4d09fc0dbab027d373f
+    checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
     permissions: "755"
-    modified: 1579006625267
+    modified: 1586091790242
+  - filename: scripts/docker-build.sh
+    mode: write-always
+    checksum: aa6511fbe2670e527f09a44b8b71b328c940cc4a
+    permissions: "755"
+    modified: 1586091790244
   - filename: index.js
     mode: write-always
-    checksum: 9e3a7f5d048f072c376c995f8224c721ee47b3d5
+    checksum: 68588a93c491c7ee7c15531d8f8251acdd8c0004
     permissions: "644"
-    modified: 1579006625269
+    modified: 1586091790245
   - filename: package.json
     mode: merge
-    checksum: ca40cd5b1944782569486fa714830c9c192ce49d
+    checksum: cd8824fb49740051a963be1c99f66ffc2dc3e1f7
     permissions: "644"
-    modified: 1579006625269
+    modified: 1586091790245
   - filename: scripts/start.sh
     mode: write-always
     checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
     permissions: "755"
-    modified: 1579006625270
+    modified: 1586091790246
   - filename: src/entities/Task.d.ts
     mode: write-always
     checksum: 1ff0e6607ff35b3ca28a5ca99173fda7ceaa136c
     permissions: "644"
-    modified: 1579006625270
+    modified: 1586091790247
   - filename: src/entities/User.d.ts
     mode: write-always
     checksum: 0c1e61d61b64de1d1bf4fd5c0e0cd47d24bfefbd
     permissions: "644"
-    modified: 1579006625270
+    modified: 1586091790248
   - filename: src/data/TodoDB.js
     mode: write-always
     checksum: 09c6acd5e00d31b52dda7c6e82e7a54cfb7f1474
     permissions: "644"
-    modified: 1579006625271
+    modified: 1586091790248
   - filename: src/clients/UsersClient.js
     mode: write-always
     checksum: 92011854ee6f3ae43d88d3e8825b2feb21f021d8
     permissions: "644"
-    modified: 1579006625272
+    modified: 1586091790249
   - filename: src/rest/TasksRoute.js
     mode: write-always
-    checksum: c4714df0706a2fdb50999f63757ed81680815404
+    checksum: 74a2e960e46b4b32f11c2690b2538fc25cee2506
     permissions: "644"
-    modified: 1579006625272
+    modified: 1586091790250
   - filename: src/service/TasksRouteService.js
     mode: create-only
     checksum: aa4aa4dff0137307f8cb1ad9ca721c6851687194

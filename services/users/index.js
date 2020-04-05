@@ -9,6 +9,6 @@ const UsersRouteService = require("./src/service/UsersRouteService");
 
 const server = new Server("Users", __dirname);
 
-server.addRESTRoute(new UsersRoute(new UsersRouteService()));
+server.addRoute(new UsersRoute(new UsersRouteService()));
 
 server.start();
