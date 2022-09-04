@@ -8,8 +8,8 @@ spec:
       name: Todo
       dimensions:
         height: -1
-        top: 52
-        left: 1022
+        top: 56
+        left: 1044
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
@@ -17,8 +17,8 @@ spec:
       name: Users
       dimensions:
         height: -1
-        top: 115.85694885253906
-        left: 489.5
+        top: 68.85694885253906
+        left: 427
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
   connections:
