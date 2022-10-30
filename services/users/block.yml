@@ -7,14 +7,15 @@ spec:
     kind: targets.blockware.com/v1/nodejs9
 
   entities:
-  - name: User
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      email:
-        type: string
+    types:
+    - name: User
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
 
   consumers:
   - kind: sqldb.blockware.com/v1/postgresql

@@ -7,27 +7,28 @@ spec:
     kind: targets.blockware.com/v1/nodejs9
 
   entities:
-  - name: Task
-    properties:
-      id:
-        type: string
-      userId:
-        type: string
-      title:
-        type: string
-      description:
-        type: string
-      done:
-        type: boolean
+    types:
+    - name: Task
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        done:
+          type: boolean
 
-  - name: User
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      email:
-        type: string
+    - name: User
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
 
   consumers:
   - kind: nosqldb.blockware.com/v1/mongodb
