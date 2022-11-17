@@ -1,4 +1,4 @@
-kind: core.blockware.com/v1/Plan
+kind: core/plan
 metadata:
   name: Sample NodeJS Plan
 spec:
