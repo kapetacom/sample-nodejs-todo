@@ -9,57 +9,57 @@ assets:
     mode: merge
     checksum: 6909ee1a1ca60b61087e505b61a08538f5b7424b
     permissions: "644"
-    modified: 1586091790240
+    modified: 1672319703496
   - filename: scripts/build.sh
     mode: write-always
     checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
     permissions: "755"
-    modified: 1586091790242
+    modified: 1672319703497
   - filename: scripts/docker-build.sh
     mode: write-always
-    checksum: aa6511fbe2670e527f09a44b8b71b328c940cc4a
+    checksum: 5b1c0e003d714fd0d4534272a2a7d5e5379dadf2
     permissions: "755"
-    modified: 1586091790244
+    modified: 1672319703499
   - filename: index.js
     mode: write-always
-    checksum: 68588a93c491c7ee7c15531d8f8251acdd8c0004
+    checksum: e5d37e69ac3b603086044d792fa4b963a5bee0bc
     permissions: "644"
-    modified: 1586091790245
+    modified: 1672319703499
   - filename: package.json
     mode: merge
-    checksum: cd8824fb49740051a963be1c99f66ffc2dc3e1f7
+    checksum: 692e1c878526ca5ae7d17f4f120e8de40ed8fb68
     permissions: "644"
-    modified: 1586091790245
+    modified: 1672319703500
   - filename: scripts/start.sh
     mode: write-always
     checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
     permissions: "755"
-    modified: 1586091790246
+    modified: 1672319703500
   - filename: src/entities/Task.d.ts
     mode: write-always
-    checksum: 1ff0e6607ff35b3ca28a5ca99173fda7ceaa136c
+    checksum: c6d242021490ac1328115d68742789a41f282f50
     permissions: "644"
-    modified: 1586091790247
+    modified: 1672319703500
   - filename: src/entities/User.d.ts
     mode: write-always
-    checksum: 0c1e61d61b64de1d1bf4fd5c0e0cd47d24bfefbd
+    checksum: 53f425cef82f20c9ebea4e3384a11d3fe14d722c
     permissions: "644"
-    modified: 1586091790248
+    modified: 1672319703603
   - filename: src/data/TodoDB.js
     mode: write-always
     checksum: 09c6acd5e00d31b52dda7c6e82e7a54cfb7f1474
     permissions: "644"
-    modified: 1586091790248
+    modified: 1672319703604
   - filename: src/clients/UsersClient.js
     mode: write-always
-    checksum: 92011854ee6f3ae43d88d3e8825b2feb21f021d8
+    checksum: ff93a66b22ba23dca9b597ed82e12863b0152824
     permissions: "644"
-    modified: 1586091790249
+    modified: 1672319703604
   - filename: src/rest/TasksRoute.js
     mode: write-always
-    checksum: 74a2e960e46b4b32f11c2690b2538fc25cee2506
+    checksum: a46eb55b0f7fc2d7c48f7fbd5bc12db2f101566c
     permissions: "644"
-    modified: 1586091790250
+    modified: 1672319703604
   - filename: src/service/TasksRouteService.js
     mode: create-only
     checksum: aa4aa4dff0137307f8cb1ad9ca721c6851687194

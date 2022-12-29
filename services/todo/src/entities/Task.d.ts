@@ -4,12 +4,10 @@
 // Definitions file - only used for code-completion
 //
 
-interface Task {
-
-    id:String;
-    userId:String;
-    title:String;
-    description:String;
-    done:Boolean;
-
+export declare interface Task {
+    id: string;
+    userId: string;
+    title: string;
+    description: string;
+    done: boolean;
 }

@@ -1,94 +1,120 @@
-kind: blockware/block-type-service
+kind: blockware/block-type-service:local
 metadata:
-  name: Todo
-  version: 1.0.0
+  name: blockware/nodejs-sample-todo-service
+  title: Todo Service
 spec:
   target:
-    kind: blockware/language-target-nodejs
-
+    kind: blockware/language-target-nodejs:local
   entities:
     types:
-    - name: Task
-      properties:
-        id:
-          type: string
-        userId:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        done:
-          type: boolean
+      - type: dto
+        name: Task
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          userId:
+            description: null
+            type: string
+            properties: null
+          title:
+            description: null
+            type: string
+            properties: null
+          description:
+            description: null
+            type: string
+            properties: null
+          done:
+            description: null
+            type: boolean
+            properties: null
+      - type: dto
+        name: User
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          name:
+            description: null
+            type: string
+            properties: null
+          email:
+            description: null
+            type: string
+            properties: null
+    source:
+      type: blockware-dsl
+      value: |
+        Task {
+        	id: string
+        	userId: string
+        	title: string
+        	description: string
+        	done: boolean
+        }
 
-    - name: User
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
 
+        User {
+        	id: string
+        	name: string
+        	email: string
+        }
   consumers:
-  - kind: blockware/resource-type-mongodb
-    metadata:
-      name: todo
-  - kind: blockware/resource-type-rest-client
-    metadata:
-      name: users
-    spec:
-      methods:
-        getUserById:
-          description: Get users by id
-          method: GET
-          path: /users/{id}
-
-          arguments:
-            id:
-              type: string
-              transport: path
-
-          responseType: User
-
+    - kind: blockware/resource-type-mongodb:0.0.2
+      metadata:
+        name: todo
+    - kind: blockware/resource-type-rest-client:0.0.4
+      metadata:
+        name: users
+      spec:
+        methods:
+          getUserById:
+            description: Get users by id
+            method: GET
+            path: /users/{id}
+            arguments:
+              id:
+                type: string
+                transport: path
+            responseType: User
   providers:
-  - kind: blockware/resource-type-rest-api
-    metadata:
-      name: tasks
-    spec:
-      methods:
-        addTask:
-          description: Add task for user
+    - kind: blockware/resource-type-rest-api:0.0.4
+      metadata:
+        name: tasks
+      spec:
+        methods:
+          addTask:
+            description: Add task for user
+            method: POST
+            path: /tasks/{userId}/{id}
+            arguments:
+              userId:
+                type: string
+                transport: path
+              id:
+                type: string
+                transport: path
+              task:
+                type: Task
+                transport: body
+        markAsDone:
+          description: Mark task as done
           method: POST
-          path: /tasks/{userId}/{id}
-
+          path: /tasks/{id}/done
           arguments:
-            userId:
-              type: string
-              transport: path
             id:
               type: string
               transport: path
-            task:
-              type: Task
-              transport: body
-
-      markAsDone:
-        description: Mark task as done
-        method: POST
-        path: /tasks/{id}/done
-
-        arguments:
-          id:
-            type: string
-            transport: path
-
-      removeTask:
-        description: Delete task
-        method: DELETE
-        path: /tasks/{id}
-
-        arguments:
-          id:
-            type: string
-            transport: path
+        removeTask:
+          description: Delete task
+          method: DELETE
+          path: /tasks/{id}
+          arguments:
+            id:
+              type: string
+              transport: path

@@ -4,10 +4,8 @@
 // Definitions file - only used for code-completion
 //
 
-interface User {
-
-    id:String;
-    name:String;
-    email:String;
-
+export declare interface User {
+    id: string;
+    name: string;
+    email: string;
 }

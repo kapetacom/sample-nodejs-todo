@@ -1,10 +1,10 @@
-kind: blockware/block-type-service
+kind: blockware/block-type-service:local
 metadata:
-  name: Users
-  version: 1.0.0
+  name: blockware/nodejs-sample-users-service
+  title: User Service
 spec:
   target:
-    kind: blockware/language-target-nodejs
+    kind: blockware/language-target-nodejs:local
 
   entities:
     types:
@@ -18,12 +18,12 @@ spec:
           type: string
 
   consumers:
-  - kind: blockware/resource-type-postgresql
+  - kind: blockware/resource-type-postgresql:0.0.2
     metadata:
       name: users
 
   providers:
-  - kind: blockware/resource-type-rest-api
+  - kind: blockware/resource-type-rest-api:0.0.4
     metadata:
       name: users
     spec:
