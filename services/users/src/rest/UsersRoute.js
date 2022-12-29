@@ -27,9 +27,9 @@ class UsersRoute extends RESTRoute {
             description: "Create user",
             arguments: [
                 { name: "id", transport: "path" },
-                { name: "user", transport: "body" }
+                { name: "user", transport: "body" },
             ],
-            handler: service.createUser.bind(service)
+            handler: service.createUser.bind(service),
         });
 
         //getUser: Verify the method is available
@@ -48,7 +48,7 @@ class UsersRoute extends RESTRoute {
             path: "/users/{id}",
             description: "Get user by id",
             arguments: [{ name: "id", transport: "path" }],
-            handler: service.getUser.bind(service)
+            handler: service.getUser.bind(service),
         });
 
         //deleteUser: Verify the method is available
@@ -67,7 +67,7 @@ class UsersRoute extends RESTRoute {
             path: "/users/{id}",
             description: "Delete user by id",
             arguments: [{ name: "id", transport: "path" }],
-            handler: service.deleteUser.bind(service)
+            handler: service.deleteUser.bind(service),
         });
     }
 }
