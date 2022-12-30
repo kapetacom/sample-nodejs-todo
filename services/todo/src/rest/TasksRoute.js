@@ -21,7 +21,7 @@ class TasksRoute extends RESTRoute {
         this.validateMethod(service.addTask, "addTask", [
             "userId",
             "id",
-            "task"
+            "task",
         ]);
 
         //addTask: Add route to server
@@ -32,9 +32,9 @@ class TasksRoute extends RESTRoute {
             arguments: [
                 { name: "userId", transport: "path" },
                 { name: "id", transport: "path" },
-                { name: "task", transport: "body" }
+                { name: "task", transport: "body" },
             ],
-            handler: service.addTask.bind(service)
+            handler: service.addTask.bind(service),
         });
     }
 }

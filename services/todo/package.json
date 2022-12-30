@@ -1,15 +1,15 @@
 {
-    "name": "block-service-todo",
-    "version": "1.0.0",
+    "name": "@blockware/nodejs-sample-todo-service",
+    "version": "local",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
     },
     "dependencies": {
-        "@blockware/sdk-config": "^0.0.11",
-        "@blockware/sdk-server": "^0.0.12",
-        "@blockware/sdk-rest-client": "^0.0.8",
-        "@blockware/sdk-rest-route": "^0.0.7",
-        "@blockware/sdk-nosql-mongodb": "^0.0.9"
+        "@blockware/sdk-config": "<2",
+        "@blockware/sdk-server": "<2",
+        "@blockware/sdk-rest-client": "<2",
+        "@blockware/sdk-rest-route": "<2",
+        "@blockware/sdk-nosql-mongodb": "<2"
     }
 }

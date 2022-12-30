@@ -1,24 +1,24 @@
 kind: core/plan
 metadata:
-  name: Sample NodeJS Plan
+  name: blockware/sample-nodejs-plan
 spec:
   blocks:
     - block:
         ref: file://services/todo/block.yml
-      name: Todo
+      name: Todo Service
       dimensions:
         height: -1
-        top: 56
-        left: 1044
+        top: 232
+        left: 885
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
         ref: file://services/users/block.yml
-      name: Users
+      name: User Service
       dimensions:
         height: -1
-        top: 68.85694885253906
-        left: 427
+        top: 122.84375
+        left: 358
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
   connections:

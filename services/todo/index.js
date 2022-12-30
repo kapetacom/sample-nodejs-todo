@@ -7,7 +7,7 @@ const Server = require("@blockware/sdk-server");
 const TasksRoute = require("./src/rest/TasksRoute");
 const TasksRouteService = require("./src/service/TasksRouteService");
 
-const server = new Server("Todo", __dirname);
+const server = new Server("blockware/nodejs-sample-todo-service", __dirname);
 
 server.addRoute(new TasksRoute(new TasksRouteService()));
 
