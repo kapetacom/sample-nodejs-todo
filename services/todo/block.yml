@@ -1,4 +1,4 @@
-kind: blockware/block-type-service:0.0.9
+kind: blockware/block-type-service:0.0.10
 metadata:
   name: blockware/nodejs-sample-todo-service
   title: Todo Service
