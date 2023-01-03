@@ -4,7 +4,7 @@ metadata:
 spec:
   blocks:
     - block:
-        ref: file://services/todo/block.yml
+        ref: file://services/todo/blockware.yml
       name: Todo Service
       dimensions:
         height: -1
@@ -13,7 +13,7 @@ spec:
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: file://services/users/block.yml
+        ref: file://services/users/blockware.yml
       name: User Service
       dimensions:
         height: -1
