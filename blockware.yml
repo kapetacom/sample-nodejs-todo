@@ -13,7 +13,7 @@ spec:
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: blockware/nodejs-sample-users-service:0.0.1
+        ref: blockware/nodejs-sample-users-service:0.0.2
       name: User Service
       dimensions:
         height: -1
