@@ -1,10 +1,10 @@
-kind: blockware/block-type-service:local
+kind: blockware/block-type-service:0.0.12
 metadata:
   name: blockware/nodejs-sample-users-service
   title: User Service
 spec:
   target:
-    kind: blockware/language-target-nodejs:local
+    kind: blockware/language-target-nodejs:0.0.3
 
   entities:
     types:
