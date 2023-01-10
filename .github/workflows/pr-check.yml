@@ -1,0 +1,34 @@
+name: Check
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+#        ref: ${{ github.event.pull_request.head.ref }}
+        fetch-depth: 0
+    - name: Use Node.js 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - run: echo '@blockware:registry=${{ secrets.GCP_ARTIFACT_NPM_URL }}' > .npmrc
+    - name: checkout action
+      uses: actions/checkout@v3
+      with:
+        repository: blockwarecom/core-registry-action
+        path: ./github-action/core-registry-action
+        token: ${{ secrets.GHA_TOKEN }}
+
+    - name: push to registry
+      uses: ./github-action/core-registry-action
+      env:
+        GITHUB_TOKEN: ${{ secrets.GHA_TOKEN }}
+      with:
+        npmrc: '@blockware:registry=${{ secrets.GCP_ARTIFACT_NPM_URL }}'
+        credentials: ${{ secrets.BLOCKWARE_TOKEN }}
+        action: 'push'
