@@ -1,5 +1,5 @@
 {
-    "name": "block-service-blockware/nodejs-sample-todo-service",
+    "name": "@blockware/nodejs-sample-todo-service",
     "version": "",
     "main": "index.js",
     "scripts": {

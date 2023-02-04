@@ -58,7 +58,6 @@ spec:
         	done: boolean
         }
 
-
         User {
         	id: string
         	name: string

@@ -1,5 +1,5 @@
 {
-    "name": "block-service-blockware/nodejs-sample-users-service",
+    "name": "@blockware/nodejs-sample-users-service",
     "version": "",
     "main": "index.js",
     "scripts": {

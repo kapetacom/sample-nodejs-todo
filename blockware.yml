@@ -8,8 +8,8 @@ spec:
       name: Todo Service
       dimensions:
         height: -1
-        top: 37
-        left: 398
+        top: 182
+        left: 439
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
@@ -17,8 +17,8 @@ spec:
       name: User Service
       dimensions:
         height: -1
-        top: 327
-        left: 142
+        top: 449
+        left: 149
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
     - block:
@@ -26,8 +26,8 @@ spec:
       name: Todo UI
       dimensions:
         height: -1
-        top: 22.78125
-        left: 839
+        top: 107.78125
+        left: 860
         width: 150
       id: da76710b-ccaa-fe32-cc9f-be5f559ed203
     - block:
@@ -35,8 +35,8 @@ spec:
       name: User UI
       dimensions:
         height: -1
-        top: 327.78125
-        left: 667
+        top: 520.78125
+        left: 690
         width: 150
       id: 6c895976-87f0-495e-4e5c-953bdc81a442
     - block:
@@ -44,11 +44,17 @@ spec:
       name: Todo App
       dimensions:
         height: -1
-        top: 231.78125
-        left: 1149
+        top: 361.78125
+        left: 1215
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
   connections:
+    - from:
+        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
+        resourceName: Users
+      to:
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+        resourceName: Users
     - from:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
@@ -100,12 +106,6 @@ spec:
         removeTask:
           targetId: removeTask
           type: EXACT
-    - from:
-        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
-        resourceName: Users
-      to:
-        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
-        resourceName: Users
     - from:
         blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
         resourceName: todo
