@@ -24,4 +24,6 @@ hs_err_pid*
 .DS_Store
 target
 */target/*
+dist
+*/dist/*
 node_modules

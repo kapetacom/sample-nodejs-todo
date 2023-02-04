@@ -5,62 +5,215 @@ metadata:
 spec:
   target:
     kind: blockware/language-target-nodejs:0.0.3
-
   entities:
     types:
-    - type: dto
-      name: User
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
+      - type: dto
+        name: UserRegistration
+        description: null
+        properties:
+          name:
+            description: null
+            type: string
+            properties: null
+          email:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: UserActivation
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          password:
+            description: null
+            type: string
+            properties: null
+          password2:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: UserAuthentication
+        description: null
+        properties:
+          email:
+            description: null
+            type: string
+            properties: null
+          password:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: User
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          name:
+            description: null
+            type: string
+            properties: null
+          email:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: Task
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          userId:
+            description: null
+            type: string
+            properties: null
+          title:
+            description: null
+            type: string
+            properties: null
+          description:
+            description: null
+            type: string
+            properties: null
+          done:
+            description: null
+            type: boolean
+            properties: null
+    source:
+      type: blockware-dsl
+      value: |-
+        UserRegistration {
+        	name: string
+        	email: string
+        }
 
+        UserActivation {
+        	id: string
+        	password: string
+        	password2: string
+        }
+
+        UserAuthentication {
+        	email: string
+        	password: string
+        }
+
+        User {
+        	id: string
+        	name: string
+        	email: string
+        }
+
+
+        Task {
+        	id: string
+        	userId: string
+        	title: string
+        	description: string
+        	done: boolean
+        }
   consumers:
-  - kind: blockware/resource-type-postgresql:0.0.2
-    metadata:
-      name: users
-
+    - kind: blockware/resource-type-postgresql:0.0.2
+      metadata:
+        name: users
   providers:
-  - kind: blockware/resource-type-rest-api:0.0.4
-    metadata:
-      name: users
-    spec:
-      methods:
-        createUser:
-          description: Create user
-          method: POST
-          path: /users/{id}
-          arguments:
-            id:
-              type: string
-              transport: path
-            user:
-              type: User
-              transport: body
+    - kind: blockware/resource-type-rest-api:0.0.4
+      metadata:
+        name: users
+      spec:
+        methods:
+          registerUser:
+            responseType: void
+            method: POST
+            path: /register
+            description: Register new user
+            arguments:
+              user:
+                type:
+                  $ref: UserRegistration
+                transport: BODY
+          activateUser:
+            responseType: void
+            method: POST
+            path: /activate
+            description: Activate user registration
+            arguments:
+              user:
+                type:
+                  $ref: UserActivation
+                transport: BODY
+          authenticationUser:
+            responseType: void
+            method: POST
+            path: /authenticate
+            description: Authenticate user
+            arguments:
+              user:
+                type:
+                  $ref: UserAuthentication
+                transport: BODY
+          resetPassword:
+            responseType: void
+            method: POST
+            path: /reset_password
+            description: Reset password for user
+            arguments:
+              email:
+                type: string
+                transport: QUERY
+          getUser:
+            responseType:
+              $ref: User
+            method: GET
+            path: /users/{id}
+            description: Get user by id
+            arguments:
+              id:
+                type: string
+                transport: PATH
+          deleteUser:
+            responseType: void
+            method: DELETE
+            path: /users/{id}
+            description: Delete user by id
+            arguments:
+              id:
+                type: string
+                transport: PATH
+              filter:
+                type: string
+                transport: QUERY
+        source:
+          type: blockware-dsl
+          value: |-
+            //Register new user
+            @POST("/register")
+            registerUser(@Body user:UserRegistration):void
 
-          responseType: User
+            //Activate user registration
+            @POST("/activate")
+            activateUser(@Body user:UserActivation):void
 
-        getUser:
-          description: Get user by id
-          method: GET
-          path: /users/{id}
+            //Authenticate user
+            @POST("/authenticate")
+            authenticationUser(@Body user:UserAuthentication):void
 
-          arguments:
-            id:
-              type: string
-              transport: path
+            //Reset password for user
+            @POST("/reset_password")
+            resetPassword(@Query email:string):void
 
-          responseType: User
+            //Get user by id
+            @GET("/users/{id}")
+            getUser(@Path id:string):User
 
-        deleteUser:
-          description: Delete user by id
-          method: DELETE
-          path: /users/{id}
-
-          arguments:
-            id:
-              type: string
-              transport: path
+            //Delete user by id
+            @DELETE("/users/{id}")
+            deleteUser(@Path id:string, @Query filter:string):void

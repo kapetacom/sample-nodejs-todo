@@ -1,6 +1,6 @@
 {
-    "name": "@blockware/nodejs-sample-users-service",
-    "version": "local",
+    "name": "block-service-blockware/nodejs-sample-users-service",
+    "version": "",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"

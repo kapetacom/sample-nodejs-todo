@@ -49,7 +49,7 @@ spec:
             properties: null
     source:
       type: blockware-dsl
-      value: |
+      value: |-
         Task {
         	id: string
         	userId: string
@@ -65,23 +65,30 @@ spec:
         	email: string
         }
   consumers:
-    - kind: blockware/resource-type-mongodb:0.0.2
-      metadata:
-        name: todo
     - kind: blockware/resource-type-rest-client:0.0.4
       metadata:
         name: users
       spec:
         methods:
           getUserById:
-            description: Get users by id
+            responseType:
+              $ref: User
             method: GET
             path: /users/{id}
+            description: Get users by id
             arguments:
               id:
                 type: string
-                transport: path
-            responseType: User
+                transport: PATH
+        source:
+          type: blockware-dsl
+          value: |-
+            //Get users by id
+            @GET("/users/{id}")
+            getUserById(@Path id:string):User
+    - kind: blockware/resource-type-mongodb:0.0.3
+      metadata:
+        name: tasks
   providers:
     - kind: blockware/resource-type-rest-api:0.0.4
       metadata:
@@ -89,32 +96,50 @@ spec:
       spec:
         methods:
           addTask:
-            description: Add task for user
+            responseType: void
             method: POST
             path: /tasks/{userId}/{id}
+            description: Add task for user
             arguments:
               userId:
                 type: string
-                transport: path
+                transport: PATH
               id:
                 type: string
-                transport: path
+                transport: PATH
               task:
-                type: Task
-                transport: body
-        markAsDone:
-          description: Mark task as done
-          method: POST
-          path: /tasks/{id}/done
-          arguments:
-            id:
-              type: string
-              transport: path
-        removeTask:
-          description: Delete task
-          method: DELETE
-          path: /tasks/{id}
-          arguments:
-            id:
-              type: string
-              transport: path
+                type:
+                  $ref: Task
+                transport: BODY
+          markAsDone:
+            responseType: void
+            method: POST
+            path: /tasks/{id}/done
+            description: Mark task as done
+            arguments:
+              id:
+                type: string
+                transport: PATH
+          removeTask:
+            responseType: void
+            method: DELETE
+            path: /tasks/{id}
+            description: Delete task
+            arguments:
+              id:
+                type: string
+                transport: PATH
+        source:
+          type: blockware-dsl
+          value: |-
+            //Add task for user
+            @POST("/tasks/{userId}/{id}")
+            addTask(@Path userId:string, @Path id:string, @Body task:Task):void
+
+            //Mark task as done
+            @POST("/tasks/{id}/done")
+            markAsDone(@Path id:string):void
+
+            //Delete task
+            @DELETE("/tasks/{id}")
+            removeTask(@Path id:string):void

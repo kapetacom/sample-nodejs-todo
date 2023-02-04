@@ -1,31 +1,37 @@
 class TasksRouteService {
-
-    constructor() {
-        this._todoDB = require('../data/TodoDB');
-        this._users = require('../clients/UsersClient');
-    }
-
     /**
      * Add task for user
      * HTTP: POST /tasks/{userId}/{id}
      *
-     * @param {String} userId
-     * @param {String} id
+     * @param {string} userId
+     * @param {string} id
      * @param {Task} task
      * @return {Promise<void>}
      */
     async addTask(userId, id, task) {
+        throw new Error('REST resource method not implemented: "addTask"');
+    }
 
-        const {body:user} = await this._users.getUserById(userId);
+    /**
+     * Mark task as done
+     * HTTP: POST /tasks/{id}/done
+     *
+     * @param {string} id
+     * @return {Promise<void>}
+     */
+    async markAsDone(id) {
+        throw new Error('REST resource method not implemented: "markAsDone"');
+    }
 
-        console.log('user',user);
-        if (!user) {
-            throw new Error('User not found - ' + userId);
-        }
-
-        task.id = id;
-        task.userId = userId;
-        await this._todoDB.insert(task);
+    /**
+     * Delete task
+     * HTTP: DELETE /tasks/{id}
+     *
+     * @param {string} id
+     * @return {Promise<void>}
+     */
+    async removeTask(id) {
+        throw new Error('REST resource method not implemented: "removeTask"');
     }
 }
 

@@ -4,24 +4,76 @@ metadata:
 spec:
   blocks:
     - block:
-        ref: blockware/nodejs-sample-todo-service:0.0.7
+        ref: blockware/nodejs-sample-todo-service:local
       name: Todo Service
       dimensions:
         height: -1
-        top: 232
-        left: 885
+        top: 37
+        left: 398
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: blockware/nodejs-sample-users-service:0.0.2
+        ref: blockware/nodejs-sample-users-service:local
       name: User Service
       dimensions:
         height: -1
-        top: 122.84375
-        left: 358
+        top: 327
+        left: 142
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
+    - block:
+        ref: blockware://blockware/nodejs-sample-todo-ui:local
+      name: Todo UI
+      dimensions:
+        height: -1
+        top: 22.78125
+        left: 839
+        width: 150
+      id: da76710b-ccaa-fe32-cc9f-be5f559ed203
+    - block:
+        ref: blockware://blockware/nodejs-sample-user-ui:local
+      name: User UI
+      dimensions:
+        height: -1
+        top: 327.78125
+        left: 667
+        width: 150
+      id: 6c895976-87f0-495e-4e5c-953bdc81a442
+    - block:
+        ref: blockware://blockware/sample-nodejs-ui-gateway:local
+      name: Todo App
+      dimensions:
+        height: -1
+        top: 231.78125
+        left: 1149
+        width: 150
+      id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
   connections:
+    - from:
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+        resourceName: users
+      to:
+        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
+        resourceName: users
+      mapping:
+        registerUser:
+          targetId: registerUser
+          type: EXACT
+        activateUser:
+          targetId: activateUser
+          type: EXACT
+        authenticationUser:
+          targetId: authenticationUser
+          type: EXACT
+        resetPassword:
+          targetId: resetPassword
+          type: EXACT
+        getUser:
+          targetId: getUser
+          type: EXACT
+        deleteUser:
+          targetId: deleteUser
+          type: EXACT
     - from:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
@@ -32,3 +84,31 @@ spec:
         getUser:
           targetId: getUserById
           type: EXACT
+    - from:
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+        resourceName: tasks
+      to:
+        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
+        resourceName: tasks
+      mapping:
+        addTask:
+          targetId: addTask
+          type: EXACT
+        markAsDone:
+          targetId: markAsDone
+          type: EXACT
+        removeTask:
+          targetId: removeTask
+          type: EXACT
+    - from:
+        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
+        resourceName: Users
+      to:
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+        resourceName: Users
+    - from:
+        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
+        resourceName: todo
+      to:
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+        resourceName: todo

@@ -17,7 +17,7 @@ class UsersClient {
      */
     getUserById(id) {
         return this._client.execute("GET", "/users/{id}", [
-            { name: "id", value: id, transport: "path" },
+            { name: "id", value: id, transport: "PATH" },
         ]);
     }
 }

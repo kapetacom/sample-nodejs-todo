@@ -1,0 +1,97 @@
+kind: blockware/block-type-frontend:0.0.5
+metadata:
+  name: blockware/nodejs-sample-todo-ui
+  title: Todo UI
+spec:
+  target:
+    kind: blockware/language-target-react-ts:local
+  entities:
+    types:
+      - type: dto
+        name: Task
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          userId:
+            description: null
+            type: string
+            properties: null
+          title:
+            description: null
+            type: string
+            properties: null
+          description:
+            description: null
+            type: string
+            properties: null
+          done:
+            description: null
+            type: boolean
+            properties: null
+      - type: dto
+        name: Test
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+    source:
+      type: blockware-dsl
+      value: |-
+        Task {
+        	id: string
+        	userId: string
+        	title: string
+        	description: string
+        	done: boolean
+        }
+        Test {
+        	id:string
+        }
+  providers:
+    - kind: blockware/resource-type-web-page:0.0.2
+      metadata:
+        name: todo
+      spec:
+        path: /
+  consumers:
+    - kind: blockware/resource-type-rest-client:0.0.4
+      metadata:
+        name: tasks
+      spec:
+        methods:
+          addTask:
+            description: Add task for user
+            method: POST
+            path: /tasks/{userId}/{id}
+            arguments:
+              userId:
+                type: string
+                transport: path
+              id:
+                type: string
+                transport: path
+              task:
+                type:
+                  $ref: Task
+                transport: body
+          markAsDone:
+            description: Mark task as done
+            method: POST
+            path: /tasks/{id}/done
+            arguments:
+              id:
+                type: string
+                transport: path
+          removeTask:
+            description: Delete task
+            method: DELETE
+            path: /tasks/{id}
+            arguments:
+              id:
+                type: string
+                transport: path

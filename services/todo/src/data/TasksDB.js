@@ -3,10 +3,10 @@
 //
 const { MongoDB } = require("@blockware/sdk-nosql-mongodb");
 
-class TodoDB extends MongoDB {
+class TasksDB extends MongoDB {
     constructor() {
-        super("todo");
+        super("tasks");
     }
 }
 
-module.exports = new TodoDB();
+module.exports = new TasksDB();
