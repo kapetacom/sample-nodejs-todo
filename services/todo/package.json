@@ -1,6 +1,6 @@
 {
     "name": "@blockware/nodejs-sample-todo-service",
-    "version": "",
+    "version": "local",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"

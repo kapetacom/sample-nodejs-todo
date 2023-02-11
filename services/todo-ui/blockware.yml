@@ -4,7 +4,7 @@ metadata:
   title: Todo UI
 spec:
   target:
-    kind: blockware/language-target-react-ts:local
+    kind: blockware/language-target-react-ts:0.0.4
   entities:
     types:
       - type: dto
