@@ -4,7 +4,7 @@ metadata:
   title: Todo App
 spec:
   target:
-    kind: blockware/language-target-react-ts:0.0.4
+    kind: blockware/language-target-react-ts:0.0.5
   providers:
     - kind: blockware/resource-type-web-page:0.0.2
       metadata:

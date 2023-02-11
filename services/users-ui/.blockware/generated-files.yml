@@ -7,91 +7,91 @@ version: 1.0.0
 assets:
   - filename: Dockerfile
     mode: merge
-    checksum: ad5a2ffe8c98bcc628035241b4c6d30f1559fc39
+    checksum: e1ed1605d261c2a1f8b25fe21a7c3a8fae342fdc
     permissions: "644"
-    modified: 1676122953501
+    modified: 1676154077784
   - filename: scripts/build.sh
     mode: write-always
     checksum: b8af47c461435a15471530bced2776559feb9ed1
     permissions: "755"
-    modified: 1676122953502
+    modified: 1676154077784
   - filename: scripts/docker-build.sh
     mode: write-always
     checksum: ce6d58d6a0b753bf9185aaed5dcd63c6eb6c61ab
     permissions: "755"
-    modified: 1676122953502
+    modified: 1676154077784
   - filename: src/server/index.js
     mode: write-always
     checksum: 8608d571e394d1718d37b2a6d258577d31e8a209
     permissions: "644"
-    modified: 1676122953502
+    modified: 1676154077784
   - filename: package.json
     mode: merge
     checksum: 0bf85e8a46749b862676637b66df6a02a16c003e
     permissions: "644"
-    modified: 1676122953503
+    modified: 1676154077785
   - filename: scripts/start.sh
     mode: write-always
     checksum: 571d57d080eda551516538d852695dc36fa7c90f
     permissions: "755"
-    modified: 1676122953503
+    modified: 1676154077785
   - filename: tsconfig.json
     mode: write-always
     checksum: fd2147e449b03eeecd664eec2eac71c260a72d36
     permissions: "644"
-    modified: 1676122953503
+    modified: 1676154077785
   - filename: webpack.development.config.js
     mode: write-always
     checksum: cf4c3077375efc1154af5b4c283f36c542bb3e16
     permissions: "644"
-    modified: 1676122953503
+    modified: 1676154077785
   - filename: webpack.production.config.js
     mode: write-always
     checksum: 5cc96ef7d245e90a11c567361357a1b052bd2c02
     permissions: "644"
-    modified: 1676122953504
+    modified: 1676154077786
   - filename: src/browser/entities/UserRegistration.ts
     mode: write-always
     checksum: 9f44c5c623ae6072a51ed00dec267bcc8c2ab2ac
     permissions: "644"
-    modified: 1676122953504
+    modified: 1676154077786
   - filename: src/browser/entities/UserActivation.ts
     mode: write-always
     checksum: e53d8316dcc70fa27e3c91f40fd2cfb3d0d11e67
     permissions: "644"
-    modified: 1676122953504
+    modified: 1676154077786
   - filename: src/browser/entities/UserAuthentication.ts
     mode: write-always
     checksum: 24ded141469884e52083b02b3ab2710dbf83ae70
     permissions: "644"
-    modified: 1676122953504
+    modified: 1676154077786
   - filename: src/browser/entities/User.ts
     mode: write-always
     checksum: 6d0d61d1b139805c5e223cecd025b06f1c2fccb7
     permissions: "644"
-    modified: 1676122953505
+    modified: 1676154077786
   - filename: src/server/api/UsersClientRoute.js
     mode: write-always
     checksum: a2332b07c15ceeb66f016466a0a93999dc4bb606
     permissions: "644"
-    modified: 1676122953505
+    modified: 1676154077787
   - filename: src/server/clients/UsersClient.js
     mode: write-always
     checksum: 3da4490d6d19f458270c24bd39eaead26b15a049
     permissions: "644"
-    modified: 1676122953505
+    modified: 1676154077787
   - filename: src/browser/clients/UsersClient.ts
     mode: write-always
     checksum: d22c6054b61f012c9b02063b0e384fb3c7d5ccd1
     permissions: "644"
-    modified: 1676122953505
+    modified: 1676154077787
   - filename: src/browser/pages/users/UsersPage.tsx
     mode: create-only
     checksum: 23d6133fdb96357c84d3605931904c7e18f4b3be
     permissions: "644"
-    modified: 1676122953505
+    modified: 1676154077787
   - filename: src/browser/pages/users/index.tsx
     mode: write-always
     checksum: b7725d3ed5fb09fb3dc5a69281f1302bd48ce77f
     permissions: "644"
-    modified: 1676122953506
+    modified: 1676154077787
