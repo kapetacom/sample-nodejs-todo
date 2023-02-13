@@ -1,4 +1,4 @@
-kind: blockware/block-type-service:0.0.12
+kind: blockware/block-type-service:0.0.6
 metadata:
   name: blockware/nodejs-sample-users-service
   title: User Service
