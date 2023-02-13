@@ -1,4 +1,4 @@
-kind: blockware/block-type-frontend:0.0.5
+kind: blockware/block-type-frontend:0.0.3
 metadata:
   name: blockware/nodejs-sample-todo-ui
   title: Todo UI
