@@ -91,7 +91,7 @@ spec:
         	email: string
         }
   providers:
-    - kind: blockware/resource-type-web-page:0.0.2
+    - kind: blockware/resource-type-web-page:0.0.4
       metadata:
         name: Users
       spec:
