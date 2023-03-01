@@ -1,23 +1,23 @@
-kind: blockware/block-type-frontend:0.0.3
+kind: blockware/block-type-frontend:0.0.6
 metadata:
   name: blockware/sample-nodejs-ui-gateway
   title: Todo App
 spec:
   target:
-    kind: blockware/language-target-react-ts:0.0.5
+    kind: blockware/language-target-react-ts:0.0.6
   providers:
-    - kind: blockware/resource-type-web-page:0.0.2
+    - kind: blockware/resource-type-web-page:0.0.4
       metadata:
         name: web
       spec:
         path: /
   consumers:
-    - kind: blockware/resource-type-web-fragment:0.0.2
+    - kind: blockware/resource-type-web-fragment:0.0.4
       metadata:
         name: todo
       spec:
         path: /todo
-    - kind: blockware/resource-type-web-fragment:0.0.2
+    - kind: blockware/resource-type-web-fragment:0.0.4
       metadata:
         name: Users
       spec:

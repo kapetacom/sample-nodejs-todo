@@ -1,10 +1,10 @@
-kind: blockware/block-type-frontend:0.0.3
+kind: blockware/block-type-frontend:0.0.6
 metadata:
   name: blockware/nodejs-sample-todo-ui
   title: Todo UI
 spec:
   target:
-    kind: blockware/language-target-react-ts:0.0.5
+    kind: blockware/language-target-react-ts:0.0.6
   entities:
     types:
       - type: dto
@@ -49,17 +49,19 @@ spec:
         	description: string
         	done: boolean
         }
+
+
         Test {
-        	id:string
+        	id: string
         }
   providers:
-    - kind: blockware/resource-type-web-page:0.0.2
+    - kind: blockware/resource-type-web-page:0.0.4
       metadata:
         name: todo
       spec:
         path: /
   consumers:
-    - kind: blockware/resource-type-rest-client:0.0.4
+    - kind: blockware/resource-type-rest-client:0.0.7
       metadata:
         name: tasks
       spec:

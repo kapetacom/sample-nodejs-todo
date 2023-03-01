@@ -1,10 +1,10 @@
-kind: blockware/block-type-service:0.0.6
+kind: blockware/block-type-service:0.0.7
 metadata:
   name: blockware/nodejs-sample-users-service
   title: User Service
 spec:
   target:
-    kind: blockware/language-target-nodejs:0.0.5
+    kind: blockware/language-target-nodejs:0.0.6
   entities:
     types:
       - type: dto
@@ -121,11 +121,11 @@ spec:
         	done: boolean
         }
   consumers:
-    - kind: blockware/resource-type-postgresql:0.0.2
+    - kind: blockware/resource-type-postgresql:0.0.3
       metadata:
         name: users
   providers:
-    - kind: blockware/resource-type-rest-api:0.0.4
+    - kind: blockware/resource-type-rest-api:0.0.7
       metadata:
         name: users
       spec:
