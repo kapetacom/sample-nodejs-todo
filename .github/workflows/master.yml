@@ -17,10 +17,6 @@ jobs:
         id: checkout
       - uses: actions/setup-node@v3
         id: setup-node
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
       - name: checkout action
         uses: actions/checkout@v3
         with:
