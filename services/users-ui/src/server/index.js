@@ -3,9 +3,9 @@
 //
 const Path = require("path");
 const FS = require("fs");
-const Server = require("@blockware/sdk-server");
+const Server = require("@kapeta/sdk-server");
 const server = new Server(
-    "blockware/nodejs-sample-user-ui",
+    "kapeta/nodejs-sample-user-ui",
     Path.resolve(__dirname, "../..")
 );
 const express = require("express");

@@ -1,10 +1,10 @@
-kind: blockware/block-type-service:0.0.7
+kind: kapeta/block-type-service:0.0.7
 metadata:
-  name: blockware/nodejs-sample-todo-service
+  name: kapeta/nodejs-sample-todo-service
   title: Todo Service
 spec:
   target:
-    kind: blockware/language-target-nodejs:0.0.6
+    kind: kapeta/language-target-nodejs:0.0.6
   entities:
     types:
       - type: dto
@@ -48,7 +48,7 @@ spec:
             type: string
             properties: null
     source:
-      type: blockware-dsl
+      type: kapeta-dsl
       value: |-
         Task {
         	id: string
@@ -57,15 +57,13 @@ spec:
         	description: string
         	done: boolean
         }
-
-
         User {
         	id: string
         	name: string
         	email: string
         }
   consumers:
-    - kind: blockware/resource-type-rest-client:0.0.7
+    - kind: kapeta/resource-type-rest-client:0.0.7
       metadata:
         name: users
       spec:
@@ -81,16 +79,16 @@ spec:
                 type: string
                 transport: PATH
         source:
-          type: blockware-dsl
+          type: kapeta-dsl
           value: |-
             //Get users by id
             @GET("/users/{id}")
             getUserById(@Path id:string):User
-    - kind: blockware/resource-type-mongodb:0.0.4
+    - kind: kapeta/resource-type-mongodb:0.0.4
       metadata:
         name: tasks
   providers:
-    - kind: blockware/resource-type-rest-api:0.0.7
+    - kind: kapeta/resource-type-rest-api:0.0.7
       metadata:
         name: tasks
       spec:
@@ -130,16 +128,14 @@ spec:
                 type: string
                 transport: PATH
         source:
-          type: blockware-dsl
+          type: kapeta-dsl
           value: |-
             //Add task for user
             @POST("/tasks/{userId}/{id}")
             addTask(@Path userId:string, @Path id:string, @Body task:Task):void
-
             //Mark task as done
             @POST("/tasks/{id}/done")
             markAsDone(@Path id:string):void
-
             //Delete task
             @DELETE("/tasks/{id}")
             removeTask(@Path id:string):void

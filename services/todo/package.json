@@ -1,15 +1,13 @@
 {
-    "name": "@blockware/nodejs-sample-todo-service",
+    "name": "@kapeta/nodejs-sample-todo-service",
     "version": "local",
     "main": "index.js",
     "scripts": {
         "start": "node index.js"
     },
     "dependencies": {
-        "@blockware/sdk-config": "<2",
-        "@blockware/sdk-server": "<2",
-        "@blockware/sdk-rest-client": "<2",
-        "@blockware/sdk-rest-route": "<2",
-        "@blockware/sdk-nosql-mongodb": "<2"
+        "@kapeta/sdk-config": "<2",
+        "@kapeta/sdk-server": "<2",
+        "@kapeta/sdk-nosql-mongodb": "<2"
     }
 }

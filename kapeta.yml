@@ -1,10 +1,10 @@
 kind: core/plan
 metadata:
-  name: blockware/sample-nodejs-plan
+  name: kapeta/sample-nodejs-plan
 spec:
   blocks:
     - block:
-        ref: blockware/nodejs-sample-todo-service:local
+        ref: kapeta/nodejs-sample-todo-service:local
       name: Todo Service
       dimensions:
         height: -1
@@ -13,7 +13,7 @@ spec:
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: blockware/nodejs-sample-users-service:local
+        ref: kapeta/nodejs-sample-users-service:local
       name: User Service
       dimensions:
         height: -1
@@ -22,7 +22,7 @@ spec:
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
     - block:
-        ref: blockware://blockware/nodejs-sample-todo-ui:local
+        ref: kapeta://kapeta/nodejs-sample-todo-ui:local
       name: Todo UI
       dimensions:
         height: -1
@@ -31,7 +31,7 @@ spec:
         width: 150
       id: da76710b-ccaa-fe32-cc9f-be5f559ed203
     - block:
-        ref: blockware://blockware/nodejs-sample-user-ui:local
+        ref: kapeta://kapeta/nodejs-sample-user-ui:local
       name: User UI
       dimensions:
         height: -1
@@ -40,7 +40,7 @@ spec:
         width: 150
       id: 6c895976-87f0-495e-4e5c-953bdc81a442
     - block:
-        ref: blockware://blockware/sample-nodejs-ui-gateway:local
+        ref: kapeta://kapeta/sample-nodejs-ui-gateway:local
       name: Todo App
       dimensions:
         height: -1

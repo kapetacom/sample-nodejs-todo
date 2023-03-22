@@ -1,10 +1,10 @@
-kind: blockware/block-type-service:0.0.7
+kind: kapeta/block-type-service:0.0.7
 metadata:
-  name: blockware/nodejs-sample-users-service
+  name: kapeta/nodejs-sample-users-service
   title: User Service
 spec:
   target:
-    kind: blockware/language-target-nodejs:0.0.6
+    kind: kapeta/language-target-nodejs:0.0.6
   entities:
     types:
       - type: dto
@@ -88,7 +88,7 @@ spec:
             type: boolean
             properties: null
     source:
-      type: blockware-dsl
+      type: kapeta-dsl
       value: |-
         UserRegistration {
         	name: string
@@ -121,11 +121,11 @@ spec:
         	done: boolean
         }
   consumers:
-    - kind: blockware/resource-type-postgresql:0.0.3
+    - kind: kapeta/resource-type-postgresql:0.0.3
       metadata:
         name: users
   providers:
-    - kind: blockware/resource-type-rest-api:0.0.7
+    - kind: kapeta/resource-type-rest-api:0.0.7
       metadata:
         name: users
       spec:
@@ -192,7 +192,7 @@ spec:
                 type: string
                 transport: QUERY
         source:
-          type: blockware-dsl
+          type: kapeta-dsl
           value: |-
             //Register new user
             @POST("/register")

@@ -2,7 +2,7 @@
 // GENERATED SOURCE - DO NOT EDIT
 //
 
-import RESTClient from "@blockware/sdk-web-rest-client";
+import RESTClient from "@kapeta/sdk-web-rest-client";
 import { UserRegistration } from "../entities/UserRegistration";
 import { UserActivation } from "../entities/UserActivation";
 import { UserAuthentication } from "../entities/UserAuthentication";

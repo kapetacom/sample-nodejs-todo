@@ -3,7 +3,7 @@
 //
 const Path = require("path");
 const FS = require("fs");
-const Server = require("@blockware/sdk-server");
+const Server = require("@kapeta/sdk-server");
 const server = new Server(
     "blockware/sample-nodejs-ui-gateway",
     Path.resolve(__dirname, "../..")
