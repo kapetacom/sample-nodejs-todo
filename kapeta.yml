@@ -55,12 +55,16 @@ spec:
       to:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: Users
+        port:
+          type: rest
     - from:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
       to:
         blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
         resourceName: users
+        port:
+          type: rest        
       mapping:
         registerUser:
           targetId: registerUser
@@ -86,6 +90,8 @@ spec:
       to:
         blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
         resourceName: users
+        port:
+          type: rest        
       mapping:
         getUser:
           targetId: getUserById
@@ -96,6 +102,8 @@ spec:
       to:
         blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
         resourceName: tasks
+        port:
+          type: rest        
       mapping:
         addTask:
           targetId: addTask
@@ -112,3 +120,5 @@ spec:
       to:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: todo
+        port:
+          type: rest
