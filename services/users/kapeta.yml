@@ -1,10 +1,10 @@
-kind: kapeta/block-type-service:0.0.7
+kind: kapeta/block-type-service:0.0.1
 metadata:
   name: kapeta/nodejs-sample-users-service
   title: User Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.0.6
+    kind: kapeta/language-target-nodejs:0.0.1
   entities:
     types:
       - type: dto
@@ -121,11 +121,11 @@ spec:
         	done: boolean
         }
   consumers:
-    - kind: kapeta/resource-type-postgresql:0.0.3
+    - kind: kapeta/resource-type-postgresql:0.0.1
       metadata:
         name: users
   providers:
-    - kind: kapeta/resource-type-rest-api:0.0.7
+    - kind: kapeta/resource-type-rest-api:0.0.1
       metadata:
         name: users
       spec:
