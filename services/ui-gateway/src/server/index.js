@@ -5,7 +5,7 @@ const Path = require("path");
 const FS = require("fs");
 const Server = require("@kapeta/sdk-server");
 const server = new Server(
-    "blockware/sample-nodejs-ui-gateway",
+    "kapeta/sample-nodejs-ui-gateway",
     Path.resolve(__dirname, "../..")
 );
 const express = require("express");

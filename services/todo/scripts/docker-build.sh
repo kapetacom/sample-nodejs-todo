@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 echo "Building docker image";
-docker build . -t blockware/nodejs-sample-todo-service || exit 1
+docker build . -t kapeta/nodejs-sample-todo-service || exit 1
 
-echo "Done. Image ready: blockware/nodejs-sample-todo-service";
+echo "Done. Image ready: kapeta/nodejs-sample-todo-service";
