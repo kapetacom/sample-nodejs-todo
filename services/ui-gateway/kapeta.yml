@@ -1,4 +1,4 @@
-kind: kapeta/block-type-frontend:0.0.1
+kind: kapeta/block-type-frontend:0.0.2
 metadata:
   name: kapeta/sample-nodejs-ui-gateway
   title: Todo App
@@ -6,18 +6,18 @@ spec:
   target:
     kind: kapeta/language-target-react-ts:0.0.1
   providers:
-    - kind: kapeta/resource-type-web-page:0.0.1
+    - kind: kapeta/resource-type-web-page:0.0.3
       metadata:
         name: web
       spec:
         path: /
   consumers:
-    - kind: kapeta/resource-type-web-fragment:0.0.1
+    - kind: kapeta/resource-type-web-fragment:0.0.3
       metadata:
         name: todo
       spec:
         path: /todo
-    - kind: kapeta/resource-type-web-fragment:0.0.1
+    - kind: kapeta/resource-type-web-fragment:0.0.3
       metadata:
         name: Users
       spec:
