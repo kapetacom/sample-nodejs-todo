@@ -10,17 +10,23 @@ spec:
       metadata:
         name: web
       spec:
+        port:
+          type: web
         path: /
   consumers:
     - kind: kapeta/resource-type-web-fragment:0.0.3
       metadata:
         name: todo
       spec:
+        port:
+          type: web
         path: /todo
     - kind: kapeta/resource-type-web-fragment:0.0.3
       metadata:
         name: Users
       spec:
+        port:
+          type: web
         path: /user
   entities:
     types:

@@ -67,6 +67,8 @@ spec:
       metadata:
         name: users
       spec:
+        port:
+          type: rest
         methods:
           getUserById:
             responseType:
@@ -87,11 +89,16 @@ spec:
     - kind: kapeta/resource-type-mongodb:0.0.2
       metadata:
         name: tasks
+      spec:
+        port:
+          type: mongodb
   providers:
     - kind: kapeta/resource-type-rest-api:0.0.2
       metadata:
         name: tasks
       spec:
+        port:
+          type: rest
         methods:
           addTask:
             responseType: void

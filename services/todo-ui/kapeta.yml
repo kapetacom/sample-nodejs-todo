@@ -59,12 +59,16 @@ spec:
       metadata:
         name: todo
       spec:
+        port:
+          type: web
         path: /
   consumers:
     - kind: kapeta/resource-type-rest-client:0.0.2
       metadata:
         name: tasks
       spec:
+        port:
+          type: rest
         methods:
           addTask:
             description: Add task for user
