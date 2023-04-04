@@ -95,12 +95,16 @@ spec:
       metadata:
         name: Users
       spec:
+        port:
+          type: web
         path: /
   consumers:
     - kind: kapeta/resource-type-rest-client:0.0.2
       metadata:
         name: users
       spec:
+        port:
+          type: rest
         methods:
           registerUser:
             responseType: void

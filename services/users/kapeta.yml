@@ -124,11 +124,16 @@ spec:
     - kind: kapeta/resource-type-postgresql:0.0.2
       metadata:
         name: users
+      spec:
+        port:
+          type: postgres
   providers:
     - kind: kapeta/resource-type-rest-api:0.0.2
       metadata:
         name: users
       spec:
+        port:
+          type: rest
         methods:
           registerUser:
             responseType: void
