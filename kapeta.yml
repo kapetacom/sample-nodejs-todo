@@ -56,7 +56,7 @@ spec:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: Users
         port:
-          type: rest
+          type: web
     - from:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
@@ -121,4 +121,4 @@ spec:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: todo
         port:
-          type: rest
+          type: web
