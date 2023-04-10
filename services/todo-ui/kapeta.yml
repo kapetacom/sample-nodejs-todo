@@ -83,7 +83,7 @@ spec:
                 transport: path
               task:
                 type:
-                  $ref: Task
+                  ref: Task
                 transport: body
           markAsDone:
             description: Mark task as done
