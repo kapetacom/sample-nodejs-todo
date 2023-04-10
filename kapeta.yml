@@ -49,22 +49,22 @@ spec:
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
   connections:
-    - from:
+    - provider:
         blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
         resourceName: Users
-      to:
+      consumer:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: Users
-        port:
-          type: web
-    - from:
+      port:
+        type: web
+    - provider:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
-      to:
+      consumer:
         blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
         resourceName: users
-        port:
-          type: rest        
+      port:
+        type: rest
       mapping:
         registerUser:
           targetId: registerUser
@@ -84,26 +84,26 @@ spec:
         deleteUser:
           targetId: deleteUser
           type: EXACT
-    - from:
+    - provider:
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
         resourceName: users
-      to:
+      consumer:
         blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
         resourceName: users
-        port:
-          type: rest        
+      port:
+        type: rest
       mapping:
         getUser:
           targetId: getUserById
           type: EXACT
-    - from:
+    - provider:
         blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
         resourceName: tasks
-      to:
+      consumer:
         blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
         resourceName: tasks
-        port:
-          type: rest        
+      port:
+        type: rest
       mapping:
         addTask:
           targetId: addTask
@@ -114,11 +114,11 @@ spec:
         removeTask:
           targetId: removeTask
           type: EXACT
-    - from:
+    - provider:
         blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
         resourceName: todo
-      to:
+      consumer:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
         resourceName: todo
-        port:
-          type: web
+      port:
+        type: web

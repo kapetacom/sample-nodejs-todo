@@ -114,7 +114,7 @@ spec:
             arguments:
               user:
                 type:
-                  $ref: UserRegistration
+                  ref: UserRegistration
                 transport: BODY
           activateUser:
             responseType: void
@@ -124,7 +124,7 @@ spec:
             arguments:
               user:
                 type:
-                  $ref: UserActivation
+                  ref: UserActivation
                 transport: BODY
           authenticationUser:
             responseType: void
@@ -134,7 +134,7 @@ spec:
             arguments:
               user:
                 type:
-                  $ref: UserAuthentication
+                  ref: UserAuthentication
                 transport: BODY
           resetPassword:
             responseType: void
@@ -147,7 +147,7 @@ spec:
                 transport: QUERY
           getUser:
             responseType:
-              $ref: User
+              ref: User
             method: GET
             path: /users/{id}
             description: Get user by id

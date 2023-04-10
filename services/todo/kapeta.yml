@@ -72,7 +72,7 @@ spec:
         methods:
           getUserById:
             responseType:
-              $ref: User
+              ref: User
             method: GET
             path: /users/{id}
             description: Get users by id
@@ -114,7 +114,7 @@ spec:
                 transport: PATH
               task:
                 type:
-                  $ref: Task
+                  ref: Task
                 transport: BODY
           markAsDone:
             responseType: void
