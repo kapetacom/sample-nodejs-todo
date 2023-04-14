@@ -1,10 +1,10 @@
-kind: kapeta/block-type-frontend:0.0.3
+kind: kapeta/block-type-frontend:0.0.4
 metadata:
   name: kapeta/nodejs-sample-todo-ui
   title: Todo UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.3
+    kind: kapeta/language-target-react-ts:0.0.6
   entities:
     types:
       - type: dto
@@ -31,14 +31,6 @@ spec:
             description: null
             type: boolean
             properties: null
-      - type: dto
-        name: Test
-        description: null
-        properties:
-          id:
-            description: null
-            type: string
-            properties: null
     source:
       type: kapeta-dsl
       value: |-
@@ -49,11 +41,6 @@ spec:
         	description: string
         	done: boolean
         }
-
-
-        Test {
-        	id: string
-        }
   providers:
     - kind: kapeta/resource-type-web-page:0.0.5
       metadata:
@@ -63,7 +50,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:0.0.4
+    - kind: kapeta/resource-type-rest-client:0.0.7
       metadata:
         name: tasks
       spec:
@@ -71,33 +58,50 @@ spec:
           type: rest
         methods:
           addTask:
-            description: Add task for user
+            responseType:
+              type: void
             method: POST
             path: /tasks/{userId}/{id}
+            description: Add task for user
             arguments:
               userId:
                 type: string
-                transport: path
+                transport: PATH
               id:
                 type: string
-                transport: path
+                transport: PATH
               task:
-                type:
-                  ref: Task
-                transport: body
+                ref: Task
+                transport: BODY
           markAsDone:
-            description: Mark task as done
+            responseType:
+              type: void
             method: POST
             path: /tasks/{id}/done
+            description: Mark task as done
             arguments:
               id:
                 type: string
-                transport: path
+                transport: PATH
           removeTask:
-            description: Delete task
+            responseType:
+              type: void
             method: DELETE
             path: /tasks/{id}
+            description: Delete task
             arguments:
               id:
                 type: string
-                transport: path
+                transport: PATH
+        source:
+          type: kapeta-dsl
+          value: |-
+            //Add task for user
+            @POST("/tasks/{userId}/{id}")
+            addTask(@Path userId:string, @Path id:string, @Body task:Task):void
+            //Mark task as done
+            @POST("/tasks/{id}/done")
+            markAsDone(@Path id:string):void
+            //Delete task
+            @DELETE("/tasks/{id}")
+            removeTask(@Path id:string):void

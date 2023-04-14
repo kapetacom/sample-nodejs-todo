@@ -8,6 +8,8 @@
     "dependencies": {
         "@kapeta/sdk-config": "<2",
         "@kapeta/sdk-server": "<2",
+        "@kapeta/sdk-rest-client": "<2",
+        "@kapeta/sdk-rest-route": "<2",
         "@kapeta/sdk-nosql-mongodb": "<2"
     }
 }

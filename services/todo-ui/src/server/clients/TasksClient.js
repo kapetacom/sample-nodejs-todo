@@ -19,9 +19,9 @@ class TasksClient {
      */
     addTask(userId, id, task) {
         return this._client.execute("POST", "/tasks/{userId}/{id}", [
-            { name: "userId", value: userId, transport: "path" },
-            { name: "id", value: id, transport: "path" },
-            { name: "task", value: task, transport: "body" },
+            { name: "userId", value: userId, transport: "PATH" },
+            { name: "id", value: id, transport: "PATH" },
+            { name: "task", value: task, transport: "BODY" },
         ]);
     }
 
@@ -34,7 +34,7 @@ class TasksClient {
      */
     markAsDone(id) {
         return this._client.execute("POST", "/tasks/{id}/done", [
-            { name: "id", value: id, transport: "path" },
+            { name: "id", value: id, transport: "PATH" },
         ]);
     }
 
@@ -47,7 +47,7 @@ class TasksClient {
      */
     removeTask(id) {
         return this._client.execute("DELETE", "/tasks/{id}", [
-            { name: "id", value: id, transport: "path" },
+            { name: "id", value: id, transport: "PATH" },
         ]);
     }
 }

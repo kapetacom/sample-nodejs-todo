@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 echo "Building docker image";
-docker build . -t kapetacom/sample-nodejs-ui-gateway || exit 1
+docker build . -t kapeta/sample-nodejs-ui-gateway || exit 1
 
-echo "Done. Image ready: kapetacom/sample-nodejs-ui-gateway";
+echo "Done. Image ready: kapeta/sample-nodejs-ui-gateway";

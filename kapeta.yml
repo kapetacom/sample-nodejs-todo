@@ -50,19 +50,41 @@ spec:
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
   connections:
     - provider:
-        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
-        resourceName: Users
+        resourceName: tasks
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
       consumer:
-        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
-        resourceName: Users
+        resourceName: tasks
+        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
       port:
-        type: web
+        type: rest
+      mapping:
+        addTask:
+          targetId: addTask
+          type: EXACT
+        markAsDone:
+          targetId: markAsDone
+          type: EXACT
+        removeTask:
+          targetId: removeTask
+          type: EXACT
     - provider:
+        resourceName: users
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
-        resourceName: users
       consumer:
-        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
         resourceName: users
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+      port:
+        type: rest
+      mapping:
+        getUser:
+          targetId: getUserById
+          type: EXACT
+    - provider:
+        resourceName: users
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+      consumer:
+        resourceName: users
+        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
       port:
         type: rest
       mapping:
@@ -85,40 +107,18 @@ spec:
           targetId: deleteUser
           type: EXACT
     - provider:
-        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
-        resourceName: users
+        resourceName: Users
+        blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
       consumer:
-        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
-        resourceName: users
-      port:
-        type: rest
-      mapping:
-        getUser:
-          targetId: getUserById
-          type: EXACT
-    - provider:
-        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
-        resourceName: tasks
-      consumer:
-        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
-        resourceName: tasks
-      port:
-        type: rest
-      mapping:
-        addTask:
-          targetId: addTask
-          type: EXACT
-        markAsDone:
-          targetId: markAsDone
-          type: EXACT
-        removeTask:
-          targetId: removeTask
-          type: EXACT
-    - provider:
-        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
-        resourceName: todo
-      consumer:
+        resourceName: Users
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+      port:
+        type: web
+    - provider:
         resourceName: todo
+        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
+      consumer:
+        resourceName: todo
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
       port:
         type: web

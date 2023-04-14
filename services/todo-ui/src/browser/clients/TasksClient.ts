@@ -23,9 +23,9 @@ export class TasksClient {
      */
     addTask(userId: string, id: string, task: Task): Promise<void> {
         return this.client.execute("POST", "/tasks/{userId}/{id}", [
-            { name: "userId", value: userId, transport: "path" },
-            { name: "id", value: id, transport: "path" },
-            { name: "task", value: task, transport: "body" },
+            { name: "userId", value: userId, transport: "PATH" },
+            { name: "id", value: id, transport: "PATH" },
+            { name: "task", value: task, transport: "BODY" },
         ]);
     }
 
@@ -38,7 +38,7 @@ export class TasksClient {
      */
     markAsDone(id: string): Promise<void> {
         return this.client.execute("POST", "/tasks/{id}/done", [
-            { name: "id", value: id, transport: "path" },
+            { name: "id", value: id, transport: "PATH" },
         ]);
     }
 
@@ -51,7 +51,7 @@ export class TasksClient {
      */
     removeTask(id: string): Promise<void> {
         return this.client.execute("DELETE", "/tasks/{id}", [
-            { name: "id", value: id, transport: "path" },
+            { name: "id", value: id, transport: "PATH" },
         ]);
     }
 }
