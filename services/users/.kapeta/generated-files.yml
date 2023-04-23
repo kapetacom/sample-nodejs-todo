@@ -9,69 +9,69 @@ assets:
     mode: merge
     checksum: 9623c3d258729e201c291bfb12f5f825d6e2625e
     permissions: "644"
-    modified: 1681491548513
+    modified: 1682265244478
   - filename: scripts/build.sh
     mode: write-always
     checksum: 021d402d921ea73b7cf8ecd597694c4b2832d8dc
     permissions: "755"
-    modified: 1681491548513
+    modified: 1682265244479
   - filename: scripts/docker-build.sh
     mode: write-always
     checksum: 32bf8c0dd8fa633041658f9185b3d8a6b1df72ed
     permissions: "755"
-    modified: 1681491548513
+    modified: 1682265244479
   - filename: index.js
     mode: write-always
     checksum: 1b651b41f9620c3187399a692b54fc6d92996d5e
     permissions: "644"
-    modified: 1681491548514
+    modified: 1682265244479
   - filename: package.json
     mode: merge
     checksum: 4f7512ec7fdcdaeb0ec6e3e5513133237b751484
     permissions: "644"
-    modified: 1681491548514
+    modified: 1682265244479
   - filename: scripts/start.sh
     mode: write-always
     checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
     permissions: "755"
-    modified: 1681491548514
+    modified: 1682265244480
   - filename: src/entities/UserRegistration.d.ts
     mode: write-always
     checksum: b29941ab9b9b95e64cb75e9712911135d7c46e1a
     permissions: "644"
-    modified: 1681491548514
+    modified: 1682265244480
   - filename: src/entities/UserActivation.d.ts
     mode: write-always
     checksum: 4ddbc0b4539f607b98ffeb6e9aa1e191c9b56a0f
     permissions: "644"
-    modified: 1681491548514
+    modified: 1682265244480
   - filename: src/entities/UserAuthentication.d.ts
     mode: write-always
     checksum: 9a1651ded7da6e1705a4c6562bb35c65aa7fad8b
     permissions: "644"
-    modified: 1681491548514
+    modified: 1682265244480
   - filename: src/entities/User.d.ts
     mode: write-always
     checksum: 53f425cef82f20c9ebea4e3384a11d3fe14d722c
     permissions: "644"
-    modified: 1681491548515
+    modified: 1682265244480
   - filename: src/entities/Task.d.ts
     mode: write-always
     checksum: c6d242021490ac1328115d68742789a41f282f50
     permissions: "644"
-    modified: 1681491548515
+    modified: 1682265244481
   - filename: src/data/UsersDB.js
     mode: write-always
     checksum: db918d1096da9585b59426e109afadbd8fb1dd33
     permissions: "644"
-    modified: 1681491548515
+    modified: 1682265244481
   - filename: src/rest/UsersRoute.js
     mode: write-always
     checksum: 401e8a3561af1b56f278cdab45ae02bb5abe266b
     permissions: "644"
-    modified: 1681491548515
+    modified: 1682265244481
   - filename: src/service/UsersRouteService.js
     mode: create-only
     checksum: a9c4fe2b5a8c027aeed40140cfac1c152c840d3e
     permissions: "644"
-    modified: 1681491548515
+    modified: 1682265244481

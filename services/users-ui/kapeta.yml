@@ -1,10 +1,10 @@
-kind: kapeta/block-type-frontend:0.0.4
+kind: kapeta/block-type-frontend:0.0.7
 metadata:
   name: kapeta/nodejs-sample-user-ui
   title: User UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.6
+    kind: kapeta/language-target-react-ts:0.0.7
   entities:
     types:
       - type: dto
@@ -91,7 +91,7 @@ spec:
         	email: string
         }
   providers:
-    - kind: kapeta/resource-type-web-page:0.0.5
+    - kind: kapeta/resource-type-web-page:0.0.7
       metadata:
         name: Users
       spec:
@@ -99,7 +99,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:0.0.7
+    - kind: kapeta/resource-type-rest-client:1.0.2
       metadata:
         name: users
       spec:

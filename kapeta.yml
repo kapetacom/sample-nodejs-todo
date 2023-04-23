@@ -17,8 +17,8 @@ spec:
       name: User Service
       dimensions:
         height: -1
-        top: 449
-        left: 149
+        top: 455
+        left: 128
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
     - block:
@@ -44,8 +44,8 @@ spec:
       name: Todo App
       dimensions:
         height: -1
-        top: 361.78125
-        left: 1215
+        top: 379.78125
+        left: 1267
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
   connections:
