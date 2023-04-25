@@ -1,0 +1,303 @@
+kind: kapeta/block-type-gateway-http:0.0.1
+metadata:
+  name: kapeta/nodejs-sample-api-gateway
+  title: API Gateway
+spec:
+  entities:
+    types:
+      - type: dto
+        name: UserRegistration
+        description: null
+        properties:
+          name:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          email:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: UserActivation
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          password:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          password2:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: UserAuthentication
+        description: null
+        properties:
+          email:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          password:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: Task
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          userId:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          title:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          description:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          done:
+            type: boolean
+            description: null
+            properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: User
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          name:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          email:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+    source:
+      type: kapeta-dsl
+      value: |-
+        UserRegistration {
+        	name: string
+        	email: string
+        }
+
+        UserActivation {
+        	id: string
+        	password: string
+        	password2: string
+        }
+
+        UserAuthentication {
+        	email: string
+        	password: string
+        }
+
+        Task {
+        	id: string
+        	userId: string
+        	title: string
+        	description: string
+        	done: boolean
+        }
+
+        User {
+        	id: string
+        	name: string
+        	email: string
+        }
+  consumers:
+    - kind: kapeta/resource-type-rest-client:1.0.2
+      metadata:
+        name: tasks
+      spec:
+        port:
+          type: rest
+        methods:
+          addTask:
+            responseType:
+              type: void
+            method: POST
+            path: /tasks/{userId}/{id}
+            description: Add task for user
+            arguments:
+              userId:
+                type: string
+                transport: PATH
+              id:
+                type: string
+                transport: PATH
+              task:
+                ref: Task
+                transport: BODY
+          markAsDone:
+            responseType:
+              type: void
+            method: POST
+            path: /tasks/{id}/done
+            description: Mark task as done
+            arguments:
+              id:
+                type: string
+                transport: PATH
+          removeTask:
+            responseType:
+              type: void
+            method: DELETE
+            path: /tasks/{id}
+            description: Delete task
+            arguments:
+              id:
+                type: string
+                transport: PATH
+        source:
+          type: kapeta-dsl
+          value: |-
+            //Add task for user
+            @POST("/tasks/{userId}/{id}")
+            addTask(@Path userId:string, @Path id:string, @Body task:Task):void
+
+            //Mark task as done
+            @POST("/tasks/{id}/done")
+            markAsDone(@Path id:string):void
+
+            //Delete task
+            @DELETE("/tasks/{id}")
+            removeTask(@Path id:string):void
+    - kind: kapeta/resource-type-rest-client:1.0.2
+      metadata:
+        name: users
+      spec:
+        port:
+          type: rest
+        methods:
+          registerUser:
+            responseType:
+              type: void
+            method: POST
+            path: /register
+            description: Register new user
+            arguments:
+              user:
+                ref: UserRegistration
+                transport: BODY
+          activateUser:
+            responseType:
+              type: void
+            method: POST
+            path: /activate
+            description: Activate user registration
+            arguments:
+              user:
+                ref: UserActivation
+                transport: BODY
+          authenticationUser:
+            responseType:
+              type: void
+            method: POST
+            path: /authenticate
+            description: Authenticate user
+            arguments:
+              user:
+                ref: UserAuthentication
+                transport: BODY
+          resetPassword:
+            responseType:
+              type: void
+            method: POST
+            path: /reset_password
+            description: Reset password for user
+            arguments:
+              email:
+                type: string
+                transport: QUERY
+          getUser:
+            responseType:
+              ref: User
+            method: GET
+            path: /users/{id}
+            description: Get user by id
+            arguments:
+              id:
+                type: string
+                transport: PATH
+          deleteUser:
+            responseType:
+              type: void
+            method: DELETE
+            path: /users/{id}
+            description: Delete user by id
+            arguments:
+              id:
+                type: string
+                transport: PATH
+              filter:
+                type: string
+                transport: QUERY
+        source:
+          type: kapeta-dsl
+          value: |-
+            //Register new user
+            @POST("/register")
+            registerUser(@Body user:UserRegistration):void
+
+            //Activate user registration
+            @POST("/activate")
+            activateUser(@Body user:UserActivation):void
+
+            //Authenticate user
+            @POST("/authenticate")
+            authenticationUser(@Body user:UserAuthentication):void
+
+            //Reset password for user
+            @POST("/reset_password")
+            resetPassword(@Query email:string):void
+
+            //Get user by id
+            @GET("/users/{id}")
+            getUser(@Path id:string):User
+
+            //Delete user by id
+            @DELETE("/users/{id}")
+            deleteUser(@Path id:string, @Query filter:string):void

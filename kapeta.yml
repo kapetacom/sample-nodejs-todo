@@ -44,10 +44,28 @@ spec:
       name: Todo App
       dimensions:
         height: -1
-        top: 379.78125
-        left: 1267
+        top: 373.78125
+        left: 1139
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+    - block:
+        ref: kapeta://kapeta/nodejs-sample-api-gateway:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 777
+        top: 332
+      id: b463e93c-83d5-4c89-8270-4f8a64cf130d
+      name: API Gateway
+    - block:
+        ref: kapeta://kapeta/nodejs-sample-web-gateway:local
+      dimensions:
+        height: -1
+        width: 150
+        left: 1406
+        top: 445
+      id: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
+      name: Web Gateway
   connections:
     - provider:
         resourceName: tasks
@@ -120,5 +138,58 @@ spec:
       consumer:
         resourceName: todo
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+      port:
+        type: web
+    - provider:
+        resourceName: tasks
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+      consumer:
+        resourceName: tasks
+        blockId: b463e93c-83d5-4c89-8270-4f8a64cf130d
+      port:
+        type: rest
+      mapping:
+        markAsDone:
+          targetId: markAsDone
+          type: EXACT
+        removeTask:
+          targetId: removeTask
+          type: EXACT
+        addTask:
+          targetId: addTask
+          type: EXACT
+    - provider:
+        resourceName: users
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+      consumer:
+        resourceName: users
+        blockId: b463e93c-83d5-4c89-8270-4f8a64cf130d
+      port:
+        type: rest
+      mapping:
+        registerUser:
+          targetId: registerUser
+          type: EXACT
+        activateUser:
+          targetId: activateUser
+          type: EXACT
+        authenticationUser:
+          targetId: authenticationUser
+          type: EXACT
+        resetPassword:
+          targetId: resetPassword
+          type: EXACT
+        getUser:
+          targetId: getUser
+          type: EXACT
+        deleteUser:
+          targetId: deleteUser
+          type: EXACT
+    - provider:
+        resourceName: web
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+      consumer:
+        resourceName: web
+        blockId: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
       port:
         type: web
