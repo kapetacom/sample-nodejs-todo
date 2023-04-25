@@ -1,6 +1,7 @@
 kind: core/plan
 metadata:
   name: kapeta/sample-nodejs-plan
+  title: NodeJS Sample
 spec:
   blocks:
     - block:
