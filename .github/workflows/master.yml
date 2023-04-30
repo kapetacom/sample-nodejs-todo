@@ -1,9 +1,6 @@
-name: Master build
-# trigger on push to master
+name: Kapeta Build
 on:
   push:
-    branches:
-      - master
   workflow_dispatch:
 jobs:
   relase:
