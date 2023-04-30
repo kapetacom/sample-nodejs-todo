@@ -99,9 +99,11 @@ spec:
             //Add task for user
             @POST("/tasks/{userId}/{id}")
             addTask(@Path userId:string, @Path id:string, @Body task:Task):void
+
             //Mark task as done
             @POST("/tasks/{id}/done")
             markAsDone(@Path id:string):void
+
             //Delete task
             @DELETE("/tasks/{id}")
             removeTask(@Path id:string):void
