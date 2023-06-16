@@ -1,12 +1,12 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { PostgresDB } from "@kapeta/sdk-sqldb-postgresql";
-import { Prisma, PrismaClient } from "./users";
+import { PostgresDB } from '@kapeta/sdk-sqldb-postgresql';
+import { Prisma, PrismaClient } from './users';
 
 export class UsersDB extends PostgresDB<PrismaClient> {
     constructor() {
-        super("users");
+        super('users');
     }
 
     createClient(opts: Prisma.PrismaClientOptions): PrismaClient {

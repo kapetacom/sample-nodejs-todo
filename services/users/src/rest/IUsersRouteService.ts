@@ -1,10 +1,10 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { UserRegistration } from "../entities/UserRegistration";
-import { UserActivation } from "../entities/UserActivation";
-import { UserAuthentication } from "../entities/UserAuthentication";
-import { User } from "../entities/User";
+import { UserRegistration } from '../entities/UserRegistration';
+import { UserActivation } from '../entities/UserActivation';
+import { UserAuthentication } from '../entities/UserAuthentication';
+import { User } from '../entities/User';
 
 export interface IUsersRouteService {
     /**
