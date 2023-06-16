@@ -5,73 +5,123 @@
 
 version: 1.0.0
 assets:
+  - filename: .eslintrc.cjs
+    mode: create-only
+    checksum: d1d5a15faf5fbd84a3253581054cf5e5cdb24fd4
+    permissions: "644"
+    modified: 1686564981746
+  - filename: .prettierignore
+    mode: create-only
+    checksum: 3a16e00a5f60f9685427c8aa61dbb5dbe98c4cf6
+    permissions: "644"
+    modified: 1686908191707
   - filename: Dockerfile
     mode: merge
-    checksum: 9623c3d258729e201c291bfb12f5f825d6e2625e
+    checksum: 6db7880e85ad99ed253118da5f9a5dbf24ec9256
     permissions: "644"
-    modified: 1682265244478
-  - filename: scripts/build.sh
-    mode: write-always
-    checksum: 021d402d921ea73b7cf8ecd597694c4b2832d8dc
-    permissions: "755"
-    modified: 1682265244479
-  - filename: scripts/docker-build.sh
-    mode: write-always
-    checksum: 32bf8c0dd8fa633041658f9185b3d8a6b1df72ed
-    permissions: "755"
-    modified: 1682265244479
-  - filename: index.js
-    mode: write-always
-    checksum: 1b651b41f9620c3187399a692b54fc6d92996d5e
-    permissions: "644"
-    modified: 1682265244479
-  - filename: package.json
-    mode: merge
-    checksum: 4f7512ec7fdcdaeb0ec6e3e5513133237b751484
-    permissions: "644"
-    modified: 1682265244479
-  - filename: scripts/start.sh
-    mode: write-always
-    checksum: 4df6e11e0222d9b077a41f4ec81fdce6f5ac7447
-    permissions: "755"
-    modified: 1682265244480
-  - filename: src/entities/UserRegistration.d.ts
-    mode: write-always
-    checksum: b29941ab9b9b95e64cb75e9712911135d7c46e1a
-    permissions: "644"
-    modified: 1682265244480
-  - filename: src/entities/UserActivation.d.ts
-    mode: write-always
-    checksum: 4ddbc0b4539f607b98ffeb6e9aa1e191c9b56a0f
-    permissions: "644"
-    modified: 1682265244480
-  - filename: src/entities/UserAuthentication.d.ts
-    mode: write-always
-    checksum: 9a1651ded7da6e1705a4c6562bb35c65aa7fad8b
-    permissions: "644"
-    modified: 1682265244480
-  - filename: src/entities/User.d.ts
-    mode: write-always
-    checksum: 53f425cef82f20c9ebea4e3384a11d3fe14d722c
-    permissions: "644"
-    modified: 1682265244480
-  - filename: src/entities/Task.d.ts
-    mode: write-always
-    checksum: c6d242021490ac1328115d68742789a41f282f50
-    permissions: "644"
-    modified: 1682265244481
-  - filename: src/data/UsersDB.js
-    mode: write-always
-    checksum: db918d1096da9585b59426e109afadbd8fb1dd33
-    permissions: "644"
-    modified: 1682265244481
-  - filename: src/rest/UsersRoute.js
-    mode: write-always
-    checksum: 401e8a3561af1b56f278cdab45ae02bb5abe266b
-    permissions: "644"
-    modified: 1682265244481
-  - filename: src/service/UsersRouteService.js
+    modified: 1686908191707
+  - filename: README.md
     mode: create-only
-    checksum: a9c4fe2b5a8c027aeed40140cfac1c152c840d3e
+    checksum: 1c248c29489ba30a6cccb2553ee96690fef7e723
     permissions: "644"
-    modified: 1682265244481
+    modified: 1686908191708
+  - filename: .devcontainer/devcontainer.json
+    mode: merge
+    checksum: 9e10283a57fecd600331c07b64b9fd3097731429
+    permissions: "644"
+    modified: 1686908191708
+  - filename: .gitignore
+    mode: create-only
+    checksum: d4c8b777c459dac5320b0a300d5527edcd70cdb0
+    permissions: "644"
+    modified: 1686908191708
+  - filename: index.ts
+    mode: write-always
+    checksum: 2d1d1467df6ff20dec0ac2b4805c1ad301b583d1
+    permissions: "644"
+    modified: 1686908191709
+  - filename: kapeta.md
+    mode: write-always
+    checksum: ebc8c41a98b00da611f1aea80da8d57f33fcf8b1
+    permissions: "644"
+    modified: 1686908191709
+  - filename: package.json
+    mode: create-only
+    checksum: c97f89bdcd24efe5beced490cbbd16a54121f278
+    permissions: "644"
+    modified: 1686565203033
+  - filename: scripts/start-dev.sh
+    mode: write-always
+    checksum: 143c0aba32991c5c15bf2180dc56ae2d781c43f1
+    permissions: "755"
+    modified: 1686908191709
+  - filename: scripts/start-prod.sh
+    mode: write-always
+    checksum: ff7c972647cef628b4140248f754144e097a69ac
+    permissions: "755"
+    modified: 1686908191710
+  - filename: tsconfig.json
+    mode: create-only
+    checksum: 407c5404a6a0f7c6044508d41dd0d963193c3857
+    permissions: "644"
+    modified: 1686564981752
+  - filename: src/entities/UserRegistration.ts
+    mode: write-always
+    checksum: 9f44c5c623ae6072a51ed00dec267bcc8c2ab2ac
+    permissions: "644"
+    modified: 1686908191710
+  - filename: src/entities/UserActivation.ts
+    mode: write-always
+    checksum: e53d8316dcc70fa27e3c91f40fd2cfb3d0d11e67
+    permissions: "644"
+    modified: 1686908191710
+  - filename: src/entities/UserAuthentication.ts
+    mode: write-always
+    checksum: 24ded141469884e52083b02b3ab2710dbf83ae70
+    permissions: "644"
+    modified: 1686908191711
+  - filename: src/entities/User.ts
+    mode: write-always
+    checksum: 6d0d61d1b139805c5e223cecd025b06f1c2fccb7
+    permissions: "644"
+    modified: 1686908191711
+  - filename: src/entities/Task.ts
+    mode: write-always
+    checksum: 66009ec2259d1601cc14dc95ce0c40461c55a8bc
+    permissions: "644"
+    modified: 1686908191711
+  - filename: src/data/UsersDB.ts
+    mode: write-always
+    checksum: aaa9f8dec86bad35c957f979ebc4b9d5124f7b66
+    permissions: "644"
+    modified: 1686908191711
+  - filename: src/data/users/index.d.ts
+    mode: create-only
+    checksum: eab47fb0853c296c18149165964c739fbbb68d5d
+    permissions: "644"
+    modified: 1686564981754
+  - filename: src/data/users/index.js
+    mode: create-only
+    checksum: 452b07e3c11976baf69792e02bbfacdfc3b7bb92
+    permissions: "644"
+    modified: 1686564981754
+  - filename: db/users/schema.prisma
+    mode: create-only
+    checksum: b6708a6944b659263b6ab6092566b43e75d05550
+    permissions: "644"
+    modified: 1686564981755
+  - filename: src/rest/IUsersRouteService.ts
+    mode: write-always
+    checksum: bd2a753eff8721e754422f5d87d8dc21e3c0f465
+    permissions: "644"
+    modified: 1686908191712
+  - filename: src/rest/UsersRoute.ts
+    mode: write-always
+    checksum: 918d805b50c7f735a3783790cff228a0207e53f1
+    permissions: "644"
+    modified: 1686908191712
+  - filename: src/service/UsersRouteService.tsx
+    mode: create-only
+    checksum: b5f96141e12beca5b11715cdd9e6ef52090ae275
+    permissions: "644"
+    modified: 1686564981755

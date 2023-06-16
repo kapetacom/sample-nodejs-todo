@@ -4,7 +4,7 @@ metadata:
   title: User Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.0.6
+    kind: kapeta/language-target-nodejs:0.0.10
   entities:
     types:
       - type: dto
@@ -127,6 +127,12 @@ spec:
       spec:
         port:
           type: postgres
+    - kind: kapeta/resource-type-smtp-client:0.0.1
+      metadata:
+        name: smtpclient
+      spec:
+        port:
+          type: smtp
   providers:
     - kind: kapeta/resource-type-rest-api:1.0.2
       metadata:
@@ -185,19 +191,6 @@ spec:
               id:
                 type: string
                 transport: PATH
-          deleteUser:
-            responseType:
-              type: void
-            method: DELETE
-            path: /users/{id}
-            description: Delete user by id
-            arguments:
-              id:
-                type: string
-                transport: PATH
-              filter:
-                type: string
-                transport: QUERY
         source:
           type: kapeta-dsl
           value: |-
@@ -220,7 +213,68 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
+  configuration:
+    types:
+      - type: dto
+        name: EmailConfig
+        description: Configuration for e-mails
+        properties:
+          from:
+            type: string
+            defaultValue: "'support@kapeta.com'"
+            description: Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
+            properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: WebConfig
+        description: Configuration for frontend urls
+        properties:
+          instance:
+            ref: Instance
+            description: Web instance - used for links in e-mails
+            properties: null
+            secret: false
+            required: true
+          basePath:
+            type: string
+            defaultValue: "'/'"
+            description: Web base path - used for links to front page in e-mails
+            properties: null
+            secret: false
+            required: true
+          activationPath:
+            type: string
+            defaultValue: "'/activation/'"
+            description: ' Activation url - used for links in e-mails. Activation ID is postfixed.'
+            properties: null
+            secret: false
+            required: true
+    source:
+      type: kapeta-dsl
+      value: >-
+        //Configuration for e-mails
+        
+        EmailConfig {
+            //Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
+            from: string = 'support@kapeta.com'
+        }
+        
+        
+        //Configuration for frontend urls
+        
+        WebConfig {
+            //Web instance - used for links in e-mails
+            @required
+            instance: Instance
+            
+            //Web base path - used for links to front page in e-mails
+            @required
+            basePath:string = '/'
+        
+            // Activation url - used for links in e-mails. Activation ID is postfixed.
+            @required
+            activationPath:string = '/activation/'
+        
+        }
 
-            //Delete user by id
-            @DELETE("/users/{id}")
-            deleteUser(@Path id:string, @Query filter:string):void
