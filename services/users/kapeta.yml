@@ -4,7 +4,7 @@ metadata:
   title: User Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:local
+    kind: kapeta/language-target-nodejs:0.0.10
   entities:
     types:
       - type: dto
@@ -127,7 +127,7 @@ spec:
       spec:
         port:
           type: postgres
-    - kind: kapeta/resource-type-smtp-client:local
+    - kind: kapeta/resource-type-smtp-client:0.0.1
       metadata:
         name: smtpclient
       spec:
