@@ -9,7 +9,14 @@ export class TasksRouteService implements ITasksRouteService {
 
     constructor() {
         this.db = new TasksDB();
-        this.users = new UsersClient()
+        this.users = new UsersClient();
+    }
+
+    private async checkUser(userId: string): Promise<void> {
+        const user = await this.users.getUserById(userId);
+        if (!user) {
+            throw new Error(`User with id ${userId} not found`);
+        }
     }
 
 
@@ -18,18 +25,28 @@ export class TasksRouteService implements ITasksRouteService {
      * HTTP: POST /tasks/{userId}/{id}
      */
     async addTask(userId: string, id: string, task: Task): Promise<void> {
-        const user = await this.users.getUserById(userId);
-        if (!user) {
-            throw new Error(`User with id ${userId} not found`);
-        }
-        await this.db.client.task.create({
-            data: {
-                id: id,
-                title: task.title,
-                description: task.description,
-                done: task.done,
-                userId: userId
+        await this.checkUser(userId);
+
+        await this.db.client.$transaction(async (db) => {
+            const existing = await db.task.findUnique({
+                where: {
+                    id
+                }
+            });
+
+            if (existing) {
+                throw new Error(`Task with id ${id} already exists`);
             }
+
+            await db.task.create({
+                data: {
+                    id: id,
+                    title: task.title,
+                    description: task.description,
+                    done: task.done,
+                    userId: userId
+                }
+            });
         });
     }
 
@@ -38,10 +55,12 @@ export class TasksRouteService implements ITasksRouteService {
      * Mark task as done
      * HTTP: POST /tasks/{id}/done
      */
-    async markAsDone(id: string): Promise<void> {
-        await this.db.client.task.update({
+    async markAsDone(userId:string, id: string): Promise<void> {
+        await this.checkUser(userId);
+        await this.db.client.task.updateMany({
             where: {
-                id: id
+                id,
+                userId
             },
             data: {
                 done: true
@@ -50,14 +69,40 @@ export class TasksRouteService implements ITasksRouteService {
     }
 
 
-    /**
-     * Delete task
-     * HTTP: DELETE /tasks/{id}
-     */
-    async removeTask(id: string): Promise<void> {
-        await this.db.client.task.delete({
+    async removeTask(userId: string, id: string): Promise<void> {
+        await this.checkUser(userId);
+        await this.db.client.task.deleteMany({
             where: {
-                id
+                id,
+                userId
+            }
+        });
+    }
+
+    async getTasks(userId: string): Promise<Task[]> {
+        await this.checkUser(userId);
+        const tasks = await this.db.client.task.findMany({
+            where: {
+                userId
+            }
+        });
+
+        return tasks.map(task => {
+            return {
+                id: task.id,
+                userId: task.userId,
+                title: task.title,
+                description: task.description,
+                done: task.done
+            }
+        });
+    }
+
+    async removeTasks(userId: string): Promise<void> {
+        await this.checkUser(userId);
+        await this.db.client.task.deleteMany({
+            where: {
+                userId
             }
         });
     }
