@@ -222,7 +222,8 @@ spec:
           from:
             type: string
             defaultValue: "'support@kapeta.com'"
-            description: Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
+            description: Sender for e-mails. Note that you should be allowed to send e-mails
+              from this domain and user
             properties: null
             secret: false
             required: false
@@ -246,7 +247,8 @@ spec:
           activationPath:
             type: string
             defaultValue: "'/activation/'"
-            description: ' Activation url - used for links in e-mails. Activation ID is postfixed.'
+            description: " Activation url - used for links in e-mails. Activation ID is
+              postfixed."
             properties: null
             secret: false
             required: true
@@ -254,15 +256,15 @@ spec:
       type: kapeta-dsl
       value: >-
         //Configuration for e-mails
-        
+
         EmailConfig {
             //Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
             from: string = 'support@kapeta.com'
         }
-        
-        
+
+
         //Configuration for frontend urls
-        
+
         WebConfig {
             //Web instance - used for links in e-mails
             @required
@@ -271,10 +273,9 @@ spec:
             //Web base path - used for links to front page in e-mails
             @required
             basePath:string = '/'
-        
+
             // Activation url - used for links in e-mails. Activation ID is postfixed.
             @required
             activationPath:string = '/activation/'
-        
-        }
 
+        }
