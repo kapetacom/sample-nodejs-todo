@@ -4,7 +4,7 @@ metadata:
   title: Todo UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.7
+    kind: kapeta/language-target-react-ts:0.0.11
   entities:
     types:
       - type: dto
@@ -57,6 +57,16 @@ spec:
         port:
           type: rest
         methods:
+          getTasks:
+            responseType:
+              ref: Task[]
+            method: GET
+            path: /tasks/{userId}
+            description: Get all tasks for user
+            arguments:
+              userId:
+                type: string
+                transport: PATH
           addTask:
             responseType:
               type: void
@@ -77,9 +87,12 @@ spec:
             responseType:
               type: void
             method: POST
-            path: /tasks/{id}/done
+            path: /tasks/{userId}/{id}/done
             description: Mark task as done
             arguments:
+              userId:
+                type: string
+                transport: PATH
               id:
                 type: string
                 transport: PATH
@@ -87,21 +100,44 @@ spec:
             responseType:
               type: void
             method: DELETE
-            path: /tasks/{id}
+            path: /tasks/{userId}/{id}
             description: Delete task
             arguments:
+              userId:
+                type: string
+                transport: PATH
               id:
+                type: string
+                transport: PATH
+          removeTasks:
+            responseType:
+              type: void
+            method: DELETE
+            path: /tasks/{userId}
+            description: 'Delete all tasks for user '
+            arguments:
+              userId:
                 type: string
                 transport: PATH
         source:
           type: kapeta-dsl
           value: |-
+            //Get all tasks for user
+            @GET("/tasks/{userId}")
+            getTasks(@Path userId:string):Task[]
+
             //Add task for user
             @POST("/tasks/{userId}/{id}")
             addTask(@Path userId:string, @Path id:string, @Body task:Task):void
+
             //Mark task as done
-            @POST("/tasks/{id}/done")
-            markAsDone(@Path id:string):void
+            @POST("/tasks/{userId}/{id}/done")
+            markAsDone(@Path userId:string, @Path id:string):void
+
             //Delete task
-            @DELETE("/tasks/{id}")
-            removeTask(@Path id:string):void
+            @DELETE("/tasks/{userId}/{id}")
+            removeTask(@Path userId:string, @Path id:string):void
+
+            //Delete all tasks for user 
+            @DELETE("/tasks/{userId}")
+            removeTasks(@Path userId:string):void

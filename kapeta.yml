@@ -9,8 +9,8 @@ spec:
       name: Todo Service
       dimensions:
         height: -1
-        top: 182
-        left: 439
+        top: 80
+        left: 369
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
@@ -18,8 +18,8 @@ spec:
       name: User Service
       dimensions:
         height: -1
-        top: 455
-        left: 128
+        top: 526
+        left: 195
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
     - block:
@@ -27,8 +27,8 @@ spec:
       name: Todo UI
       dimensions:
         height: -1
-        top: 107.78125
-        left: 860
+        top: 79.78125
+        left: 930
         width: 150
       id: da76710b-ccaa-fe32-cc9f-be5f559ed203
     - block:
@@ -36,8 +36,8 @@ spec:
       name: User UI
       dimensions:
         height: -1
-        top: 520.78125
-        left: 690
+        top: 603.78125
+        left: 786
         width: 150
       id: 6c895976-87f0-495e-4e5c-953bdc81a442
     - block:
@@ -45,8 +45,8 @@ spec:
       name: Todo App
       dimensions:
         height: -1
-        top: 373.78125
-        left: 1139
+        top: 315.78125
+        left: 1266
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
     - block:
@@ -54,8 +54,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 777
-        top: 332
+        left: 806
+        top: 309
       id: b463e93c-83d5-4c89-8270-4f8a64cf130d
       name: API Gateway
     - block:
@@ -63,29 +63,11 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 1406
-        top: 445
+        left: 1325
+        top: 682
       id: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
       name: Web Gateway
   connections:
-    - provider:
-        resourceName: tasks
-        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
-      consumer:
-        resourceName: tasks
-        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
-      port:
-        type: rest
-      mapping:
-        addTask:
-          targetId: addTask
-          type: EXACT
-        markAsDone:
-          targetId: markAsDone
-          type: EXACT
-        removeTask:
-          targetId: removeTask
-          type: EXACT
     - provider:
         resourceName: users
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
@@ -122,9 +104,6 @@ spec:
         getUser:
           targetId: getUser
           type: EXACT
-        deleteUser:
-          targetId: deleteUser
-          type: EXACT
     - provider:
         resourceName: Users
         blockId: 6c895976-87f0-495e-4e5c-953bdc81a442
@@ -141,24 +120,6 @@ spec:
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
       port:
         type: web
-    - provider:
-        resourceName: tasks
-        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
-      consumer:
-        resourceName: tasks
-        blockId: b463e93c-83d5-4c89-8270-4f8a64cf130d
-      port:
-        type: rest
-      mapping:
-        markAsDone:
-          targetId: markAsDone
-          type: EXACT
-        removeTask:
-          targetId: removeTask
-          type: EXACT
-        addTask:
-          targetId: addTask
-          type: EXACT
     - provider:
         resourceName: users
         blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
@@ -183,9 +144,6 @@ spec:
         getUser:
           targetId: getUser
           type: EXACT
-        deleteUser:
-          targetId: deleteUser
-          type: EXACT
     - provider:
         resourceName: web
         blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
@@ -194,3 +152,51 @@ spec:
         blockId: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
       port:
         type: web
+    - provider:
+        resourceName: tasks
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+      consumer:
+        resourceName: tasks
+        blockId: da76710b-ccaa-fe32-cc9f-be5f559ed203
+      port:
+        type: rest
+      mapping:
+        getTasks:
+          targetId: getTasks
+          type: EXACT
+        addTask:
+          targetId: addTask
+          type: EXACT
+        markAsDone:
+          targetId: markAsDone
+          type: EXACT
+        removeTask:
+          targetId: removeTask
+          type: EXACT
+        removeTasks:
+          targetId: removeTasks
+          type: EXACT
+    - provider:
+        resourceName: tasks
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+      consumer:
+        resourceName: tasks
+        blockId: b463e93c-83d5-4c89-8270-4f8a64cf130d
+      port:
+        type: rest
+      mapping:
+        getTasks:
+          targetId: getTasks
+          type: EXACT
+        addTask:
+          targetId: addTask
+          type: EXACT
+        markAsDone:
+          targetId: markAsDone
+          type: EXACT
+        removeTask:
+          targetId: removeTask
+          type: EXACT
+        removeTasks:
+          targetId: removeTasks
+          type: EXACT
