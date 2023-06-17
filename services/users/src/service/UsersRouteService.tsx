@@ -11,8 +11,8 @@ import { ActivationEmail } from '../emails/ActivationEmail';
 import { RegistrationEmail } from '../emails/RegistrationEmail';
 import { ResetPasswordEmail } from '../emails/PasswordReset';
 import { RESTError } from '@kapeta/sdk-rest-route';
-import {IUsersRouteService} from "../rest/IUsersRouteService";
-import {User} from "../entities/User";
+import { IUsersRouteService } from '../rest/IUsersRouteService';
+import { User } from '../entities/User';
 
 function toPassword(seed: string, pw: string) {
     return seed + ':' + md5(seed + pw);
@@ -174,6 +174,6 @@ export class UsersRouteService implements IUsersRouteService {
             id: user.id,
             email: user.email,
             name: user.name || user.email,
-        }
+        };
     }
 }
