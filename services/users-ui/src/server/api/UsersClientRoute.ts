@@ -1,10 +1,10 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const RESTRoute = require("@kapeta/sdk-rest-route");
-const client = require("../clients/UsersClient");
+import { RestRoute } from "@kapeta/sdk-rest-route";
+import client from "../clients/UsersClient";
 
-class UsersClientRoute extends RESTRoute {
+export class UsersClientRoute extends RestRoute {
     constructor() {
         super();
         this._initRoutes();
@@ -107,29 +107,5 @@ class UsersClientRoute extends RESTRoute {
             arguments: [{ name: "id", transport: "PATH" }],
             handler: client.getUser.bind(client),
         });
-
-        //deleteUser: Verify the method is available
-        if (!client.deleteUser) {
-            throw new Error(
-                'REST resource client for "Users" is missing method: "deleteUser"'
-            );
-        }
-
-        //deleteUser: Verify the method is implemented correctly
-        this.validateMethod(client.deleteUser, "deleteUser", ["id", "filter"]);
-
-        //deleteUser: Add route to server
-        this.addEndpoint({
-            method: "DELETE",
-            path: "/api/users/{id}",
-            description: "Delete user by id",
-            arguments: [
-                { name: "id", transport: "PATH" },
-                { name: "filter", transport: "QUERY" },
-            ],
-            handler: client.deleteUser.bind(client),
-        });
     }
 }
-
-module.exports = UsersClientRoute;

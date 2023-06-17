@@ -1,22 +1,23 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-const Path = require("path");
-const FS = require("fs");
-const Server = require("@kapeta/sdk-server");
+import Path from "path";
+import FS from "fs";
+import { Server } from "@kapeta/sdk-server";
 const server = new Server(
     "kapeta/nodejs-sample-user-ui",
     Path.resolve(__dirname, "../..")
 );
-const express = require("express");
+import express from "express";
 
-const UsersClientRoute = require("./api/UsersClientRoute");
+import { UsersClientRoute } from "./api/UsersClientRoute";
 
 const devMode =
     process.env.NODE_ENV &&
     process.env.NODE_ENV.toLowerCase() === "development";
 
 if (devMode) {
+    /* eslint-disable */
     console.log("Serving development version");
     const webpack = require("webpack");
     const webpackDevMiddleware = require("webpack-dev-middleware");
@@ -31,6 +32,7 @@ if (devMode) {
     );
 
     server.express().use(require("webpack-hot-middleware")(compiler));
+    /* eslint-enable */
 } else {
     console.log("Serving production version");
 
