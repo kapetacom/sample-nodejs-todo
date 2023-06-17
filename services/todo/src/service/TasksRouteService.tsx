@@ -1,7 +1,7 @@
-import {ITasksRouteService} from '../rest/ITasksRouteService';
-import {Task} from "../entities/Task";
-import {TasksDB} from "../data/TasksDB";
-import {UsersClient} from "../clients/UsersClient";
+import { ITasksRouteService } from '../rest/ITasksRouteService';
+import { Task } from '../entities/Task';
+import { TasksDB } from '../data/TasksDB';
+import { UsersClient } from '../clients/UsersClient';
 
 export class TasksRouteService implements ITasksRouteService {
     private readonly db: TasksDB;
@@ -19,7 +19,6 @@ export class TasksRouteService implements ITasksRouteService {
         }
     }
 
-
     /**
      * Add task for user
      * HTTP: POST /tasks/{userId}/{id}
@@ -30,8 +29,8 @@ export class TasksRouteService implements ITasksRouteService {
         await this.db.client.$transaction(async (db) => {
             const existing = await db.task.findUnique({
                 where: {
-                    id
-                }
+                    id,
+                },
             });
 
             if (existing) {
@@ -44,38 +43,36 @@ export class TasksRouteService implements ITasksRouteService {
                     title: task.title,
                     description: task.description,
                     done: task.done,
-                    userId: userId
-                }
+                    userId: userId,
+                },
             });
         });
     }
-
 
     /**
      * Mark task as done
      * HTTP: POST /tasks/{id}/done
      */
-    async markAsDone(userId:string, id: string): Promise<void> {
+    async markAsDone(userId: string, id: string): Promise<void> {
         await this.checkUser(userId);
         await this.db.client.task.updateMany({
             where: {
                 id,
-                userId
+                userId,
             },
             data: {
-                done: true
-            }
+                done: true,
+            },
         });
     }
-
 
     async removeTask(userId: string, id: string): Promise<void> {
         await this.checkUser(userId);
         await this.db.client.task.deleteMany({
             where: {
                 id,
-                userId
-            }
+                userId,
+            },
         });
     }
 
@@ -83,18 +80,18 @@ export class TasksRouteService implements ITasksRouteService {
         await this.checkUser(userId);
         const tasks = await this.db.client.task.findMany({
             where: {
-                userId
-            }
+                userId,
+            },
         });
 
-        return tasks.map(task => {
+        return tasks.map((task) => {
             return {
                 id: task.id,
                 userId: task.userId,
                 title: task.title,
                 description: task.description,
-                done: task.done
-            }
+                done: task.done,
+            };
         });
     }
 
@@ -102,9 +99,8 @@ export class TasksRouteService implements ITasksRouteService {
         await this.checkUser(userId);
         await this.db.client.task.deleteMany({
             where: {
-                userId
-            }
+                userId,
+            },
         });
     }
-
 }
