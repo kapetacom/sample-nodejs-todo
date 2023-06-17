@@ -3,7 +3,7 @@
     "version": "0.0.1",
     "type": "commonjs",
     "scripts": {
-        "start:dev": "NODE_ENV=development nodemon --watch '**/*' index.ts",
+        "start:dev": "NODE_ENV=development nodemon --ext ts,tsx,js,json,yaml,yml --watch '**/*' index.ts",
         "start": "NODE_ENV=production ts-node --transpile-only index.ts",
         "migrate:dev:tasks": "cross-env-shell DATABASE_URL=$(npx kap-mongodb-url tasks) prisma generate --schema ./db/tasks/schema.prisma",
         "migrate:db:tasks": "cross-env-shell DATABASE_URL=$(npx kap-mongodb-url tasks) prisma db push --schema ./db/tasks/schema.prisma",
