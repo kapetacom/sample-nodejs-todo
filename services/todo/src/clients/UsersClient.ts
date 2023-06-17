@@ -1,14 +1,14 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { RestClient } from '@kapeta/sdk-rest-client';
-import { User } from '../entities/User';
+import { RestClient } from "@kapeta/sdk-rest-client";
+import { User } from "../entities/User";
 
 export class UsersClient {
     private readonly client: RestClient;
 
     constructor() {
-        this.client = new RestClient('users');
+        this.client = new RestClient("users");
     }
 
     /**
@@ -20,7 +20,9 @@ export class UsersClient {
      * HTTP: GET /users/{id}
      */
     async getUserById(id: string): Promise<User | null> {
-        const result = await this.client.execute('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        const result = await this.client.execute("GET", "/users/{id}", [
+            { name: "id", value: id, transport: "PATH" },
+        ]);
 
         if (result.body === null) {
             return null;

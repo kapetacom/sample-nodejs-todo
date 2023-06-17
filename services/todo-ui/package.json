@@ -13,11 +13,7 @@
     },
     "prettier": "@kapeta/prettier-config",
     "nodemonConfig": {
-        "ignore": [
-            "test/*",
-            "docs/*",
-            "src/browser/*"
-        ]
+        "ignore": ["test/*", "docs/*", "src/browser/*"]
     },
     "dependencies": {
         "@kapeta/sdk-config": "<2",

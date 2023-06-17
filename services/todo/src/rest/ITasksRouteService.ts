@@ -1,7 +1,7 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { Task } from '../entities/Task';
+import { Task } from "../entities/Task";
 
 export interface ITasksRouteService {
     /**
