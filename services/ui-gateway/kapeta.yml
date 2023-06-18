@@ -28,6 +28,85 @@ spec:
         port:
           type: web
         path: /user
+    - kind: kapeta/resource-type-rest-client:1.0.2
+      metadata:
+        name: users
+      spec:
+        port:
+          type: rest
+        methods:
+          registerUser:
+            responseType:
+              type: void
+            method: POST
+            path: /register
+            description: Register new user
+            arguments:
+              user:
+                ref: UserRegistration
+                transport: BODY
+          activateUser:
+            responseType:
+              type: void
+            method: POST
+            path: /activate
+            description: Activate user registration
+            arguments:
+              user:
+                ref: UserActivation
+                transport: BODY
+          authenticationUser:
+            responseType:
+              type: void
+            method: POST
+            path: /authenticate
+            description: Authenticate user
+            arguments:
+              user:
+                ref: UserAuthentication
+                transport: BODY
+          resetPassword:
+            responseType:
+              type: void
+            method: POST
+            path: /reset_password
+            description: Reset password for user
+            arguments:
+              email:
+                type: string
+                transport: QUERY
+          getUser:
+            responseType:
+              ref: User
+            method: GET
+            path: /users/{id}
+            description: Get user by id
+            arguments:
+              id:
+                type: string
+                transport: PATH
+        source:
+          type: kapeta-dsl
+          value: |-
+            //Register new user
+            @POST("/register")
+            registerUser(@Body user:UserRegistration):void
+
+            //Activate user registration
+            @POST("/activate")
+            activateUser(@Body user:UserActivation):void
+
+            //Authenticate user
+            @POST("/authenticate")
+            authenticationUser(@Body user:UserAuthentication):void
+
+            //Reset password for user
+            @POST("/reset_password")
+            resetPassword(@Query email:string):void
+
+            //Get user by id
+            @GET("/users/{id}")
+            getUser(@Path id:string):User
   entities:
     types:
       - type: dto
@@ -38,6 +117,77 @@ spec:
             description: null
             type: string
             properties: null
+      - type: dto
+        name: UserRegistration
+        description: null
+        properties:
+          name:
+            description: null
+            type: string
+            properties: null
+          email:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: UserActivation
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          password:
+            description: null
+            type: string
+            properties: null
+          password2:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: UserAuthentication
+        description: null
+        properties:
+          email:
+            description: null
+            type: string
+            properties: null
+          password:
+            description: null
+            type: string
+            properties: null
+      - type: dto
+        name: User
+        description: null
+        properties:
+          id:
+            description: null
+            type: string
+            properties: null
+          name:
+            description: null
+            type: string
+            properties: null
+          email:
+            description: null
+            type: string
+            properties: null
     source:
       type: kapeta-dsl
-      value: Test {id:string}
+      value: |-
+        Test {id:string}UserRegistration {
+        	name: string
+        	email: string
+        }UserActivation {
+        	id: string
+        	password: string
+        	password2: string
+        }UserAuthentication {
+        	email: string
+        	password: string
+        }User {
+        	id: string
+        	name: string
+        	email: string
+        }

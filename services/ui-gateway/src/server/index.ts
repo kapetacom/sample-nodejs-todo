@@ -10,6 +10,7 @@ const server = new Server(
 );
 import express from "express";
 
+import { UsersClientRoute } from "./api/UsersClientRoute";
 import { TodoProxyRoute } from "./proxies/fragments/TodoProxyRoute";
 
 import { UsersProxyRoute } from "./proxies/fragments/UsersProxyRoute";
@@ -53,5 +54,7 @@ if (devMode) {
 server.addRoute(new TodoProxyRoute());
 
 server.addRoute(new UsersProxyRoute());
+
+server.addRoute(new UsersClientRoute());
 
 server.start("web");

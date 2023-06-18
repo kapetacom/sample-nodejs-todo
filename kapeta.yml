@@ -200,3 +200,27 @@ spec:
         removeTasks:
           targetId: removeTasks
           type: EXACT
+    - provider:
+        resourceName: users
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+      consumer:
+        resourceName: users
+        blockId: a377f555-8638-37cf-9e0e-34bcd8c1a84a
+      port:
+        type: rest
+      mapping:
+        registerUser:
+          targetId: registerUser
+          type: EXACT
+        activateUser:
+          targetId: activateUser
+          type: EXACT
+        authenticationUser:
+          targetId: authenticationUser
+          type: EXACT
+        resetPassword:
+          targetId: resetPassword
+          type: EXACT
+        getUser:
+          targetId: getUser
+          type: EXACT
