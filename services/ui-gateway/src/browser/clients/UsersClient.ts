@@ -12,7 +12,7 @@ export class UsersClient {
     client: RestClient;
 
     constructor() {
-        this.client = new RestClient("/api/");
+        this.client = new RestClient("/api/rest/users");
     }
 
     /**

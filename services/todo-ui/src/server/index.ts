@@ -9,13 +9,16 @@ const server = new Server(
     Path.resolve(__dirname, "../..")
 );
 import express from "express";
-
-import { TasksClientRoute } from "./api/TasksClientRoute";
+import history from "connect-history-api-fallback";
+import { TasksProxyRoute } from "./proxies/rest/TasksProxyRoute";
 
 const devMode =
     process.env.NODE_ENV &&
     process.env.NODE_ENV.toLowerCase() === "development";
 
+server.addRoute(new TasksProxyRoute());
+
+server.express().use(history());
 if (devMode) {
     /* eslint-disable */
     console.log("Serving development version");
@@ -47,7 +50,4 @@ if (devMode) {
 
     server.express().use(express.static(BASE_DIR));
 }
-
-server.addRoute(new TasksClientRoute());
-
 server.start("web");

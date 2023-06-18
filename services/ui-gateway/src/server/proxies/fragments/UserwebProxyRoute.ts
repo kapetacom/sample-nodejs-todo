@@ -3,8 +3,8 @@
 //
 import { ProxyRoute } from "@kapeta/sdk-proxy-route";
 
-export class TodoProxyRoute extends ProxyRoute {
+export class UserwebProxyRoute extends ProxyRoute {
     constructor() {
-        super("todo", "/fragments/todo", "web");
+        super("userweb", "/fragments/user", "web");
     }
 }

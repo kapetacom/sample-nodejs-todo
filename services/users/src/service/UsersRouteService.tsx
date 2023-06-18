@@ -113,7 +113,7 @@ export class UsersRouteService implements IUsersRouteService {
         });
 
         if (!user) {
-            throw new RESTError('User not found', 404);
+            throw new RESTError('User not found', 401);
         }
 
         const [seed] = user.password.split(':');

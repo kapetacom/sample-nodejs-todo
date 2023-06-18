@@ -9,16 +9,22 @@ const server = new Server(
     Path.resolve(__dirname, "../..")
 );
 import express from "express";
+import history from "connect-history-api-fallback";
+import { UsersProxyRoute } from "./proxies/rest/UsersProxyRoute";
+import { TodowebProxyRoute } from "./proxies/fragments/TodowebProxyRoute";
 
-import { UsersClientRoute } from "./api/UsersClientRoute";
-import { TodoProxyRoute } from "./proxies/fragments/TodoProxyRoute";
-
-import { UsersProxyRoute } from "./proxies/fragments/UsersProxyRoute";
+import { UserwebProxyRoute } from "./proxies/fragments/UserwebProxyRoute";
 
 const devMode =
     process.env.NODE_ENV &&
     process.env.NODE_ENV.toLowerCase() === "development";
 
+server.addRoute(new TodowebProxyRoute());
+
+server.addRoute(new UserwebProxyRoute());
+server.addRoute(new UsersProxyRoute());
+
+server.express().use(history());
 if (devMode) {
     /* eslint-disable */
     console.log("Serving development version");
@@ -50,11 +56,4 @@ if (devMode) {
 
     server.express().use(express.static(BASE_DIR));
 }
-
-server.addRoute(new TodoProxyRoute());
-
-server.addRoute(new UsersProxyRoute());
-
-server.addRoute(new UsersClientRoute());
-
 server.start("web");

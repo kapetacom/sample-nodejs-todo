@@ -4,7 +4,7 @@ metadata:
   title: Todo App
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.11
+    kind: kapeta/language-target-react-ts:0.0.19
   providers:
     - kind: kapeta/resource-type-web-page:0.0.7
       metadata:
@@ -16,14 +16,14 @@ spec:
   consumers:
     - kind: kapeta/resource-type-web-fragment:0.0.7
       metadata:
-        name: todo
+        name: todoweb
       spec:
         port:
           type: web
         path: /todo
     - kind: kapeta/resource-type-web-fragment:0.0.7
       metadata:
-        name: Users
+        name: userweb
       spec:
         port:
           type: web
