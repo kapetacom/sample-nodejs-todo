@@ -8,17 +8,17 @@ const server = new Server(
 import express from "express";
 import history from "connect-history-api-fallback";
 import { UsersProxyRoute } from "./proxies/rest/UsersProxyRoute";
-import { TodoProxyRoute } from "./proxies/fragments/TodoProxyRoute";
+import { TodowebProxyRoute } from "./proxies/fragments/TodowebProxyRoute";
 
-import { UsersProxyRoute } from "./proxies/fragments/UsersProxyRoute";
+import { UserwebProxyRoute } from "./proxies/fragments/UserwebProxyRoute";
 
 const devMode =
     process.env.NODE_ENV &&
     process.env.NODE_ENV.toLowerCase() === "development";
 
-server.addRoute(new TodoProxyRoute());
+server.addRoute(new TodowebProxyRoute());
 
-server.addRoute(new UsersProxyRoute());
+server.addRoute(new UserwebProxyRoute());
 server.addRoute(new UsersProxyRoute());
 
 const BASE_DIR = Path.resolve(__dirname, "../../dist");

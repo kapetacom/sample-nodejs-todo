@@ -44,7 +44,7 @@ spec:
   providers:
     - kind: kapeta/resource-type-web-page:0.0.7
       metadata:
-        name: todo
+        name: todoweb
       spec:
         port:
           type: web

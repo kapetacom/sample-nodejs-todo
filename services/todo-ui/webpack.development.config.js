@@ -15,9 +15,9 @@ const AssetsPlugin = require("assets-webpack-plugin");
 const PAGES = [];
 
 PAGES.push({
-    name: "todo",
+    name: "todoweb",
     path: "/",
-    localPath: "todo",
+    localPath: "todoweb",
 });
 
 const devMode = process.env.NODE_ENV === "development";

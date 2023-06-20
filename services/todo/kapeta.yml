@@ -4,7 +4,7 @@ metadata:
   title: Todo Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.0.13
+    kind: kapeta/language-target-nodejs:0.0.18
   entities:
     types:
       - type: dto

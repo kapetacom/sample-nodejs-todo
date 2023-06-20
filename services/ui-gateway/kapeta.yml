@@ -16,14 +16,14 @@ spec:
   consumers:
     - kind: kapeta/resource-type-web-fragment:0.0.7
       metadata:
-        name: todo
+        name: todoweb
       spec:
         port:
           type: web
         path: /todo
     - kind: kapeta/resource-type-web-fragment:0.0.7
       metadata:
-        name: Users
+        name: userweb
       spec:
         port:
           type: web
