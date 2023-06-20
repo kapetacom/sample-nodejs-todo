@@ -3,6 +3,7 @@
 //
 import { UserRegistration } from "../entities/UserRegistration";
 import { UserActivation } from "../entities/UserActivation";
+import { UserSession } from "../entities/UserSession";
 import { UserAuthentication } from "../entities/UserAuthentication";
 import { User } from "../entities/User";
 
@@ -23,7 +24,7 @@ export interface IUsersRouteService {
      * Authenticate user
      * HTTP: POST /authenticate
      */
-    authenticationUser(user: UserAuthentication): Promise<void>;
+    authenticationUser(user: UserAuthentication): Promise<UserSession>;
 
     /**
      * Reset password for user

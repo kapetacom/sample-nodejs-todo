@@ -4,6 +4,7 @@
 import { RestClient } from "@kapeta/sdk-rest-client";
 import { UserRegistration } from "../../entities/UserRegistration";
 import { UserActivation } from "../../entities/UserActivation";
+import { UserSession } from "../../entities/UserSession";
 import { UserAuthentication } from "../../entities/UserAuthentication";
 import { User } from "../../entities/User";
 
@@ -50,10 +51,17 @@ class UsersClient {
      *
      * HTTP: POST /authenticate
      */
-    async authenticationUser(user: UserAuthentication): Promise<void> {
-        await this.client.execute("POST", "/authenticate", [
+    async authenticationUser(
+        user: UserAuthentication
+    ): Promise<UserSession | null> {
+        const result = await this.client.execute("POST", "/authenticate", [
             { name: "user", value: user, transport: "BODY" },
         ]);
+
+        if (result === null) {
+            return null;
+        }
+        return result as UserSession;
     }
 
     /**
@@ -83,10 +91,10 @@ class UsersClient {
             { name: "id", value: id, transport: "PATH" },
         ]);
 
-        if (result.body === null) {
+        if (result === null) {
             return null;
         }
-        return result.body as User;
+        return result as User;
     }
 }
 

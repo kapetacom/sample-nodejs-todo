@@ -6,32 +6,32 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const HotMiddlewareScript =
-    "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true";
+    "webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&dynamicPublicPath=true&reload=true";
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-
+const AssetsPlugin = require("assets-webpack-plugin");
 const PAGES = [];
 
 PAGES.push({
-    name: "Users",
+    name: "userweb",
     path: "/",
-    localPath: "users",
+    localPath: "userweb",
 });
 
 const devMode = process.env.NODE_ENV === "development";
 
 const styleLoader = devMode ? "style-loader" : MiniCssExtractPlugin.loader;
 
-const makeEntry = (localPath) => {
+const makeEntry = (name, localPath) => {
     const path = "./" + Path.join("./src/browser/pages/", localPath);
 
     if (!devMode) {
         return [path];
     }
 
-    return [HotMiddlewareScript, path];
+    return [HotMiddlewareScript + "&name=" + encodeURIComponent(name), path];
 };
 
 const entries = {};
@@ -39,29 +39,15 @@ const htmlPlugins = [];
 
 PAGES.forEach((page) => {
     while (page.path.startsWith("/")) {
-        page.path = page.path.substr(1);
+        page.path = page.path.substring(1);
     }
 
     if (page.path) {
         const chunk = page.path + "/main";
-        entries[chunk] = makeEntry(page.localPath);
-        htmlPlugins.push(
-            new HtmlWebpackPlugin({
-                title: page.name,
-                filename: page.path + "/index.html",
-                chunks: [chunk],
-            })
-        );
+        entries[chunk] = makeEntry(chunk, page.localPath);
     } else {
         const chunk = "main";
-        entries[chunk] = makeEntry(page.localPath);
-        htmlPlugins.push(
-            new HtmlWebpackPlugin({
-                title: page.name,
-                filename: "index.html",
-                chunks: [chunk],
-            })
-        );
+        entries[chunk] = makeEntry(chunk, page.localPath);
     }
 });
 
@@ -75,7 +61,7 @@ const config = {
     output: {
         path: Path.join(__dirname, "dist"),
         filename: "[name].[hash].bundle.js",
-        publicPath: "/",
+        publicPath: "",
     },
     entry: entries,
     devtool: devMode ? "inline-source-map" : false,
@@ -127,6 +113,7 @@ const config = {
         ],
     },
     resolve: {
+        mainFields: ["main"],
         extensions: [
             ".js",
             ".jsx",
@@ -138,6 +125,10 @@ const config = {
             ".yml",
             ".yaml",
         ],
+        alias: {
+            react: Path.resolve(__dirname, "./node_modules/react"),
+            "react-dom": Path.resolve(__dirname, "./node_modules/react-dom"),
+        },
     },
     plugins: htmlPlugins,
     externals: {},
@@ -157,6 +148,12 @@ if (devMode) {
     );
 
     config.plugins.unshift(new CleanWebpackPlugin());
+    config.plugins.push(
+        new AssetsPlugin({
+            filename: "assets.json",
+            useCompilerPath: true,
+        })
+    );
 }
 
 module.exports = config;

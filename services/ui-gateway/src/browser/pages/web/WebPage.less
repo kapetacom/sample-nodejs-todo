@@ -1,0 +1,64 @@
+html, body, main, body > div {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+iframe {
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+menu, menu > li {
+    padding:0;
+    list-style: none;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    & > h1 {
+        margin: 0;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+    }
+    & > .container {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        & > menu,
+        & > article {
+            height: 100%;
+        }
+
+        & > menu {
+            width: 120px;
+            background-color: lightgray;
+            & > li {
+                padding: 5px;
+            }
+        }
+
+        & > article {
+            flex: 1;
+        }
+    }
+}
+
+article > form {
+    padding: 15px;
+    & > div {
+        margin-bottom: 10px;
+        & > label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    }
+}

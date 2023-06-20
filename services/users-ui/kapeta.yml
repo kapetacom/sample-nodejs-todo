@@ -4,7 +4,7 @@ metadata:
   title: User UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.11
+    kind: kapeta/language-target-react-ts:0.0.21
   entities:
     types:
       - type: dto
@@ -12,57 +12,99 @@ spec:
         description: null
         properties:
           name:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: UserActivation
         description: null
         properties:
           id:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password2:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: UserAuthentication
         description: null
         properties:
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: User
         description: null
         properties:
           id:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           name:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: UserSession
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          userId:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          name:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
     source:
       type: kapeta-dsl
       value: |-
@@ -90,10 +132,17 @@ spec:
         	name: string
         	email: string
         }
+
+
+        UserSession {
+        	id: string
+        	userId: string
+        	name: string
+        }
   providers:
     - kind: kapeta/resource-type-web-page:0.0.7
       metadata:
-        name: Users
+        name: userweb
       spec:
         port:
           type: web
@@ -128,7 +177,7 @@ spec:
                 transport: BODY
           authenticationUser:
             responseType:
-              type: void
+              ref: UserSession
             method: POST
             path: /authenticate
             description: Authenticate user
@@ -169,7 +218,7 @@ spec:
 
             //Authenticate user
             @POST("/authenticate")
-            authenticationUser(@Body user:UserAuthentication):void
+            authenticationUser(@Body user:UserAuthentication):UserSession
 
             //Reset password for user
             @POST("/reset_password")

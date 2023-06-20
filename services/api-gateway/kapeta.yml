@@ -115,6 +115,28 @@ spec:
             properties: null
             secret: false
             required: false
+      - type: dto
+        name: UserSession
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          userId:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          name:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
     source:
       type: kapeta-dsl
       value: |-
@@ -134,6 +156,7 @@ spec:
         	password: string
         }
 
+
         Task {
         	id: string
         	userId: string
@@ -146,6 +169,13 @@ spec:
         	id: string
         	name: string
         	email: string
+        }
+
+
+        UserSession {
+        	id: string
+        	userId: string
+        	name: string
         }
   consumers:
     - kind: kapeta/resource-type-rest-client:1.0.2
@@ -177,7 +207,7 @@ spec:
                 transport: BODY
           authenticationUser:
             responseType:
-              type: void
+              ref: UserSession
             method: POST
             path: /authenticate
             description: Authenticate user
@@ -218,7 +248,7 @@ spec:
 
             //Authenticate user
             @POST("/authenticate")
-            authenticationUser(@Body user:UserAuthentication):void
+            authenticationUser(@Body user:UserAuthentication):UserSession
 
             //Reset password for user
             @POST("/reset_password")

@@ -12,81 +12,133 @@ spec:
         description: null
         properties:
           name:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: UserActivation
         description: null
         properties:
           id:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password2:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: UserAuthentication
         description: null
         properties:
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           password:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
+      - type: dto
+        name: UserSession
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          userId:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          name:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
       - type: dto
         name: User
         description: null
         properties:
           id:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           name:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           email:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
       - type: dto
         name: Task
         description: null
         properties:
           id:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           userId:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           title:
-            description: null
             type: string
+            description: null
             properties: null
+            secret: false
+            required: false
           description:
-            description: null
             type: string
-            properties: null
-          done:
             description: null
-            type: boolean
             properties: null
+            secret: false
+            required: false
+          done:
+            type: boolean
+            description: null
+            properties: null
+            secret: false
+            required: false
     source:
       type: kapeta-dsl
       value: |-
@@ -104,6 +156,12 @@ spec:
         UserAuthentication {
         	email: string
         	password: string
+        }
+
+        UserSession {
+        	id: string
+        	userId: string
+        	name: string
         }
 
         User {
@@ -163,7 +221,7 @@ spec:
                 transport: BODY
           authenticationUser:
             responseType:
-              type: void
+              ref: UserSession
             method: POST
             path: /authenticate
             description: Authenticate user
@@ -204,7 +262,7 @@ spec:
 
             //Authenticate user
             @POST("/authenticate")
-            authenticationUser(@Body user:UserAuthentication):void
+            authenticationUser(@Body user:UserAuthentication):UserSession
 
             //Reset password for user
             @POST("/reset_password")
