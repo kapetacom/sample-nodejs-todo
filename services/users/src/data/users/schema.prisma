@@ -31,3 +31,11 @@ model UserRegistrations {
 
   @@map("user_registrations")
 }
+
+model UserSessions {
+  id        String   @id @default(uuid())
+  userId    String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+
+  @@map("user_sessions")
+}

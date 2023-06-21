@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES2021",
-        "lib": ["es6", "es7", "ES2021", "dom", "dom.iterable"],
+        "target": "es6",
+        "lib": ["es6", "es7", "ES2022",  "dom", "dom.iterable"],
         "skipLibCheck": true,
         "esModuleInterop": true,
         "strict": true,
-        "module": "Node16",
+        "module": "CommonJS",
         "resolveJsonModule": true,
         "experimentalDecorators": true,
         "allowJs": true,

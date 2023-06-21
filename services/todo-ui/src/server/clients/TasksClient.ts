@@ -24,10 +24,10 @@ class TasksClient {
             { name: "userId", value: userId, transport: "PATH" },
         ]);
 
-        if (result.body === null) {
+        if (result === null) {
             return null;
         }
-        return result.body as Task[];
+        return result as Task[];
     }
 
     /**

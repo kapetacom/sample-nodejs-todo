@@ -2,6 +2,7 @@ import { ITasksRouteService } from '../rest/ITasksRouteService';
 import { Task } from '../entities/Task';
 import { TasksDB } from '../data/TasksDB';
 import { UsersClient } from '../clients/UsersClient';
+import {RESTError} from "@kapeta/sdk-rest-route";
 
 export class TasksRouteService implements ITasksRouteService {
     private readonly db: TasksDB;
@@ -15,7 +16,7 @@ export class TasksRouteService implements ITasksRouteService {
     private async checkUser(userId: string): Promise<void> {
         const user = await this.users.getUserById(userId);
         if (!user) {
-            throw new Error(`User with id ${userId} not found`);
+            throw new RESTError(`User with id ${userId} not found`, 401);
         }
     }
 

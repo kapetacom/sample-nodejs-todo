@@ -1,0 +1,48 @@
+.todo-list-page {
+
+    .create-form {
+        margin:10px 0;
+        input {
+            margin-right: 10px;
+        }
+    }
+
+    .tasks {
+        padding: 0;
+        margin: 0;
+        & > li {
+            list-style: none;
+            padding: 5px;
+            margin: 0;
+            border: 1px solid #ccc;
+            width: 250px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            .content {
+                flex: 1;
+                label {
+                    cursor: pointer;
+                    display: block;
+                }
+            }
+
+            .delete {
+                background-color: #a51614;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                width: 8px;
+                height: 8px;
+                text-align: center;
+                cursor: pointer;
+                margin-right: 5px;
+                margin-top: 7px;
+                &:hover {
+                    background-color: lighten(#a51614, 10%);
+                }
+            }
+        }
+    }
+}

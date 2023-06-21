@@ -5,14 +5,15 @@
 import { RestClient } from "@kapeta/sdk-web-rest-client";
 import { UserRegistration } from "../../entities/UserRegistration";
 import { UserActivation } from "../../entities/UserActivation";
+import { UserSession } from "../../entities/UserSession";
 import { UserAuthentication } from "../../entities/UserAuthentication";
 import { User } from "../../entities/User";
 
 export class UsersClient {
-    client: RestClient;
+    private client: RestClient;
 
     constructor() {
-        this.client = new RestClient("/api/");
+        this.client = new RestClient("api/rest/users");
     }
 
     /**
@@ -39,7 +40,7 @@ export class UsersClient {
      * Authenticate user
      * HTTP: POST /api/authenticate
      */
-    authenticationUser(user: UserAuthentication): Promise<void> {
+    authenticationUser(user: UserAuthentication): Promise<UserSession> {
         return this.client.execute("POST", "/authenticate", [
             { name: "user", value: user, transport: "BODY" },
         ]);
