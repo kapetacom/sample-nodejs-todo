@@ -1,56 +1,64 @@
 import React, {useCallback, useMemo, useState} from "react";
 import {UsersClient} from "../clients/UsersClient";
 import {useParams} from "react-router-dom";
+import {getCurrentSession} from "../auth/auth";
 
 
-export const ActivateForm = () => {
-    const { id } = useParams();
+export const ChangePasswordForm = () => {
+
+    const session = getCurrentSession()
+    if (!session) {
+        return <div>Not logged in</div>
+    }
 
     const [error, setError] = useState('');
+    const [oldPassword, setOldPassword] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
     const usersClient = useMemo(() => new UsersClient(), []);
 
 
-
-    const doActivate = useCallback(async () => {
+    const doChangePassword = useCallback(async () => {
         try {
-            if (!id) {
-                throw new Error('Invalid activation link');
-            }
-
-            await usersClient.activateUser({
-                id,
-                password,
-                password2
+            await usersClient.changePassword({
+                oldPassword: oldPassword,
+                password: password,
+                password2: password2,
+                id: session.userId
             });
-            alert('Account activated!');
-            setPassword('');
-            setPassword2('')
             setError('');
-            location.href = '/login';
+            setOldPassword('');
+            setPassword('');
+            setPassword2('');
+            alert('Password changed!');
         } catch (e: any) {
             setError(e.message);
         }
-    }, [id, password, password2, usersClient]);
+    }, [oldPassword, password, password2, usersClient]);
 
-    if (!id) {
-        return (<div>Invalid activation link</div>);
-    }
 
     return (
         <>
-            {error && <div>Failed to activate: {error}</div>}
+            {error && <div>Failed to change your password: {error}</div>}
             <p>
                 Choose a password and activate your account.
             </p>
             <form onSubmit={async (evt) => {
                 evt.preventDefault();
-                await doActivate();
+                await doChangePassword();
             }}>
                 <div>
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="old_password">Existing Password</label>
+                    <input type="password"
+                           id='old_password'
+                           value={oldPassword}
+                           minLength={4}
+                           required={true}
+                           onChange={evt => setOldPassword(evt.target.value)}/>
+                </div>
+                <div>
+                    <label htmlFor="password">New Password</label>
                     <input type="password"
                            id='password'
                            value={password}
@@ -67,7 +75,7 @@ export const ActivateForm = () => {
                            required={true}
                            onChange={evt => setPassword2(evt.target.value)}/>
                 </div>
-                <button type="submit">Activate</button>
+                <button type="submit">Change password</button>
             </form>
         </>
     )

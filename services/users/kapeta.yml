@@ -62,6 +62,34 @@ spec:
             secret: false
             required: false
       - type: dto
+        name: PasswordChangeRequest
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          oldPassword:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          password:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+          password2:
+            type: string
+            description: null
+            properties: null
+            secret: false
+            required: false
+      - type: dto
         name: UserSession
         description: null
         properties:
@@ -158,6 +186,13 @@ spec:
         	password: string
         }
 
+        PasswordChangeRequest {
+        	id: string
+        	oldPassword: string
+        	password: string
+        	password2: string
+        }
+
         UserSession {
         	id: string
         	userId: string
@@ -239,6 +274,16 @@ spec:
               email:
                 type: string
                 transport: QUERY
+          changePassword:
+            responseType:
+              type: void
+            method: POST
+            path: /change_password
+            description: Change password for user
+            arguments:
+              change:
+                ref: PasswordChangeRequest
+                transport: BODY
           getUser:
             responseType:
               ref: User
@@ -267,6 +312,10 @@ spec:
             //Reset password for user
             @POST("/reset_password")
             resetPassword(@Query email:string):void
+
+            //Change password for user
+            @POST("/change_password")
+            changePassword(@Body change:PasswordChangeRequest):void
 
             //Get user by id
             @GET("/users/{id}")

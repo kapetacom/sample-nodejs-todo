@@ -7,6 +7,7 @@ import { UserRegistration } from "../../entities/UserRegistration";
 import { UserActivation } from "../../entities/UserActivation";
 import { UserSession } from "../../entities/UserSession";
 import { UserAuthentication } from "../../entities/UserAuthentication";
+import { PasswordChangeRequest } from "../../entities/PasswordChangeRequest";
 import { User } from "../../entities/User";
 
 export class UsersClient {
@@ -53,6 +54,16 @@ export class UsersClient {
     resetPassword(email: string): Promise<void> {
         return this.client.execute("POST", "/reset_password", [
             { name: "email", value: email, transport: "QUERY" },
+        ]);
+    }
+
+    /**
+     * Change password for user
+     * HTTP: POST /api/change_password
+     */
+    changePassword(change: PasswordChangeRequest): Promise<void> {
+        return this.client.execute("POST", "/change_password", [
+            { name: "change", value: change, transport: "BODY" },
         ]);
     }
 

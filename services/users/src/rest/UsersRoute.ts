@@ -89,6 +89,27 @@ export class UsersRoute extends RestRoute {
             handler: service.resetPassword.bind(service),
         });
 
+        //changePassword: Verify the method is available
+        if (!service.changePassword) {
+            throw new Error(
+                'REST resource service for "Users" is missing method: "changePassword"'
+            );
+        }
+
+        //changePassword: Verify the method is implemented correctly
+        this.validateMethod(service.changePassword, "changePassword", [
+            "change",
+        ]);
+
+        //changePassword: Add route to server
+        this.addEndpoint({
+            method: "POST",
+            path: "/change_password",
+            description: "Change password for user",
+            arguments: [{ name: "change", transport: "BODY" }],
+            handler: service.changePassword.bind(service),
+        });
+
         //getUser: Verify the method is available
         if (!service.getUser) {
             throw new Error(

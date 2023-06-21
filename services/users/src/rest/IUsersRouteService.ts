@@ -5,6 +5,7 @@ import { UserRegistration } from "../entities/UserRegistration";
 import { UserActivation } from "../entities/UserActivation";
 import { UserSession } from "../entities/UserSession";
 import { UserAuthentication } from "../entities/UserAuthentication";
+import { PasswordChangeRequest } from "../entities/PasswordChangeRequest";
 import { User } from "../entities/User";
 
 export interface IUsersRouteService {
@@ -31,6 +32,12 @@ export interface IUsersRouteService {
      * HTTP: POST /reset_password
      */
     resetPassword(email: string): Promise<void>;
+
+    /**
+     * Change password for user
+     * HTTP: POST /change_password
+     */
+    changePassword(change: PasswordChangeRequest): Promise<void>;
 
     /**
      * Get user by id

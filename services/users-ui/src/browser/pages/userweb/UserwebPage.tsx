@@ -1,6 +1,10 @@
 import React from "react";
 import {Link, Outlet, Route, Routes} from "react-router-dom";
 import {FrameRouter} from "@kapeta/sdk-web-microfrontend-frame";
+import {ChangePasswordForm} from "../../components/ChangePasswordForm";
+import {UserInfo} from "../../components/UserInfo";
+
+import './UserwebPage.less';
 
 export const UserwebPage = () => {
 
@@ -8,8 +12,8 @@ export const UserwebPage = () => {
         <FrameRouter>
             <Routes>
                 <Route element={<Layout/>}>
-                    <Route path="/change-password" element={<div>TODO: Change Password</div>}/>
-                    <Route path="/" element={<div>TODO: User info</div>}/>
+                    <Route path="/change-password" element={<ChangePasswordForm />}/>
+                    <Route path="/" element={<UserInfo />}/>
                 </Route>
             </Routes>
         </FrameRouter>

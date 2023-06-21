@@ -33,7 +33,7 @@ export const WebPage = () => {
                             <ResetPasswordForm/>
                         </RequireNonAuth>
                     }/>
-                    <Route path="/activate/:id" element={
+                    <Route path="/activation/:id" element={
                         <RequireNonAuth>
                             <ActivateForm/>
                         </RequireNonAuth>
@@ -72,9 +72,6 @@ const Layout = () => {
                             </li>
                             <li>
                                 <Link to="/user">Settings</Link>
-                            </li>
-                            <li>
-                                <Link to="/user/change-password">Change password</Link>
                             </li>
                             <li>
                                 <Link to="/logout">Log out</Link>

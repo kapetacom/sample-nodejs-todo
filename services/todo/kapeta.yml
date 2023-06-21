@@ -158,7 +158,7 @@ spec:
               type: void
             method: DELETE
             path: /tasks/{userId}
-            description: 'Delete all tasks for user '
+            description: "Delete all tasks for user "
             arguments:
               userId:
                 type: string
