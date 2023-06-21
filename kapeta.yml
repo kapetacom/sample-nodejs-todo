@@ -18,8 +18,8 @@ spec:
       name: User Service
       dimensions:
         height: -1
-        top: 173
-        left: 174
+        top: 151
+        left: 245
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
     - block:

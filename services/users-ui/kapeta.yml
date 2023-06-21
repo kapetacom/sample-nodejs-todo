@@ -4,7 +4,7 @@ metadata:
   title: User UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.21
+    kind: kapeta/language-target-react-ts:0.0.22
   entities:
     types:
       - type: dto
