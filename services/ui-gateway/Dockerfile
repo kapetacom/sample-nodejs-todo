@@ -1,6 +1,7 @@
-FROM node:18.7
+FROM node:19
 
 ADD package.json /application/package.json
+ADD package-lock.json /application/package-lock.json
 
 WORKDIR /application
 
@@ -15,4 +16,4 @@ ADD kapeta.yml /application/kapeta.yml
 
 ADD src/server /application/src/server
 
-CMD [ "npm", "run", "start-prod" ]
+CMD [ "npm", "start" ]
