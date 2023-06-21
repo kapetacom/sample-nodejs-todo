@@ -17,6 +17,12 @@ menu, menu > li {
     margin: 0;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
 main {
     display: flex;
     flex-direction: column;
@@ -42,7 +48,18 @@ main {
             width: 120px;
             background-color: lightgray;
             & > li {
-                padding: 5px;
+                box-sizing: border-box;
+                border-bottom: 1px solid #999;
+                width: 100%;
+                a {
+                    display: block;
+                    padding: 5px;
+                }
+                margin-right: 10px;
+                text-decoration: none;
+                &:hover, &.active {
+                    background-color: white;
+                }
             }
         }
 

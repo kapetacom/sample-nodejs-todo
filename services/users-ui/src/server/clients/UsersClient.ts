@@ -6,6 +6,7 @@ import { UserRegistration } from "../../entities/UserRegistration";
 import { UserActivation } from "../../entities/UserActivation";
 import { UserSession } from "../../entities/UserSession";
 import { UserAuthentication } from "../../entities/UserAuthentication";
+import { PasswordChangeRequest } from "../../entities/PasswordChangeRequest";
 import { User } from "../../entities/User";
 
 class UsersClient {
@@ -75,6 +76,20 @@ class UsersClient {
     async resetPassword(email: string): Promise<void> {
         await this.client.execute("POST", "/reset_password", [
             { name: "email", value: email, transport: "QUERY" },
+        ]);
+    }
+
+    /**
+     * Change password for user
+     *
+     * Throws if service responds with a status code higher than 399 and not 404.
+     * For 404 responses, null is returned.
+     *
+     * HTTP: POST /change_password
+     */
+    async changePassword(change: PasswordChangeRequest): Promise<void> {
+        await this.client.execute("POST", "/change_password", [
+            { name: "change", value: change, transport: "BODY" },
         ]);
     }
 

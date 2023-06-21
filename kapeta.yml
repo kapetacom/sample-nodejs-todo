@@ -50,7 +50,7 @@ spec:
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
     - block:
-        ref: kapeta://kapeta/nodejs-sample-api-gateway:local
+        ref: kapeta/nodejs-sample-api-gateway:local
       dimensions:
         height: -1
         width: 150
@@ -59,12 +59,12 @@ spec:
       id: b463e93c-83d5-4c89-8270-4f8a64cf130d
       name: API Gateway
     - block:
-        ref: kapeta://kapeta/nodejs-sample-web-gateway:local
+        ref: kapeta/nodejs-sample-web-gateway:local
       dimensions:
         height: -1
         width: 150
-        left: 1820
-        top: 681
+        left: 1611
+        top: 642
       id: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
       name: Web Gateway
   connections:
@@ -103,6 +103,9 @@ spec:
           type: EXACT
         getUser:
           targetId: getUser
+          type: EXACT
+        changePassword:
+          targetId: changePassword
           type: EXACT
     - provider:
         resourceName: userweb

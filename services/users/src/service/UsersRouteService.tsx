@@ -14,6 +14,7 @@ import { RESTError } from '@kapeta/sdk-rest-route';
 import { IUsersRouteService } from '../rest/IUsersRouteService';
 import { User } from '../entities/User';
 import {UserSession} from "../entities/UserSession";
+import {PasswordChangeRequest} from "../entities/PasswordChangeRequest";
 
 function toPassword(seed: string, pw: string) {
     return seed + ':' + md5(seed + pw);
@@ -42,13 +43,34 @@ export class UsersRouteService implements IUsersRouteService {
             ...user,
         };
 
+        let gatewayHost = await Config.getAsInstanceHost('WebConfig.instance');
+        if (!gatewayHost) {
+            throw new RESTError('Internal error - Failed to get instance host.', 500);
+        }
+        if (gatewayHost.endsWith('/')) {
+            gatewayHost = gatewayHost.substring(0, gatewayHost.length - 1);
+        }
+
+        let activationPath = Config.get<string>('WebConfig.activationPath');
+        if (activationPath && activationPath !== '/') {
+            if (!activationPath.startsWith('/')) {
+                activationPath = '/' + activationPath;
+            }
+
+            if (activationPath.endsWith('/')) {
+                activationPath = activationPath.substring(0, activationPath.length - 1);
+            }
+        }
+
+        if (activationPath === '/') {
+            activationPath = '';
+        }
+
+        const url = `${gatewayHost}${activationPath}/${registration.id}`;
+
         await this.db.userRegistrations.create({
             data: registration,
         });
-
-        const gatewayHost = Config.getAsInstanceHost('WebConfig.instance');
-        const activationPath = Config.get('WebConfig.activationPath');
-        const url = `${gatewayHost}${activationPath}/${registration.id}`;
 
         await this._email.sendReact({
             to: user.email,
@@ -188,5 +210,38 @@ export class UsersRouteService implements IUsersRouteService {
             email: user.email,
             name: user.name || user.email,
         };
+    }
+
+    async changePassword(change: PasswordChangeRequest): Promise<void> {
+        const user = await this.db.users.findUnique({
+            where: {
+                id: change.id,
+            },
+        });
+
+        if (!user) {
+            throw new RESTError('User not found', 404);
+        }
+
+        if (change.password !== change.password2) {
+            throw new RESTError('Passwords did not match', 400);
+        }
+
+        let [seed] = user.password.split(':');
+        if (user.password !== toPassword(seed, change.oldPassword)) {
+            throw new RESTError('Invalid password', 401);
+        }
+
+        seed = crypto.randomUUID();
+        const newPw = change.password;
+
+        await this.db?.users.update({
+            where: {
+                id: user.id,
+            },
+            data: {
+                password: toPassword(seed, newPw),
+            },
+        });
     }
 }
