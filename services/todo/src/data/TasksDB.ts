@@ -3,7 +3,7 @@
 //
 
 import { MongoDB } from "@kapeta/sdk-nosql-mongodb";
-import { Prisma, PrismaClient } from "./tasks";
+import { Prisma, PrismaClient } from "./clients/tasks";
 
 export class TasksDB extends MongoDB<PrismaClient> {
     constructor() {
