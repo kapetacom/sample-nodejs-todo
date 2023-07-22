@@ -1,4 +1,4 @@
-kind: kapeta/block-type-frontend:0.0.9
+kind: kapeta/block-type-frontend:1.1.0
 metadata:
   name: kapeta/nodejs-sample-user-ui
   title: User UI
@@ -277,3 +277,6 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
+  icon:
+    type: url
+    value: https://storage.googleapis.com/asset-attachments/kapeta/nodejs-sample-user-ui/icon.svg?v=1690057455206

@@ -1,4 +1,4 @@
-kind: kapeta/block-type-frontend:0.0.9
+kind: kapeta/block-type-frontend:1.1.0
 metadata:
   name: kapeta/sample-nodejs-ui-gateway
   title: Todo App
@@ -239,3 +239,6 @@ spec:
         	name: string
         	email: string
         }
+  icon:
+    type: url
+    value: https://storage.googleapis.com/asset-attachments/kapeta/sample-nodejs-ui-gateway/icon.svg?v=1690057446238

@@ -1,4 +1,4 @@
-kind: kapeta/block-type-service:0.0.6
+kind: kapeta/block-type-service:1.1.0
 metadata:
   name: kapeta/nodejs-sample-todo-service
   title: Todo Service
@@ -185,3 +185,6 @@ spec:
             //Delete all tasks for user 
             @DELETE("/tasks/{userId}")
             removeTasks(@Path userId:string):void
+  icon:
+    type: url
+    value: https://storage.googleapis.com/asset-attachments/kapeta/nodejs-sample-todo-service/icon.svg?v=1690057398454

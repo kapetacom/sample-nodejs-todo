@@ -1,4 +1,4 @@
-kind: kapeta/block-type-service:0.0.6
+kind: kapeta/block-type-service:1.1.0
 metadata:
   name: kapeta/nodejs-sample-users-service
   title: User Service
@@ -386,3 +386,6 @@ spec:
             activationPath:string = '/activation/'
 
         }
+  icon:
+    type: url
+    value: https://storage.googleapis.com/asset-attachments/kapeta/nodejs-sample-users-service/icon.svg?v=1690057420502
