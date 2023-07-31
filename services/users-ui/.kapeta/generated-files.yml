@@ -9,121 +9,121 @@ assets:
     mode: create-only
     checksum: d1d5a15faf5fbd84a3253581054cf5e5cdb24fd4
     permissions: "644"
-    modified: 1690057456492
+    modified: 1690798682979
     merged: false
   - filename: .prettierignore
     mode: create-only
     checksum: 3a16e00a5f60f9685427c8aa61dbb5dbe98c4cf6
     permissions: "644"
-    modified: 1690057456494
+    modified: 1690798682979
     merged: false
   - filename: Dockerfile
     mode: create-only
-    checksum: d0bc21520fcd231aaf211aa555bcea2cce1d00fe
+    checksum: 7d287058e764ad6d0ce7f3b353c8ae5142aa6a95
     permissions: "644"
-    modified: 1690057456494
+    modified: 1690798682980
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
-    checksum: b7bf12a1710965e99fe87c217b0c3e4a4571902e
+    checksum: c7298b8e8d57204d7f37d532103195741020e55e
     permissions: "644"
-    modified: 1690057456495
+    modified: 1690798682980
     merged: false
   - filename: src/server/index.ts
     mode: create-only
     checksum: c116489f22c7634ea62b9525ddc93f77dd371157
     permissions: "644"
-    modified: 1690057456495
+    modified: 1690798682980
     merged: false
   - filename: package.json
     mode: merge
     checksum: 18de1f25483b5c4410c53d726f16268b7b5b3b8d
     permissions: "644"
-    modified: 1690057456495
+    modified: 1690798682981
     merged: true
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: 143c0aba32991c5c15bf2180dc56ae2d781c43f1
     permissions: "755"
-    modified: 1690057456496
+    modified: 1690798682981
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: ff7c972647cef628b4140248f754144e097a69ac
     permissions: "755"
-    modified: 1690057456496
+    modified: 1690798682981
     merged: false
   - filename: tsconfig.json
     mode: create-only
     checksum: 59544368f1d301491e153f4115b31b0dcbe51fe2
     permissions: "644"
-    modified: 1690057456496
+    modified: 1690798682982
     merged: false
   - filename: webpack.development.config.js
     mode: write-always
     checksum: 6063531386c2d59ff0f983d58bc8c483ce83e4ac
     permissions: "644"
-    modified: 1690057456496
+    modified: 1690798682982
     merged: false
   - filename: webpack.production.config.js
     mode: write-always
     checksum: 5cc96ef7d245e90a11c567361357a1b052bd2c02
     permissions: "644"
-    modified: 1690057456497
+    modified: 1690798682982
     merged: false
   - filename: src/entities/UserRegistration.ts
     mode: write-always
     checksum: 9f44c5c623ae6072a51ed00dec267bcc8c2ab2ac
     permissions: "644"
-    modified: 1690057456497
+    modified: 1690798682982
     merged: false
   - filename: src/entities/UserActivation.ts
     mode: write-always
     checksum: e53d8316dcc70fa27e3c91f40fd2cfb3d0d11e67
     permissions: "644"
-    modified: 1690057456497
+    modified: 1690798682982
     merged: false
   - filename: src/entities/UserAuthentication.ts
     mode: write-always
     checksum: 24ded141469884e52083b02b3ab2710dbf83ae70
     permissions: "644"
-    modified: 1690057456497
+    modified: 1690798682983
     merged: false
   - filename: src/entities/User.ts
     mode: write-always
     checksum: 6d0d61d1b139805c5e223cecd025b06f1c2fccb7
     permissions: "644"
-    modified: 1690057456498
+    modified: 1690798682983
     merged: false
   - filename: src/entities/UserSession.ts
     mode: write-always
     checksum: bfa1a27d00d0cdb3b4df691942c30776ab767019
     permissions: "644"
-    modified: 1690057456498
+    modified: 1690798682983
     merged: false
   - filename: src/entities/PasswordChangeRequest.ts
     mode: write-always
     checksum: f325921b492575512640d2c0840cb4706d7db592
     permissions: "644"
-    modified: 1690057456499
+    modified: 1690798682983
     merged: false
   - filename: src/browser/clients/UsersClient.ts
     mode: write-always
     checksum: 95392eade4804cf36d6c952bb443132b2ff94350
     permissions: "644"
-    modified: 1690057456499
+    modified: 1690798682984
     merged: false
   - filename: src/server/proxies/rest/UsersProxyRoute.ts
     mode: write-always
     checksum: 24da4f488c2d0823ff5ede4f4cd282fa915df088
     permissions: "644"
-    modified: 1690057456499
+    modified: 1690798682984
     merged: false
   - filename: src/server/clients/UsersClient.ts
     mode: write-always
     checksum: 9d685869dd8a3995cc38a7b074e8a508952f4eff
     permissions: "644"
-    modified: 1690057456499
+    modified: 1690798682984
     merged: false
   - filename: src/browser/pages/userweb/UserwebPage.tsx
     mode: create-only
@@ -135,5 +135,5 @@ assets:
     mode: create-only
     checksum: e256780869697fdce905d139095683e5d66f8a62
     permissions: "644"
-    modified: 1690057456500
+    modified: 1690798682985
     merged: false
