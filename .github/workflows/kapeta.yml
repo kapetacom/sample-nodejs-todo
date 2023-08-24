@@ -1,0 +1,57 @@
+name: Master build
+# trigger on push to master
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  kapeta_cloud:
+    name: Push to Kapeta Cloud
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'write'
+      pull-requests: 'write'
+    steps:
+      - uses: actions/checkout@v3
+        id: checkout
+      - uses: actions/setup-node@v3
+        id: setup-node
+
+      - name: Push to Kapeta Cloud
+        id: kapeta-registry-push
+        uses: kapetacom/core-registry-action@v1
+        with:
+          credentials: ${{ secrets.KAPETA_TOKEN }}
+          action: 'push'
+
+      - name: slack - GitHub Actions Slack integration
+        uses: act10ns/slack@v2.0.0
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          channel: '#github-actions'
+  tar_archive:
+    name: Upload Tar Archive
+    needs: kapeta_cloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        id: checkout
+      - uses: actions/setup-node@v3
+        id: setup-node
+      - uses: google-github-actions/auth@v1
+        name: Google Auth
+        id: auth
+        with:
+          workload_identity_provider: ${{ secrets.GH_ACTION_WIF }}
+          service_account: ${{ secrets.DOCKER_WRITER_SA }}
+      - name: Build tar archive
+        run: ./scripts/build.sh
+      - name: Upload to Cloud Storage
+        uses: 'google-github-actions/upload-cloud-storage@v1'
+        with:
+          path: 'sample-nodejs-todo.tar.gz'
+          destination: 'kapeta-production-cdn/archives/sample-nodejs-todo.tar.gz'
+
