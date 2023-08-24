@@ -7,23 +7,16 @@ on:
   workflow_dispatch:
 jobs:
   release:
-    name: Push to Kapeta and Archive
+    name: Push to Kapeta Cloud
     runs-on: ubuntu-latest
     permissions:
       contents: 'write'
       pull-requests: 'write'
-      id-token: 'write'
     steps:
       - uses: actions/checkout@v3
         id: checkout
       - uses: actions/setup-node@v3
         id: setup-node
-      - uses: google-github-actions/auth@v1
-        name: Google Auth
-        id: auth
-        with:
-          workload_identity_provider: ${{ secrets.GH_ACTION_WIF }}
-          service_account: ${{ secrets.DOCKER_WRITER_SA }}
 
       - name: Push to Kapeta Cloud
         id: kapeta-registry-push
@@ -31,15 +24,6 @@ jobs:
         with:
           credentials: ${{ secrets.KAPETA_TOKEN }}
           action: 'push'
-
-      - name: Build tar archive
-        run: ./scripts/build.sh
-
-      - name: Upload to Cloud Storage
-        uses: 'google-github-actions/upload-cloud-storage@v1'
-        with:
-          path: 'sample-nodejs-todo.tar.gz'
-          destination: 'kapeta-production-cdn/archives'
 
       - name: slack - GitHub Actions Slack integration
         uses: act10ns/slack@v2.0.0
