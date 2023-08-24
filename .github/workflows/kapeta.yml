@@ -39,7 +39,7 @@ jobs:
         uses: 'google-github-actions/upload-cloud-storage@v1'
         with:
           path: 'sample-nodejs-todo.tar.gz'
-          destination: 'kapeta-production-cdn/archives/sample-nodejs-todo.tar.gz'
+          destination: 'kapeta-production-cdn/archives'
 
       - name: slack - GitHub Actions Slack integration
         uses: act10ns/slack@v2.0.0
