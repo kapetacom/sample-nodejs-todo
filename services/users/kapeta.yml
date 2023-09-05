@@ -4,7 +4,7 @@ metadata:
   title: User Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.1.0
+    kind: kapeta/language-target-nodejs:0.1.1
   entities:
     types:
       - type: dto
