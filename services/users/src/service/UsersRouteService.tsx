@@ -13,8 +13,8 @@ import { ResetPasswordEmail } from '../emails/PasswordReset';
 import { RESTError } from '@kapeta/sdk-rest-route';
 import { IUsersRouteService } from '../rest/IUsersRouteService';
 import { User } from '../entities/User';
-import {UserSession} from "../entities/UserSession";
-import {PasswordChangeRequest} from "../entities/PasswordChangeRequest";
+import { UserSession } from '../entities/UserSession';
+import { PasswordChangeRequest } from '../entities/PasswordChangeRequest';
 
 function toPassword(seed: string, pw: string) {
     return seed + ':' + md5(seed + pw);
@@ -98,7 +98,7 @@ export class UsersRouteService implements IUsersRouteService {
             },
         });
         if (!userRegistration) {
-            throw new RESTError('User registration not found', 404);
+            throw new RESTError('User registration not found', 400);
         }
 
         const seed = crypto.randomUUID();
@@ -128,7 +128,7 @@ export class UsersRouteService implements IUsersRouteService {
      * Authenticate user
      * HTTP: POST /authenticate
      */
-    async authenticationUser(auth: UserAuthentication):Promise<UserSession> {
+    async authenticationUser(auth: UserAuthentication): Promise<UserSession> {
         const user = await this.db.users.findUnique({
             where: {
                 email: auth.email,
@@ -147,15 +147,15 @@ export class UsersRouteService implements IUsersRouteService {
 
         const result = await this.db.userSessions.create({
             data: {
-                userId: user.id
-            }
+                userId: user.id,
+            },
         });
 
         return {
             id: result.id,
             userId: result.userId,
             name: user.name || user.email,
-        }
+        };
     }
 
     /**
