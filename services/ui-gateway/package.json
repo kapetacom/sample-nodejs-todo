@@ -28,6 +28,7 @@
         "@kapeta/sdk-rest-route": "<2",
         "@kapeta/sdk-server": "<2",
         "@kapeta/sdk-web-rest-client": "<2",
+        "@mui/icons-material": "^5.14.8",
         "@mui/material": "^5.14.8",
         "connect-history-api-fallback": "^2.0.0",
         "ts-node": "^10.9.1",

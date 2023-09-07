@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { UsersClient } from '../clients/UsersClient';
-import { Alert, Box, Button, Paper, Stack, TextField } from '@mui/material';
+import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export const SignupForm = () => {
@@ -42,8 +42,10 @@ export const SignupForm = () => {
                 void doSignUp();
             }}
         >
-            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+            <Paper sx={{ p: 4, width: 400, m: 'auto', mt: '150px' }}>
                 <Stack direction="column" spacing={2}>
+                    <Typography variant="h5">Sign up</Typography>
+
                     {message && <Alert severity={message.severity}>{message.text}</Alert>}
 
                     <TextField

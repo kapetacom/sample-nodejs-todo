@@ -15,8 +15,8 @@ export const ResetPasswordForm = () => {
             setIsSubmitting(true);
             await usersClient.resetPassword(email);
             setError('');
-        } catch (e: any) {
-            setError(e.message);
+        } catch (e) {
+            setError((e as Error).message);
         } finally {
             setIsSubmitting(false);
         }
@@ -29,7 +29,7 @@ export const ResetPasswordForm = () => {
                 void doReset();
             }}
         >
-            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+            <Paper sx={{ p: 4, width: 400, m: 'auto', mt: '150px' }}>
                 <Stack direction="column" spacing={2}>
                     <Typography variant="h5">Reset password</Typography>
                     {error && <Alert severity="error">Failed to reset: {error}</Alert>}

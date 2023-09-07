@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import { LoginForm } from '../../components/LoginForm';
 
-import { isAuthed, Logout, RequireAuth, RequireNonAuth } from '../../auth/auth';
+import { AuthProvider, isAuthed, Logout, RequireAuth, RequireNonAuth, useAuth } from '../../auth/auth';
 import { ActivateForm } from '../../components/ActivateForm';
 import { SignupForm } from '../../components/SignupForm';
 import { ResetPasswordForm } from '../../components/ResetPasswordForm';
@@ -23,11 +23,15 @@ import {
     CardActions,
     Card,
     Button,
+    ListItemIcon,
+    ListItemText,
 } from '@mui/material';
+import { CheckCircleOutlineRounded, Settings, Logout as LogoutIcon } from '@mui/icons-material';
+import { KapetaLogo } from '../../components/KapetaLogo';
 
 export const WebPage = () => {
     return (
-        <>
+        <AuthProvider>
             <CssBaseline />
             <FrameRouter>
                 <Routes>
@@ -85,7 +89,7 @@ export const WebPage = () => {
                     </Route>
                 </Routes>
             </FrameRouter>
-        </>
+        </AuthProvider>
     );
 };
 
@@ -105,12 +109,17 @@ const MenuLink = ({ to, children }: { to: string; children: React.ReactNode }) =
 
 const Layout = () => {
     const drawerWidth = 240;
+    const auth = useAuth();
     return (
         <Box
             component="main"
-            sx={{ background: 'linear-gradient(to bottom, #AC2DEB 0, #AC2DEB 300px, transparent 300px)' }}
+            sx={{
+                minHeight: '100%',
+                width: '100%',
+                background: 'linear-gradient(to bottom, #AC2DEB 0, #AC2DEB 300px, transparent 300px)',
+            }}
         >
-            <Stack direction={'row'}>
+            <Stack direction={'row'} sx={{ minHeight: '100%' }}>
                 <Box sx={{ width: drawerWidth }}>
                     <Drawer
                         variant="permanent"
@@ -119,15 +128,31 @@ const Layout = () => {
                         }}
                     >
                         <Box sx={{ p: 2, textAlign: 'center' }}>
+                            <KapetaLogo width={drawerWidth} height={30} />
                             <Typography variant="h6">Todo App</Typography>
                         </Box>
 
                         <List>
-                            {isAuthed() && (
+                            {auth.isAuthenticated() && (
                                 <>
-                                    <MenuLink to="/">Tasks</MenuLink>
-                                    <MenuLink to="/user">Settings</MenuLink>
-                                    <MenuLink to="/user">Log out</MenuLink>
+                                    <MenuLink to="/">
+                                        <ListItemIcon>
+                                            <CheckCircleOutlineRounded />
+                                        </ListItemIcon>
+                                        <ListItemText>Todos</ListItemText>
+                                    </MenuLink>
+                                    <MenuLink to="/user">
+                                        <ListItemIcon>
+                                            <Settings />
+                                        </ListItemIcon>
+                                        <ListItemText>Settings</ListItemText>
+                                    </MenuLink>
+                                    <MenuLink to="/logout">
+                                        <ListItemIcon>
+                                            <LogoutIcon />
+                                        </ListItemIcon>
+                                        <ListItemText>Log out</ListItemText>
+                                    </MenuLink>
                                     <Divider />
                                 </>
                             )}

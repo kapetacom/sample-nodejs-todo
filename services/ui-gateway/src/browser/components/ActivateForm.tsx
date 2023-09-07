@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { UsersClient } from '../clients/UsersClient';
 import { Link, useParams } from 'react-router-dom';
-import { Alert, Box, Button, Paper, Stack, TextField } from '@mui/material';
+import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 
 export const ActivateForm = () => {
     const { id } = useParams();
@@ -56,8 +56,9 @@ export const ActivateForm = () => {
                 void doActivate();
             }}
         >
-            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+            <Paper sx={{ p: 4, width: 400, m: 'auto', mt: '150px' }}>
                 <Stack direction="column" spacing={2}>
+                    <Typography variant="h5">Activate account</Typography>
                     {message && <Alert severity={message.severity}>{message.text}</Alert>}
                     <p>Choose a password and activate your account.</p>
                     <TextField

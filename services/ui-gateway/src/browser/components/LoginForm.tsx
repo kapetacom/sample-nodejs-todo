@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { UsersClient } from '../clients/UsersClient';
-import { removeCurrentSession, setCurrentSession } from '../auth/auth';
-import { Alert, Box, Button, Paper, Stack, TextField } from '@mui/material';
+import { useAuth } from '../auth/auth';
+import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export const LoginForm = () => {
@@ -11,6 +11,7 @@ export const LoginForm = () => {
     const [password, setPassword] = useState('');
 
     const usersClient = useMemo(() => new UsersClient(), []);
+    const auth = useAuth();
 
     const doLogin = useCallback(async () => {
         try {
@@ -24,11 +25,11 @@ export const LoginForm = () => {
                 return;
             }
 
-            setCurrentSession(session);
+            auth.setSession(session);
             setError('');
             window.location.pathname = '/';
         } catch (e) {
-            removeCurrentSession();
+            auth.setSession(null);
             setError((e as Error).message);
         } finally {
             setIsSubmitting(false);
@@ -42,8 +43,9 @@ export const LoginForm = () => {
                 void doLogin();
             }}
         >
-            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+            <Paper sx={{ p: 4, width: 400, m: 'auto', mt: '150px' }}>
                 <Stack direction="column" spacing={2}>
+                    <Typography variant="h5">Log in</Typography>
                     {error && <Alert severity="error">Failed to log in: {error}</Alert>}
                     <TextField
                         fullWidth
