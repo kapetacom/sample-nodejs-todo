@@ -116,7 +116,6 @@ const Layout = () => {
             sx={{
                 minHeight: '100%',
                 width: '100%',
-                background: 'linear-gradient(to bottom, #AC2DEB 0, #AC2DEB 300px, transparent 300px)',
             }}
         >
             <Stack direction={'row'} sx={{ minHeight: '100%' }}>
@@ -179,7 +178,16 @@ const Layout = () => {
                     </Drawer>
                 </Box>
 
-                <Box component={'article'} sx={{ p: 2, flexGrow: 1 }}>
+                <Box
+                    component={'article'}
+                    sx={{
+                        p: 2,
+                        flexGrow: 1,
+                        backgroundImage: 'linear-gradient(225deg, #5596FF 0%, #AC2DEB 100%)',
+                        backgroundSize: '100% 300px',
+                        backgroundRepeat: 'no-repeat',
+                    }}
+                >
                     <Outlet />
                 </Box>
             </Stack>
