@@ -1,6 +1,6 @@
 const SESSION_KEY = 'SESSION';
 
-interface UserSession {
+export interface UserSession {
     id: string;
     userId: string;
     name: string;
