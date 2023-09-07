@@ -1,8 +1,10 @@
-import React, {useCallback, useMemo, useState} from "react";
-import {UsersClient} from "../clients/UsersClient";
+import React, { useCallback, useMemo, useState } from 'react';
+import { UsersClient } from '../clients/UsersClient';
+import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export const ResetPasswordForm = () => {
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
 
@@ -10,29 +12,43 @@ export const ResetPasswordForm = () => {
 
     const doReset = useCallback(async () => {
         try {
+            setIsSubmitting(true);
             await usersClient.resetPassword(email);
             setError('');
         } catch (e: any) {
             setError(e.message);
+        } finally {
+            setIsSubmitting(false);
         }
     }, [email, usersClient]);
 
     return (
-        <>
-            {error && <div>Failed to reset: {error}</div>}
-            <form onSubmit={(evt) => {
+        <form
+            onSubmit={(evt) => {
                 evt.preventDefault();
-                doReset()
-            }}>
-                <div>
-                    <label htmlFor="username">E-mail</label>
-                    <input type="email"
-                           required={true}
-                           value={email}
-                           onChange={evt => setEmail(evt.target.value)} />
-                </div>
-                <button type="submit">Reset password</button>
-            </form>
-        </>
-    )
-}
+                void doReset();
+            }}
+        >
+            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+                <Stack direction="column" spacing={2}>
+                    <Typography variant="h5">Reset password</Typography>
+                    {error && <Alert severity="error">Failed to reset: {error}</Alert>}
+                    <TextField
+                        label="E-mail"
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(evt) => setEmail(evt.target.value)}
+                    />
+
+                    <Button type="submit" color="primary" variant="contained" disabled={isSubmitting}>
+                        Reset password
+                    </Button>
+                    <Box sx={{ textAlign: 'center' }}>
+                        <Link to="/login">Back to Log in</Link>
+                    </Box>
+                </Stack>
+            </Paper>
+        </form>
+    );
+};

@@ -1,20 +1,23 @@
-import React, {useCallback, useMemo, useState} from "react";
-import {UsersClient} from "../clients/UsersClient";
-import {useParams} from "react-router-dom";
-
+import React, { useCallback, useMemo, useState } from 'react';
+import { UsersClient } from '../clients/UsersClient';
+import { Link, useParams } from 'react-router-dom';
+import { Alert, Box, Button, Paper, Stack, TextField } from '@mui/material';
 
 export const ActivateForm = () => {
     const { id } = useParams();
+    const [formState, setFormState] = useState<'pending' | 'loading' | 'submitted'>('pending');
+    const [message, setMessage] = useState<{
+        text: string;
+        severity: 'success' | 'error';
+    } | null>(null);
 
-    const [error, setError] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
     const usersClient = useMemo(() => new UsersClient(), []);
 
-
-
     const doActivate = useCallback(async () => {
+        setFormState('loading');
         try {
             if (!id) {
                 throw new Error('Invalid activation link');
@@ -23,52 +26,67 @@ export const ActivateForm = () => {
             await usersClient.activateUser({
                 id,
                 password,
-                password2
+                password2,
             });
-            alert('Account activated!');
-            setPassword('');
-            setPassword2('')
-            setError('');
-            location.href = '/login';
-        } catch (e: any) {
-            setError(e.message);
+            setFormState('submitted');
+            setTimeout(() => {
+                location.href = '/login';
+            }, 2000);
+        } catch (e) {
+            setMessage({
+                severity: 'error',
+                text: `Failed to activate account: ${(e as Error).message}`,
+            });
         }
     }, [id, password, password2, usersClient]);
 
     if (!id) {
-        return (<div>Invalid activation link</div>);
+        return <Alert severity="error">Invalid activation link</Alert>;
     }
+    const buttonText = {
+        pending: 'Activate',
+        loading: 'Activating...',
+        submitted: 'Account activated',
+    }[formState];
 
     return (
-        <>
-            {error && <div>Failed to activate: {error}</div>}
-            <p>
-                Choose a password and activate your account.
-            </p>
-            <form onSubmit={async (evt) => {
+        <form
+            onSubmit={(evt) => {
                 evt.preventDefault();
-                await doActivate();
-            }}>
-                <div>
-                    <label htmlFor="password">Password</label>
-                    <input type="password"
-                           id='password'
-                           value={password}
-                           minLength={4}
-                           required={true}
-                           onChange={evt => setPassword(evt.target.value)}/>
-                </div>
-                <div>
-                    <label htmlFor="password2">Repeat password</label>
-                    <input type="password"
-                           id='password2'
-                           value={password2}
-                           minLength={4}
-                           required={true}
-                           onChange={evt => setPassword2(evt.target.value)}/>
-                </div>
-                <button type="submit">Activate</button>
-            </form>
-        </>
-    )
-}
+                void doActivate();
+            }}
+        >
+            <Paper sx={{ p: 4, width: 400, m: 'auto' }}>
+                <Stack direction="column" spacing={2}>
+                    {message && <Alert severity={message.severity}>{message.text}</Alert>}
+                    <p>Choose a password and activate your account.</p>
+                    <TextField
+                        label="Password"
+                        type="password"
+                        id="password"
+                        value={password}
+                        inputProps={{ minLength: 4 }}
+                        required={true}
+                        onChange={(evt) => setPassword(evt.target.value)}
+                    />
+
+                    <TextField
+                        label="Repeat password"
+                        type="password"
+                        id="password2"
+                        value={password2}
+                        inputProps={{ minLength: 4 }}
+                        required={true}
+                        onChange={(evt) => setPassword2(evt.target.value)}
+                    />
+                    <Button type="submit" color="primary" variant="contained" disabled={formState !== 'pending'}>
+                        {buttonText}
+                    </Button>
+                    <Box sx={{ textAlign: 'center' }}>
+                        <Link to="/login">Back to login</Link>
+                    </Box>
+                </Stack>
+            </Paper>
+        </form>
+    );
+};
