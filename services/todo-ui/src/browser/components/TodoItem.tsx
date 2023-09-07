@@ -48,6 +48,9 @@ export const TodoItem = (props: TodoItemProps) => {
             sx={{
                 borderBottom: '1px solid #E3E4F1',
                 px: 3,
+                '&:hover': {
+                    background: '#D32F2F0A',
+                },
             }}
         >
             <ListItemIcon
@@ -63,7 +66,14 @@ export const TodoItem = (props: TodoItemProps) => {
             >
                 {todo.done ? <CheckCircleIcon color="primary" /> : <RadioButtonUncheckedIcon color="disabled" />}
             </ListItemIcon>
-            <ListItemText>{todo.title}</ListItemText>
+            <ListItemText
+                sx={{
+                    textDecoration: todo.done ? 'line-through' : 'none',
+                    color: todo.done ? 'text.secondary' : 'text.primary',
+                }}
+            >
+                {todo.title}
+            </ListItemText>
             <ListItemSecondaryAction
                 sx={{
                     opacity: 0,
