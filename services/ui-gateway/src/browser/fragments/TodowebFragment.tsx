@@ -16,7 +16,7 @@ export const TodowebFragment = (props: Omit<FragmentProps, 'basePath'>) => {
                     width: '100%',
                     height: '100%',
                     boxSizing: 'border-box',
-                    m: -2,
+                    border: 'none',
                 },
             }}
         >

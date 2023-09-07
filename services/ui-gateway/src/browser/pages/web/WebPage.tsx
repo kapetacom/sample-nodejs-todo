@@ -181,8 +181,8 @@ const Layout = () => {
                 <Box
                     component={'article'}
                     sx={{
-                        p: 2,
                         flexGrow: 1,
+                        backgroundColor: '#fafafa',
                         backgroundImage: 'linear-gradient(225deg, #5596FF 0%, #AC2DEB 100%)',
                         backgroundSize: '100% 300px',
                         backgroundRepeat: 'no-repeat',
