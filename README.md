@@ -12,9 +12,9 @@ Before starting the plan, ensure you have the User Service configured and set to
 
 When running locally, this system uses gosmtpd to simulate email sending. gosmtpd doesn't actually send any emails but provides a web interface where you can view the emails that would have been sent.
 
-### Accessing the Gosmtpd Web Interface
+### Accessing the gosmtpd Web Interface
 
-Run the following command to open the Gosmtpd web interface:
+Run the following command to open the gosmtpd web interface:
 
 ```bash
 sh open-gosmtpd-inbox.sh
