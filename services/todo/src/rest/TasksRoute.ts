@@ -79,6 +79,31 @@ export class TasksRoute extends RestRoute {
             handler: service.markAsDone.bind(service),
         });
 
+        //markAsUndone: Verify the method is available
+        if (!service.markAsUndone) {
+            throw new Error(
+                'REST resource service for "Tasks" is missing method: "markAsUndone"'
+            );
+        }
+
+        //markAsUndone: Verify the method is implemented correctly
+        this.validateMethod(service.markAsUndone, "markAsUndone", [
+            "userId",
+            "id",
+        ]);
+
+        //markAsUndone: Add route to server
+        this.addEndpoint({
+            method: "POST",
+            path: "/tasks/{userId}/{id}/undone",
+            description: "Mark task as undone",
+            arguments: [
+                { name: "userId", transport: "PATH" },
+                { name: "id", transport: "PATH" },
+            ],
+            handler: service.markAsUndone.bind(service),
+        });
+
         //removeTask: Verify the method is available
         if (!service.removeTask) {
             throw new Error(

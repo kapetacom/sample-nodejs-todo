@@ -46,6 +46,17 @@ export class TasksClient {
     }
 
     /**
+     * Mark task as undone
+     * HTTP: POST /api/tasks/{userId}/{id}/undone
+     */
+    markAsUndone(userId: string, id: string): Promise<void> {
+        return this.client.execute("POST", "/tasks/{userId}/{id}/undone", [
+            { name: "userId", value: userId, transport: "PATH" },
+            { name: "id", value: id, transport: "PATH" },
+        ]);
+    }
+
+    /**
      * Delete task
      * HTTP: DELETE /api/tasks/{userId}/{id}
      */

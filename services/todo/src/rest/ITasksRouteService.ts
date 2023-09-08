@@ -23,6 +23,12 @@ export interface ITasksRouteService {
     markAsDone(userId: string, id: string): Promise<void>;
 
     /**
+     * Mark task as undone
+     * HTTP: POST /tasks/{userId}/{id}/undone
+     */
+    markAsUndone(userId: string, id: string): Promise<void>;
+
+    /**
      * Delete task
      * HTTP: DELETE /tasks/{userId}/{id}
      */

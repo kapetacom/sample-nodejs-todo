@@ -140,6 +140,19 @@ spec:
               id:
                 type: string
                 transport: PATH
+          markAsUndone:
+            responseType:
+              type: void
+            method: POST
+            path: /tasks/{userId}/{id}/undone
+            description: Mark task as undone
+            arguments:
+              userId:
+                type: string
+                transport: PATH
+              id:
+                type: string
+                transport: PATH
           removeTask:
             responseType:
               type: void
@@ -177,6 +190,10 @@ spec:
             //Mark task as done
             @POST("/tasks/{userId}/{id}/done")
             markAsDone(@Path userId:string, @Path id:string):void
+
+            //Mark task as undone
+            @POST("/tasks/{userId}/{id}/undone")
+            markAsUndone(@Path userId:string, @Path id:string):void
 
             //Delete task
             @DELETE("/tasks/{userId}/{id}")

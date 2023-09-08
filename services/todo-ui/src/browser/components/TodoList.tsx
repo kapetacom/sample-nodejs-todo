@@ -9,6 +9,7 @@ export const TodoList = (props: TodoListProps) => {
     return (
         <List
             sx={{
+                minHeight: '65px',
                 maxHeight: 'calc(100vh - 350px)',
                 overflow: 'auto',
                 '.MuiListItem-container': {

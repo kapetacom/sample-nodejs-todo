@@ -22,8 +22,7 @@ export const TodoItem = (props: TodoItemProps) => {
     const toggleDone = async (task: Task) => {
         try {
             if (task.done) {
-                console.log('Marking as not done is not supported yet');
-                // await taskClient.markAsNotDone(session.userId, task.id);
+                await taskClient.markAsUndone(session.userId, task.id);
             } else {
                 await taskClient.markAsDone(session.userId, task.id);
             }

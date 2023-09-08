@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { TasksClient } from '../../clients/TasksClient';
 import { getCurrentSession } from '../../auth/auth';
 import { useAsyncRetry } from 'react-use';
 import { Box, Typography } from '@mui/material';
@@ -8,6 +7,7 @@ import { TodoItem } from '../../components/TodoItem';
 import { TodoList } from '../../components/TodoList';
 import { NewTodo } from '../../components/NewTodo';
 import { TodoListActions } from '../../components/TodoListActions';
+import { TasksClient } from '../../clients/TasksClient';
 
 export const filters = ['All', 'Active', 'Completed'] as const;
 export type Filter = (typeof filters)[number];
@@ -36,7 +36,7 @@ export const TodowebPage = () => {
         }
     }, [filter, tasksLoader.value]);
 
-    const hasTasks = filteredTasks.length > 0;
+    const hasTasks = tasksLoader.value && tasksLoader.value.length > 0;
     const numberOfTasksLeft = filteredTasks.filter((task) => !task.done).length || 0;
 
     return session ? (

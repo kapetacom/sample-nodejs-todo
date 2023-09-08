@@ -62,6 +62,21 @@ class TasksClient {
     }
 
     /**
+     * Mark task as undone
+     *
+     * Throws if service responds with a status code higher than 399 and not 404.
+     * For 404 responses, null is returned.
+     *
+     * HTTP: POST /tasks/{userId}/{id}/undone
+     */
+    async markAsUndone(userId: string, id: string): Promise<void> {
+        await this.client.execute("POST", "/tasks/{userId}/{id}/undone", [
+            { name: "userId", value: userId, transport: "PATH" },
+            { name: "id", value: id, transport: "PATH" },
+        ]);
+    }
+
+    /**
      * Delete task
      *
      * Throws if service responds with a status code higher than 399 and not 404.
