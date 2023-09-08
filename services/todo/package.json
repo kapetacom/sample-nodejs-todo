@@ -12,7 +12,8 @@
         "migrate": "npm-run-pattern migrate:db:",
         "format": "prettier --write .",
         "build": "npm run migrate:generate",
-        "lint": "tsc --noEmit && eslint src/**/*.ts"
+        "lint": "tsc --noEmit && eslint src/**/*.ts",
+        "start:dev:docker": "NODE_ENV=development npm run migrate:generate --if-present && npm run migrate --if-present && nodemon --exitcrash --ext ts,tsx,js,json,yaml,yml --watch '**/*' index.ts"
     },
     "prettier": "@kapeta/prettier-config",
     "devDependencies": {

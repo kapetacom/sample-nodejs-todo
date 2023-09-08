@@ -4,7 +4,7 @@ metadata:
   title: Todo UI
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.27
+    kind: kapeta/language-target-react-ts:0.0.30
   entities:
     types:
       - type: dto
@@ -50,7 +50,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.7
+    - kind: kapeta/resource-type-rest-client:1.0.8
       metadata:
         name: tasks
       spec:

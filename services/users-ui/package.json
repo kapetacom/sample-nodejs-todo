@@ -9,7 +9,8 @@
         "start": "NODE_ENV=production ts-node --transpile-only src/server/index.ts",
         "build": "webpack --config webpack.production.config.js",
         "format": "prettier --write .",
-        "lint": "tsc --noEmit && eslint src/**/*.ts"
+        "lint": "tsc --noEmit && eslint src/**/*.ts",
+        "start:dev:docker": "NODE_ENV=development nodemon --exitcrash --ext ts,tsx,js,json,yaml,yml --watch '**/*' src/server/index.ts"
     },
     "prettier": "@kapeta/prettier-config",
     "nodemonConfig": {

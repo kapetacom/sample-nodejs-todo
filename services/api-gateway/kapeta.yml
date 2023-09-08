@@ -178,7 +178,7 @@ spec:
         	name: string
         }
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.7
+    - kind: kapeta/resource-type-rest-client:1.0.8
       metadata:
         name: users
       spec:
@@ -257,7 +257,7 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
-    - kind: kapeta/resource-type-rest-client:1.0.7
+    - kind: kapeta/resource-type-rest-client:1.0.8
       metadata:
         name: tasks
       spec:

@@ -4,7 +4,7 @@ metadata:
   title: User Service
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.1.1
+    kind: kapeta/language-target-nodejs:0.1.5
   entities:
     types:
       - type: dto
@@ -227,7 +227,7 @@ spec:
         port:
           type: smtp
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.7
+    - kind: kapeta/resource-type-rest-api:1.0.8
       metadata:
         name: users
       spec:

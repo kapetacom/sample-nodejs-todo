@@ -9,13 +9,13 @@ assets:
     mode: create-only
     checksum: d1d5a15faf5fbd84a3253581054cf5e5cdb24fd4
     permissions: "644"
-    modified: 1694156182254
+    modified: 1694192252055
     merged: false
   - filename: .prettierignore
     mode: create-only
     checksum: 3a16e00a5f60f9685427c8aa61dbb5dbe98c4cf6
     permissions: "644"
-    modified: 1694156182254
+    modified: 1694192252055
     merged: false
   - filename: Dockerfile
     mode: create-only
@@ -33,79 +33,79 @@ assets:
     mode: merge
     checksum: 3a5c1f02404bab94f222f3b762afaa6005f0fd5d
     permissions: "644"
-    modified: 1694156182255
+    modified: 1694192252055
     merged: false
   - filename: .gitignore
     mode: create-only
     checksum: d4c8b777c459dac5320b0a300d5527edcd70cdb0
     permissions: "644"
-    modified: 1694156182255
+    modified: 1694192252055
     merged: false
   - filename: index.ts
     mode: write-always
     checksum: e5bf759d7cc08bc6f84980df7fb743facbb9268b
     permissions: "644"
-    modified: 1694156182255
+    modified: 1694192252056
     merged: false
   - filename: kapeta.md
     mode: write-always
     checksum: c27148530adc8925a1d8ee32da7812f322958bde
     permissions: "644"
-    modified: 1694156182255
+    modified: 1694192252056
     merged: false
   - filename: package.json
     mode: merge
-    checksum: a647d544e60385814b3f3a2abc748dfcf37166bf
+    checksum: 22d62b7416c434c4e35767bcb7149aa4881a7741
     permissions: "644"
-    modified: 1694156182256
+    modified: 1694192252056
     merged: true
   - filename: scripts/start-dev.sh
     mode: write-always
-    checksum: 143c0aba32991c5c15bf2180dc56ae2d781c43f1
+    checksum: 8bb4c43338530bcf52a90856a12ae7678e6dfa7e
     permissions: "755"
-    modified: 1694156182256
+    modified: 1694192252056
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: ff7c972647cef628b4140248f754144e097a69ac
     permissions: "755"
-    modified: 1694156182256
+    modified: 1694192252057
     merged: false
   - filename: tsconfig.json
     mode: create-only
     checksum: 6ae6686e27f0a19f2c0bca6f0beba41caba9e650
     permissions: "644"
-    modified: 1694156182257
+    modified: 1694192252057
     merged: false
   - filename: src/entities/Task.ts
     mode: write-always
     checksum: 66009ec2259d1601cc14dc95ce0c40461c55a8bc
     permissions: "644"
-    modified: 1694156182257
+    modified: 1694192252057
     merged: false
   - filename: src/entities/User.ts
     mode: write-always
     checksum: 6d0d61d1b139805c5e223cecd025b06f1c2fccb7
     permissions: "644"
-    modified: 1694156182257
+    modified: 1694192252057
     merged: false
   - filename: src/clients/UsersClient.ts
     mode: write-always
     checksum: 692c1d4b94afcbb18c0167dcff0925164adee3aa
     permissions: "644"
-    modified: 1694156182257
+    modified: 1694192252058
     merged: false
   - filename: src/data/.gitignore
     mode: create-only
     checksum: d1358fcb7b5f8a3dab2f4a4dee14c6288c92ec0d
     permissions: "644"
-    modified: 1694156182257
+    modified: 1694192252058
     merged: false
   - filename: src/data/TasksDB.ts
     mode: write-always
     checksum: e3cfc60af4d6f0e46f3f6366df5cf141671898e7
     permissions: "644"
-    modified: 1694156182258
+    modified: 1694192252058
     merged: false
   - filename: src/data/clients/tasks/index.d.ts
     mode: create-only
@@ -129,13 +129,13 @@ assets:
     mode: write-always
     checksum: 68308c5bc4c3444114b4c607a00ae65c7744adb0
     permissions: "644"
-    modified: 1694156182260
+    modified: 1694192252059
     merged: false
   - filename: src/rest/TasksRoute.ts
     mode: write-always
     checksum: 8759ff91dfd9c4125849db3714d6ae550dd32743
     permissions: "644"
-    modified: 1694156182260
+    modified: 1694192252059
     merged: false
   - filename: src/service/TasksRouteService.tsx
     mode: create-only
