@@ -2,7 +2,7 @@ import { ITasksRouteService } from '../rest/ITasksRouteService';
 import { Task } from '../entities/Task';
 import { TasksDB } from '../data/TasksDB';
 import { UsersClient } from '../clients/UsersClient';
-import {RESTError} from "@kapeta/sdk-rest-route";
+import { RESTError } from '@kapeta/sdk-rest-route';
 
 export class TasksRouteService implements ITasksRouteService {
     private readonly db: TasksDB;
@@ -63,6 +63,19 @@ export class TasksRouteService implements ITasksRouteService {
             },
             data: {
                 done: true,
+            },
+        });
+    }
+
+    async markAsUndone(userId: string, id: string): Promise<void> {
+        await this.checkUser(userId);
+        await this.db.client.task.updateMany({
+            where: {
+                id,
+                userId,
+            },
+            data: {
+                done: false,
             },
         });
     }
