@@ -334,6 +334,7 @@ spec:
             properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: WebConfig
         description: Configuration for frontend urls
@@ -344,6 +345,7 @@ spec:
             properties: null
             secret: false
             required: true
+            global: true
           basePath:
             type: string
             defaultValue: "'/'"
@@ -351,6 +353,7 @@ spec:
             properties: null
             secret: false
             required: true
+            global: true
           activationPath:
             type: string
             defaultValue: "'/activation/'"
@@ -359,6 +362,7 @@ spec:
             properties: null
             secret: false
             required: true
+            global: true
     source:
       type: kapeta-dsl
       value: >-
@@ -375,14 +379,17 @@ spec:
         WebConfig {
             //Web instance - used for links in e-mails
             @required
+            @global
             instance: Instance
             
             //Web base path - used for links to front page in e-mails
             @required
+            @global
             basePath:string = '/'
 
             // Activation url - used for links in e-mails. Activation ID is postfixed.
             @required
+            @global
             activationPath:string = '/activation/'
 
         }

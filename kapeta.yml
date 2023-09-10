@@ -14,7 +14,7 @@ spec:
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
-        ref: kapeta/nodejs-sample-users-service:local
+        ref: kapeta://kapeta/nodejs-sample-users-service:local
       name: User Service
       dimensions:
         height: -1
@@ -22,6 +22,12 @@ spec:
         left: 245
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
+      defaultConfiguration:
+        WebConfig:
+          instance:
+            id: b463e93c-83d5-4c89-8270-4f8a64cf130d
+          basePath: /
+          activationPath: /activation/
     - block:
         ref: kapeta://kapeta/nodejs-sample-todo-ui:local
       name: Todo UI
