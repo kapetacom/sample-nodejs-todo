@@ -334,7 +334,7 @@ spec:
             properties: null
             secret: false
             required: false
-            global: false
+            global: true
       - type: dto
         name: WebConfig
         description: Configuration for frontend urls
@@ -370,6 +370,7 @@ spec:
 
         EmailConfig {
             //Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
+            @global
             from: string = 'support@kapeta.com'
         }
 

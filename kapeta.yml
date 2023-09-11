@@ -23,9 +23,11 @@ spec:
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
       defaultConfiguration:
+        EmailConfig:
+          from: support@kapeta.com
         WebConfig:
           instance:
-            id: b463e93c-83d5-4c89-8270-4f8a64cf130d
+            id: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
           basePath: /
           activationPath: /activation/
     - block:
