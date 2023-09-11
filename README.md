@@ -4,10 +4,6 @@
 
 This is a sample plan designed to showcase a simple TODO system.
 
-## Prerequisites
-
-Before starting the plan, ensure you have the User Service configured and set to use the "Web Gateway" instance for links in emails.
-
 ## Email Simulation with gosmtpd
 
 When running locally, this system uses gosmtpd to simulate email sending. gosmtpd doesn't actually send any emails but provides a web interface where you can view the emails that would have been sent.
