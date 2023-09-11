@@ -1,8 +1,13 @@
 #!/bin/bash
 
+# Function to get the port of the most recently started container
+get_port() {
+  docker ps --format '{{.CreatedAt}} {{.ID}} {{.Image}} {{.Ports}}' | grep gosmtpd | sort -r | head -n 1 | awk '{ for(i=4; i<=NF; i++) print $i }' | grep '8000/tcp' | awk -F':' '{print $2}' | awk -F'->' '{print $1}'
+}
+
 # Function to open URL on Linux
 open_linux() {
-  PORT=$(docker ps --format '{{.ID}} {{.Image}} {{.Ports}}' | grep gosmtpd | awk '{ for(i=2; i<=NF; i++) print $i }' | grep '8000/tcp' | awk -F':' '{print $2}' | awk -F'->' '{print $1}')
+  PORT=$(get_port)
   if [ ! -z "$PORT" ]; then
     xdg-open "http://localhost:$PORT/inbox"
   fi
@@ -10,7 +15,7 @@ open_linux() {
 
 # Function to open URL on macOS
 open_mac() {
-  PORT=$(docker ps --format '{{.ID}} {{.Image}} {{.Ports}}' | grep gosmtpd | awk '{ for(i=2; i<=NF; i++) print $i }' | grep '8000/tcp' | awk -F':' '{print $2}' | awk -F'->' '{print $1}')
+  PORT=$(get_port)
   if [ ! -z "$PORT" ]; then
     open "http://localhost:$PORT/inbox"
   fi
@@ -18,7 +23,7 @@ open_mac() {
 
 # Function to open URL on Windows
 open_windows() {
-  PORT=$(docker ps --format "{{.ID}} {{.Image}} {{.Ports}}" | findstr "gosmtpd" | awk "{ for(i=2; i<=NF; i++) print $i }" | findstr "8000/tcp" | awk -F':' "{print $2}" | awk -F'->' "{print $1}")
+  PORT=$(get_port)
   if [ ! -z "$PORT" ]; then
     start "http://localhost:$PORT/inbox"
   fi
