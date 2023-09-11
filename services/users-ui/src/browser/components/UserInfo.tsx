@@ -1,7 +1,7 @@
 import React from 'react';
 import { getCurrentSession } from '../auth/auth';
 import { Box, FormControl, Input, InputAdornment, InputLabel, Paper, Stack, Typography } from '@mui/material';
-import { AccountCircle } from '@mui/icons-material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export const UserInfo = () => {
     const session = getCurrentSession();
@@ -21,7 +21,7 @@ export const UserInfo = () => {
                         id="name"
                         startAdornment={
                             <InputAdornment position="start">
-                                <AccountCircle />
+                                <AccountCircleIcon />
                             </InputAdornment>
                         }
                         disabled
