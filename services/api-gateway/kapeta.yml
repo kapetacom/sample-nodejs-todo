@@ -2,6 +2,7 @@ kind: kapeta/block-type-gateway-http:2.0.1
 metadata:
   name: kapeta/nodejs-sample-api-gateway
   title: API Gateway
+  visibility: public
 spec:
   entities:
     types:
