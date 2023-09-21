@@ -1,4 +1,4 @@
-kind: kapeta/block-type-gateway-http:2.0.1
+kind: kapeta/block-type-gateway-http:2.0.2
 metadata:
   name: kapeta/nodejs-sample-api-gateway
   title: API Gateway
@@ -179,7 +179,7 @@ spec:
         	name: string
         }
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.8
+    - kind: kapeta/resource-type-rest-client:1.0.9
       metadata:
         name: users
       spec:
@@ -258,7 +258,7 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
-    - kind: kapeta/resource-type-rest-client:1.0.8
+    - kind: kapeta/resource-type-rest-client:1.0.9
       metadata:
         name: tasks
       spec:
