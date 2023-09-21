@@ -2,6 +2,8 @@ kind: core/plan
 metadata:
   name: kapeta/sample-nodejs-plan
   title: NodeJS Sample
+  description: A sample plan for NodeJS
+  visibility: public
 spec:
   blocks:
     - block:
