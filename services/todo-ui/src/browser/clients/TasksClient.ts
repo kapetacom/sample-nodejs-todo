@@ -16,18 +16,23 @@ export class TasksClient {
      * Get all tasks for user
      * HTTP: GET /api/tasks/{userId}
      */
-    getTasks(userId: string): Promise<Task[]> {
-        return this.client.execute("GET", "/tasks/{userId}", [
+    async getTasks(userId: string): Promise<Task[] | null> {
+        const result = await this.client.execute("GET", "/tasks/{userId}", [
             { name: "userId", value: userId, transport: "PATH" },
         ]);
+
+        if (result === null) {
+            return null;
+        }
+        return result as Task[];
     }
 
     /**
      * Add task for user
      * HTTP: POST /api/tasks/{userId}/{id}
      */
-    addTask(userId: string, id: string, task: Task): Promise<void> {
-        return this.client.execute("POST", "/tasks/{userId}/{id}", [
+    async addTask(userId: string, id: string, task: Task): Promise<void> {
+        await this.client.execute("POST", "/tasks/{userId}/{id}", [
             { name: "userId", value: userId, transport: "PATH" },
             { name: "id", value: id, transport: "PATH" },
             { name: "task", value: task, transport: "BODY" },
@@ -38,8 +43,8 @@ export class TasksClient {
      * Mark task as done
      * HTTP: POST /api/tasks/{userId}/{id}/done
      */
-    markAsDone(userId: string, id: string): Promise<void> {
-        return this.client.execute("POST", "/tasks/{userId}/{id}/done", [
+    async markAsDone(userId: string, id: string): Promise<void> {
+        await this.client.execute("POST", "/tasks/{userId}/{id}/done", [
             { name: "userId", value: userId, transport: "PATH" },
             { name: "id", value: id, transport: "PATH" },
         ]);
@@ -49,8 +54,8 @@ export class TasksClient {
      * Mark task as undone
      * HTTP: POST /api/tasks/{userId}/{id}/undone
      */
-    markAsUndone(userId: string, id: string): Promise<void> {
-        return this.client.execute("POST", "/tasks/{userId}/{id}/undone", [
+    async markAsUndone(userId: string, id: string): Promise<void> {
+        await this.client.execute("POST", "/tasks/{userId}/{id}/undone", [
             { name: "userId", value: userId, transport: "PATH" },
             { name: "id", value: id, transport: "PATH" },
         ]);
@@ -60,8 +65,8 @@ export class TasksClient {
      * Delete task
      * HTTP: DELETE /api/tasks/{userId}/{id}
      */
-    removeTask(userId: string, id: string): Promise<void> {
-        return this.client.execute("DELETE", "/tasks/{userId}/{id}", [
+    async removeTask(userId: string, id: string): Promise<void> {
+        await this.client.execute("DELETE", "/tasks/{userId}/{id}", [
             { name: "userId", value: userId, transport: "PATH" },
             { name: "id", value: id, transport: "PATH" },
         ]);
@@ -71,8 +76,8 @@ export class TasksClient {
      * Delete all tasks for user
      * HTTP: DELETE /api/tasks/{userId}
      */
-    removeTasks(userId: string): Promise<void> {
-        return this.client.execute("DELETE", "/tasks/{userId}", [
+    async removeTasks(userId: string): Promise<void> {
+        await this.client.execute("DELETE", "/tasks/{userId}", [
             { name: "userId", value: userId, transport: "PATH" },
         ]);
     }
