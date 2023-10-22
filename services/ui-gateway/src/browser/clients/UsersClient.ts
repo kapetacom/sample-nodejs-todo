@@ -20,8 +20,8 @@ export class UsersClient {
      * Register new user
      * HTTP: POST /api/register
      */
-    registerUser(user: UserRegistration): Promise<void> {
-        return this.client.execute("POST", "/register", [
+    async registerUser(user: UserRegistration): Promise<void> {
+        await this.client.execute("POST", "/register", [
             { name: "user", value: user, transport: "BODY" },
         ]);
     }
@@ -30,8 +30,8 @@ export class UsersClient {
      * Activate user registration
      * HTTP: POST /api/activate
      */
-    activateUser(user: UserActivation): Promise<void> {
-        return this.client.execute("POST", "/activate", [
+    async activateUser(user: UserActivation): Promise<void> {
+        await this.client.execute("POST", "/activate", [
             { name: "user", value: user, transport: "BODY" },
         ]);
     }
@@ -40,18 +40,25 @@ export class UsersClient {
      * Authenticate user
      * HTTP: POST /api/authenticate
      */
-    authenticationUser(user: UserAuthentication): Promise<UserSession> {
-        return this.client.execute("POST", "/authenticate", [
+    async authenticationUser(
+        user: UserAuthentication
+    ): Promise<UserSession | null> {
+        const result = await this.client.execute("POST", "/authenticate", [
             { name: "user", value: user, transport: "BODY" },
         ]);
+
+        if (result === null) {
+            return null;
+        }
+        return result as UserSession;
     }
 
     /**
      * Reset password for user
      * HTTP: POST /api/reset_password
      */
-    resetPassword(email: string): Promise<void> {
-        return this.client.execute("POST", "/reset_password", [
+    async resetPassword(email: string): Promise<void> {
+        await this.client.execute("POST", "/reset_password", [
             { name: "email", value: email, transport: "QUERY" },
         ]);
     }
@@ -60,9 +67,14 @@ export class UsersClient {
      * Get user by id
      * HTTP: GET /api/users/{id}
      */
-    getUser(id: string): Promise<User> {
-        return this.client.execute("GET", "/users/{id}", [
+    async getUser(id: string): Promise<User | null> {
+        const result = await this.client.execute("GET", "/users/{id}", [
             { name: "id", value: id, transport: "PATH" },
         ]);
+
+        if (result === null) {
+            return null;
+        }
+        return result as User;
     }
 }
