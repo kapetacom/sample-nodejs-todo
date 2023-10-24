@@ -10,7 +10,7 @@ When running locally, this system uses gosmtpd to simulate email sending. gosmtp
 
 ### Accessing the gosmtpd Web Interface
 
-Run the following command to open the gosmtpd web interface:
+Run the following command in the root of this repository to open the gosmtpd web interface:
 
 ```bash
 sh open-gosmtpd-inbox.sh
