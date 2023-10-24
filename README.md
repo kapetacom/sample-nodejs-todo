@@ -20,7 +20,7 @@ A browser window will appear, displaying the web interface. Any emails sent by t
 
 ## Publishing the Plan
 
-To publish the plan, run the following command from the root of the plan:
+To publish the plan, run the following command int the root of where you've cloned this repostiory:
 
 ```bash
 kap registry push
