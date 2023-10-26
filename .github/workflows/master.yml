@@ -1,0 +1,58 @@
+name: Main build
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main, master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  push_to_Docker_Hub:
+      # The type of runner that the job will run on
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Docker meta
+          id: meta
+          uses: docker/metadata-action@v4
+          with:
+            images: blockware/web-blockware-console
+            flavor: latest=true
+            tags: |
+              type=semver,pattern={{version}}
+              type=sha,format=long,prefix=
+
+        - name: Login to image repository
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: Build and push
+          uses: docker/build-push-action@v3
+          with:
+            context: .
+            file: Dockerfile
+            push: true
+            tags: ${{ steps.meta.outputs.tags }}
+            labels: ${{ steps.meta.outputs.labels }}
+            network: host
+
+        - name: checkout action
+          uses: actions/checkout@v3
+          with:
+            repository: blockwarecom/core-deploy-action
+            path: ./github-action/core-deploy-action
+            token: ${{ secrets.GHA_TOKEN }}
+
+        - name: deploy to blockware cloud
+          uses: ./github-action/core-deploy-action
+          env:
+            GITHUB_TOKEN: ${{ secrets.GHA_TOKEN }}
+          with:
+            image: blockware/web-blockware-console
+            tag: ${{ github.sha }}
+
