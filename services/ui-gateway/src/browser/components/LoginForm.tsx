@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useCallback, useMemo, useState } from 'react';
 import { UsersClient } from '../clients/UsersClient';
 import { useAuth } from '../auth/auth';

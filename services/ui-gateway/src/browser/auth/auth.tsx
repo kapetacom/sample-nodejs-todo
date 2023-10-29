@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { PropsWithChildren, useCallback, useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserSession } from '../../entities/UserSession';

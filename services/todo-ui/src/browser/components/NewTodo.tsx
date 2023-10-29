@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import { Box, TextField, InputAdornment } from '@mui/material';
 import React, { useRef } from 'react';
 import { TasksClient } from '../clients/TasksClient';

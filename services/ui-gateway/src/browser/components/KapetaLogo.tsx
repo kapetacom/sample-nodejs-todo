@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 
 export const KapetaLogo = (props: { width: number; height: number }) => (

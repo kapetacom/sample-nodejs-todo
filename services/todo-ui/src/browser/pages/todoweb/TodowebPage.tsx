@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React, { useMemo, useState } from 'react';
 import { getCurrentSession } from '../../auth/auth';
 import { useAsyncRetry } from 'react-use';

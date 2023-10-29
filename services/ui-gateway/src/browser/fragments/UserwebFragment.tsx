@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 import { FragmentFrame, FragmentProps } from '@kapeta/sdk-web-microfrontend-frame';
 import { Box } from '@mui/material';

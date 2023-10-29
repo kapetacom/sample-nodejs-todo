@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import { EmailClient, SendMailOptions } from '@kapeta/sdk-smtp-client';
 import Config from '@kapeta/sdk-config';
 

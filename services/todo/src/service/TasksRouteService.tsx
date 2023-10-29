@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import { ITasksRouteService } from '../rest/ITasksRouteService';
 import { Task } from '../entities/Task';
 import { TasksDB } from '../data/TasksDB';
