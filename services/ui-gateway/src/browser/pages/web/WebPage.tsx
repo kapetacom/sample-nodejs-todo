@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import { LoginForm } from '../../components/LoginForm';

@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import { Box, Typography, Button } from '@mui/material';
 import React from 'react';
 import { pluralize } from '../utils/utils';

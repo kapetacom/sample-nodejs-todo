@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import Path from 'path';
 import { Server } from '@kapeta/sdk-server';
 const server = new Server('kapeta/nodejs-sample-user-ui', Path.resolve(__dirname, '../..'));

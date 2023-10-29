@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import React from 'react';
 import { getCurrentSession } from '../auth/auth';
 import { Box, FormControl, Input, InputAdornment, InputLabel, Paper, Stack, Typography } from '@mui/material';

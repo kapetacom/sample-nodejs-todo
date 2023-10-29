@@ -1,3 +1,8 @@
+/**
+ * Copyright 2023 Kapeta Inc.
+ * SPDX-License-Identifier: MIT
+ */
+
 import { createRoot } from 'react-dom/client';
 import React from 'react';
 import { TodowebPage } from './TodowebPage';
