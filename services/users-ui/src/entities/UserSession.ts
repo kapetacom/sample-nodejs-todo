@@ -3,7 +3,5 @@
 //
 
 export interface UserSession {
-    id: string;
-    userId: string;
-    name: string;
+    token: string;
 }

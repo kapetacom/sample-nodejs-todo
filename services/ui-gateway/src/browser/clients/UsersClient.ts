@@ -18,7 +18,7 @@ export class UsersClient {
 
     /**
      * Register new user
-     * HTTP: POST /api/register
+     * HTTP: POST /api/rest/users/register
      */
     async registerUser(user: UserRegistration): Promise<void> {
         await this.client.execute("POST", "/register", [
@@ -28,7 +28,7 @@ export class UsersClient {
 
     /**
      * Activate user registration
-     * HTTP: POST /api/activate
+     * HTTP: POST /api/rest/users/activate
      */
     async activateUser(user: UserActivation): Promise<void> {
         await this.client.execute("POST", "/activate", [
@@ -38,7 +38,7 @@ export class UsersClient {
 
     /**
      * Authenticate user
-     * HTTP: POST /api/authenticate
+     * HTTP: POST /api/rest/users/authenticate
      */
     async authenticationUser(
         user: UserAuthentication
@@ -55,7 +55,7 @@ export class UsersClient {
 
     /**
      * Reset password for user
-     * HTTP: POST /api/reset_password
+     * HTTP: POST /api/rest/users/reset_password
      */
     async resetPassword(email: string): Promise<void> {
         await this.client.execute("POST", "/reset_password", [
@@ -65,7 +65,7 @@ export class UsersClient {
 
     /**
      * Get user by id
-     * HTTP: GET /api/users/{id}
+     * HTTP: GET /api/rest/users/users/{id}
      */
     async getUser(id: string): Promise<User | null> {
         const result = await this.client.execute("GET", "/users/{id}", [

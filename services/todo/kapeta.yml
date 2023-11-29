@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.1.14
+    kind: kapeta/language-target-nodejs:local
   entities:
     types:
       - type: dto
@@ -65,7 +65,7 @@ spec:
         	email: string
         }
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.12
+    - kind: kapeta://kapeta/resource-type-rest-client:1.0.14
       metadata:
         name: users
       spec:
@@ -94,8 +94,15 @@ spec:
       spec:
         port:
           type: mongodb
+    - kind: kapeta/resource-type-auth-jwt-consumer:local
+      metadata:
+        name: auth
+      spec:
+        port:
+          name: http
+          type: http
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.12
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: tasks
       spec:
@@ -172,7 +179,7 @@ spec:
               type: void
             method: DELETE
             path: /tasks/{userId}
-            description: "Delete all tasks for user "
+            description: 'Delete all tasks for user '
             arguments:
               userId:
                 type: string

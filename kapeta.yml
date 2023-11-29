@@ -11,8 +11,8 @@ spec:
       name: Todo Service
       dimensions:
         height: -1
-        top: 486
-        left: 532
+        top: 184
+        left: 679
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:
@@ -20,8 +20,8 @@ spec:
       name: User Service
       dimensions:
         height: -1
-        top: 151
-        left: 245
+        top: 28.66666666666667
+        left: 252
         width: 150
       id: 929f6297-cd04-904b-6bff-04a72eb2a88f
       defaultConfiguration:
@@ -37,8 +37,8 @@ spec:
       name: Todo UI
       dimensions:
         height: -1
-        top: 485.78125
-        left: 1101
+        top: 340.78125
+        left: 1121.3333333333333
         width: 150
       id: da76710b-ccaa-fe32-cc9f-be5f559ed203
     - block:
@@ -46,8 +46,8 @@ spec:
       name: User UI
       dimensions:
         height: -1
-        top: 710.78125
-        left: 256
+        top: 569.1145833333334
+        left: 353.66666666666674
         width: 150
       id: 6c895976-87f0-495e-4e5c-953bdc81a442
     - block:
@@ -55,8 +55,8 @@ spec:
       name: Todo App
       dimensions:
         height: -1
-        top: 358.78125
-        left: 1531
+        top: 244.11458333333331
+        left: 1503
         width: 150
       id: a377f555-8638-37cf-9e0e-34bcd8c1a84a
     - block:
@@ -64,8 +64,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 902
-        top: 271
+        left: 1112.3333333333335
+        top: 47.66666666666666
       id: b463e93c-83d5-4c89-8270-4f8a64cf130d
       name: API Gateway
     - block:
@@ -73,8 +73,8 @@ spec:
       dimensions:
         height: -1
         width: 150
-        left: 1611
-        top: 642
+        left: 1551.6666666666665
+        top: 615
       id: a9317f6b-dfc0-45c3-8f70-ad69162e0ced
       name: Web Gateway
   connections:
@@ -243,3 +243,12 @@ spec:
         removeTasks:
           targetId: removeTasks
           type: EXACT
+    - provider:
+        resourceName: auth
+        blockId: 929f6297-cd04-904b-6bff-04a72eb2a88f
+      consumer:
+        resourceName: auth
+        blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
+      port:
+        name: jwt-auth
+        type: jwt-auth

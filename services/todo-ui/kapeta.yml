@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.40
+    kind: kapeta/language-target-react-ts:local
   entities:
     types:
       - type: dto
@@ -51,7 +51,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta/resource-type-rest-client:1.0.12
+    - kind: kapeta://kapeta/resource-type-rest-client:1.0.14
       metadata:
         name: tasks
       spec:

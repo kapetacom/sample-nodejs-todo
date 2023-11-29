@@ -2,14 +2,10 @@
  * Copyright 2023 Kapeta Inc.
  * SPDX-License-Identifier: MIT
  */
+import {UserSession} from "../../entities/UserSession";
 
 const SESSION_KEY = 'SESSION';
 
-interface UserSession {
-    id: string;
-    userId: string;
-    name: string;
-}
 
 export function getCurrentSession() {
     const json = localStorage.getItem(SESSION_KEY);

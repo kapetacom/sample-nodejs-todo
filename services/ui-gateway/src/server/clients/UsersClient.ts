@@ -21,7 +21,7 @@ class UsersClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /register
+     * HTTP: POST /api/rest/users/register
      */
     async registerUser(user: UserRegistration): Promise<void> {
         await this.client.execute("POST", "/register", [
@@ -35,7 +35,7 @@ class UsersClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /activate
+     * HTTP: POST /api/rest/users/activate
      */
     async activateUser(user: UserActivation): Promise<void> {
         await this.client.execute("POST", "/activate", [
@@ -49,7 +49,7 @@ class UsersClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /authenticate
+     * HTTP: POST /api/rest/users/authenticate
      */
     async authenticationUser(
         user: UserAuthentication
@@ -70,7 +70,7 @@ class UsersClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /reset_password
+     * HTTP: POST /api/rest/users/reset_password
      */
     async resetPassword(email: string): Promise<void> {
         await this.client.execute("POST", "/reset_password", [
@@ -84,7 +84,7 @@ class UsersClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: GET /users/{id}
+     * HTTP: GET /api/rest/users/users/{id}
      */
     async getUser(id: string): Promise<User | null> {
         const result = await this.client.execute("GET", "/users/{id}", [

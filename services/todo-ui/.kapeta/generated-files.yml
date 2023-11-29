@@ -9,31 +9,37 @@ assets:
     mode: create-only
     checksum: d1d5a15faf5fbd84a3253581054cf5e5cdb24fd4
     permissions: "644"
-    modified: 1698599612399
+    modified: 1701291759910
     merged: false
   - filename: src/server/.eslintrc.cjs
     mode: create-only
     checksum: 41d46986d3b09a3a0677d5298dd6d8770ec7b5d8
     permissions: "644"
-    modified: 1698599612400
+    modified: 1701291759910
+    merged: false
+  - filename: .npmignore
+    mode: create-only
+    checksum: fbfdda9fb81e9654d860cdf1bd2632ee8fb69a78
+    permissions: "644"
+    modified: 1701291759911
     merged: false
   - filename: .prettierignore
     mode: create-only
     checksum: 3a16e00a5f60f9685427c8aa61dbb5dbe98c4cf6
     permissions: "644"
-    modified: 1698599612400
+    modified: 1701291759911
     merged: false
   - filename: Dockerfile
     mode: create-only
     checksum: 206df6dc427d98f5aee1288a5793caac7db1cf2a
     permissions: "644"
-    modified: 1698599612401
+    modified: 1701291759912
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
     checksum: 043adb0153540a6b13328fd7be881b68a28e439a
     permissions: "644"
-    modified: 1698599612401
+    modified: 1701291759912
     merged: false
   - filename: src/server/index.ts
     mode: create-only
@@ -43,75 +49,141 @@ assets:
     merged: false
   - filename: package.json
     mode: merge
-    checksum: 3de10a078c0e00e429beae29663d80f4e2276bfb
+    checksum: 2304e8981331e4aab8174068679813fad66ef524
     permissions: "644"
-    modified: 1698599612402
+    modified: 1701291759913
     merged: true
+  - filename: scripts/start-dev.cmd
+    mode: write-always
+    checksum: f5efe6c80b73c4400e29aec36cca020ad46cef53
+    permissions: "644"
+    modified: 1701291759913
+    merged: false
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: c7f0e8dd6bad85e9123e2e9d184364ce77abdc54
     permissions: "755"
-    modified: 1698599612403
+    modified: 1701291759913
+    merged: false
+  - filename: scripts/start-prod.cmd
+    mode: write-always
+    checksum: 06ff0f754b28ebc523ef68e34fe6a207ac737c88
+    permissions: "644"
+    modified: 1701291759913
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: ff7c972647cef628b4140248f754144e097a69ac
     permissions: "755"
-    modified: 1698599612403
+    modified: 1701291759913
     merged: false
   - filename: tsconfig.json
     mode: create-only
     checksum: 59544368f1d301491e153f4115b31b0dcbe51fe2
     permissions: "644"
-    modified: 1698599612404
+    modified: 1701291759914
     merged: false
   - filename: src/server/tsconfig.json
     mode: create-only
     checksum: 8dab5346a1d59b82942a9ee02d14f7fb0940229c
     permissions: "644"
-    modified: 1698599612404
+    modified: 1701291759914
     merged: false
   - filename: webpack.development.config.js
     mode: create-only
-    checksum: 57ead9c60dc0b5a5c6b715931c77baff8ae3d37c
+    checksum: df22d72f3a39c98007ba77786dcf2e5b895047bc
     permissions: "644"
-    modified: 1698599612404
+    modified: 1701291759919
     merged: false
   - filename: webpack.pages.js
     mode: write-always
     checksum: 75086a1873efb6cab3c1716736150ee807fdd0a2
     permissions: "644"
-    modified: 1698599612404
+    modified: 1701291759920
     merged: false
   - filename: webpack.production.config.js
     mode: create-only
     checksum: df4de06c3f50970cbf95e6f906dcfaf2195e8365
     permissions: "644"
-    modified: 1698599612405
+    modified: 1701291759920
     merged: false
   - filename: src/entities/Task.ts
     mode: write-always
     checksum: 66009ec2259d1601cc14dc95ce0c40461c55a8bc
     permissions: "644"
-    modified: 1698599612405
+    modified: 1701291759920
     merged: false
   - filename: src/browser/clients/TasksClient.ts
     mode: write-always
-    checksum: 3a34514a4db9ae30dae44e4b211cce99b6a1c958
+    checksum: 71cdd6693a5066e4975e13afa52519fd1caa60c2
     permissions: "644"
-    modified: 1698599612405
+    modified: 1701291759921
+    merged: false
+  - filename: src/mocks/handlers/tasks/getTasksHandler.ts
+    mode: create-only
+    checksum: 4291fbb0bf3e2a6be814d5663a1a4ce9a1dde6d9
+    permissions: "644"
+    modified: 1701291759921
+    merged: false
+  - filename: src/mocks/handlers/tasks/addTaskHandler.ts
+    mode: create-only
+    checksum: 549996ea57619d4216d50cb8f2603329b98567a2
+    permissions: "644"
+    modified: 1701291759921
+    merged: false
+  - filename: src/mocks/handlers/tasks/markAsDoneHandler.ts
+    mode: create-only
+    checksum: e0c670f4d8bfcdf32f494e7f81a4ec8c78b62f91
+    permissions: "644"
+    modified: 1701291759921
+    merged: false
+  - filename: src/mocks/handlers/tasks/markAsUndoneHandler.ts
+    mode: create-only
+    checksum: a93416bddf5297891699efcab5c55ac24bd04af3
+    permissions: "644"
+    modified: 1701291759922
+    merged: false
+  - filename: src/mocks/handlers/tasks/removeTaskHandler.ts
+    mode: create-only
+    checksum: 9f1d6da976056aef4cd75f2913c8563bc4cbcf2f
+    permissions: "644"
+    modified: 1701291759922
+    merged: false
+  - filename: src/mocks/handlers/tasks/removeTasksHandler.ts
+    mode: create-only
+    checksum: 6a0057885fcbef1102f1e91ea7dee872ba179cc7
+    permissions: "644"
+    modified: 1701291759922
+    merged: false
+  - filename: src/mocks/browser.ts
+    mode: create-only
+    checksum: 4b408160e382f5f0f93ca9593d0fd73f66a71481
+    permissions: "644"
+    modified: 1701291759922
+    merged: false
+  - filename: src/mocks/enableApiMocking.ts
+    mode: create-only
+    checksum: 481873c2549c954d1ffaaac2d58f7e92e7172140
+    permissions: "644"
+    modified: 1701291759923
+    merged: false
+  - filename: src/mocks/handlers.ts
+    mode: write-always
+    checksum: 10cd732a6e1ef44b4416f9a9b55ed41dd430ddd0
+    permissions: "644"
+    modified: 1701291759923
     merged: false
   - filename: src/server/proxies/rest/TasksProxyRoute.ts
     mode: write-always
     checksum: 5c96fb0751f9e3c6295b2f749885c63e5d23de96
     permissions: "644"
-    modified: 1698599612405
+    modified: 1701291759924
     merged: false
   - filename: src/server/clients/TasksClient.ts
     mode: write-always
-    checksum: eba1bca535e55de0245bb0e638e0fb3ccdfd6e98
+    checksum: 62ce1dca5a2d636e139f87f31bc792d1786a0dba
     permissions: "644"
-    modified: 1698599612405
+    modified: 1701291759924
     merged: false
   - filename: src/browser/pages/todoweb/TodowebPage.tsx
     mode: create-only

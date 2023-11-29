@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.1.14
+    kind: kapeta/language-target-nodejs:local
   entities:
     types:
       - type: dto
@@ -94,19 +94,7 @@ spec:
         name: UserSession
         description: null
         properties:
-          id:
-            type: string
-            description: null
-            properties: null
-            secret: false
-            required: false
-          userId:
-            type: string
-            description: null
-            properties: null
-            secret: false
-            required: false
-          name:
+          token:
             type: string
             description: null
             properties: null
@@ -195,9 +183,7 @@ spec:
         }
 
         UserSession {
-        	id: string
-        	userId: string
-        	name: string
+        	token: string
         }
 
         User {
@@ -228,7 +214,7 @@ spec:
         port:
           type: smtp
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.12
+    - kind: generated://kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: users
       spec:
@@ -321,8 +307,28 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
+    - kind: kapeta/resource-type-auth-jwt-provider:local
+      metadata:
+        name: auth
+      spec:
+        port:
+          name: jwt-auth
+          type: jwt-auth
   configuration:
     types:
+      - type: dto
+        name: JWT
+        description: JWT Provider configuration
+        properties:
+          issuer:
+            type: string
+            defaultValue: "'https://auth.todo-sample.kapeta.com'"
+          audience:
+            type: string
+            defaultValue: "'https://todo-sample.kapeta.com'"
+          file:
+            type: string
+            defaultValue: "'jwks.json'"
       - type: dto
         name: EmailConfig
         description: Configuration for e-mails
@@ -330,8 +336,7 @@ spec:
           from:
             type: string
             defaultValue: "'support@kapeta.com'"
-            description: Sender for e-mails. Note that you should be allowed to send e-mails
-              from this domain and user
+            description: Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
             properties: null
             secret: false
             required: false
@@ -358,8 +363,7 @@ spec:
           activationPath:
             type: string
             defaultValue: "'/activation/'"
-            description: " Activation url - used for links in e-mails. Activation ID is
-              postfixed."
+            description: ' Activation url - used for links in e-mails. Activation ID is postfixed.'
             properties: null
             secret: false
             required: true
@@ -368,16 +372,16 @@ spec:
       type: kapeta-dsl
       value: >-
         //Configuration for e-mails
-
+        
         EmailConfig {
             //Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
             @global
             from: string = 'support@kapeta.com'
         }
-
-
+        
+        
         //Configuration for frontend urls
-
+        
         WebConfig {
             //Web instance - used for links in e-mails
             @required
@@ -388,13 +392,26 @@ spec:
             @required
             @global
             basePath:string = '/'
-
+        
             // Activation url - used for links in e-mails. Activation ID is postfixed.
             @required
             @global
             activationPath:string = '/activation/'
-
+        
         }
+        
+        JWT {
+            @required
+            issuer:string = 'https://auth.todo-sample.kapeta.com'
+        
+            @required
+            audience:string = 'https://todo-sample.kapeta.com'
+        
+            @required
+            filename:string = 'jwks.json'
+        }
+
+
   icon:
     type: url
     value: https://storage.googleapis.com/asset-attachments/kapeta/nodejs-sample-users-service/icon.svg?v=1690057420502
