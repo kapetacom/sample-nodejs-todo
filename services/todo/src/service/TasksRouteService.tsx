@@ -23,6 +23,11 @@ export class TasksRouteService implements TasksRoutes {
         if (!req.auth) {
             throw new RESTError('Tasks needs authenticated request', 401);
         }
+
+        if (req.auth.payload.sub !== req.params.userId) {
+            throw new RESTError(`Access to user ${req.params.userId} not allowed`, 401);
+        }
+
         const user = await this.users.getUserById(req.params.userId);
 
         if (!user) {

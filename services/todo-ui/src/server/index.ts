@@ -6,7 +6,7 @@
 import Path from 'path';
 import { Server } from '@kapeta/sdk-server';
 const server = new Server('kapeta/nodejs-sample-todo-ui', Path.resolve(__dirname, '../..'));
-import { TasksProxyRoute } from './proxies/rest/TasksProxyRoute';
+import { TasksProxyRoute } from './.generated/proxies/rest/TasksProxyRoute';
 
 const devMode = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'development';
 

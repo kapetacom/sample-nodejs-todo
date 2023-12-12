@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useCallback, useMemo, useState } from 'react';
-import { UsersClient } from '../clients/UsersClient';
+import React, { useCallback, useState } from 'react';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import {useUsersClient} from "../auth/auth";
 
 export const SignupForm = () => {
     const [formState, setFormState] = useState<'pending' | 'loading' | 'submitted'>('pending');
@@ -17,7 +17,7 @@ export const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
 
-    const usersClient = useMemo(() => new UsersClient(), []);
+    const usersClient = useUsersClient();
 
     const doSignUp = useCallback(async () => {
         setFormState('loading');

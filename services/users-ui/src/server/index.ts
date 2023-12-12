@@ -6,7 +6,7 @@
 import Path from 'path';
 import { Server } from '@kapeta/sdk-server';
 const server = new Server('kapeta/nodejs-sample-user-ui', Path.resolve(__dirname, '../..'));
-import { UsersProxyRoute } from './proxies/rest/UsersProxyRoute';
+import { UsersProxyRoute } from './.generated/proxies/rest/UsersProxyRoute';
 
 const devMode = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'development';
 

@@ -5,7 +5,7 @@
 
 import { Box, TextField, InputAdornment } from '@mui/material';
 import React, { useRef } from 'react';
-import { TasksClient } from '../clients/TasksClient';
+import { TasksClient } from '../.generated/clients/TasksClient';
 import { UserSession } from '../auth/auth';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 

@@ -1,7 +1,3 @@
-//
-// GENERATED SOURCE - DO NOT EDIT
-//
-
 import { registerUserHandler } from "./handlers/users/registerUserHandler";
 import { activateUserHandler } from "./handlers/users/activateUserHandler";
 import { authenticationUserHandler } from "./handlers/users/authenticationUserHandler";

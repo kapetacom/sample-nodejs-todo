@@ -3,9 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { PropsWithChildren, useCallback, useEffect } from 'react';
+import React, { PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { UserSession } from '../../entities/UserSession';
+import { UserSession } from '../../.generated/entities/UserSession';
+import {UsersClient} from "../.generated/clients/UsersClient";
 
 const SESSION_KEY = 'SESSION';
 function getCurrentSession() {
@@ -14,6 +15,14 @@ function getCurrentSession() {
         return null;
     }
     return JSON.parse(json) as UserSession;
+}
+
+
+export function useUsersClient() {
+    const session = getCurrentSession();
+    return useMemo(() => {
+        return new UsersClient().withBearerToken(session?.token);
+    }, [session?.token]);
 }
 
 function setCurrentSession(token: UserSession) {

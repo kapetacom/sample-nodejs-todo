@@ -13,25 +13,73 @@ spec:
         description: null
         properties:
           id:
-            description: null
             type: string
-            properties: null
+            description: null
+            secret: false
+            required: false
+            global: false
           userId:
-            description: null
             type: string
-            properties: null
+            description: null
+            secret: false
+            required: false
+            global: false
           title:
-            description: null
             type: string
-            properties: null
+            description: null
+            secret: false
+            required: false
+            global: false
           description:
-            description: null
             type: string
-            properties: null
-          done:
             description: null
+            secret: false
+            required: false
+            global: false
+          done:
             type: boolean
-            properties: null
+            description: null
+            secret: false
+            required: false
+            global: false
+      - type: dto
+        name: UserSession
+        description: null
+        properties:
+          token:
+            type: string
+            description: null
+            secret: false
+            required: false
+            global: false
+          user:
+            ref: User
+            description: null
+            secret: false
+            required: false
+            global: false
+      - type: dto
+        name: User
+        description: null
+        properties:
+          id:
+            type: string
+            description: null
+            secret: false
+            required: false
+            global: false
+          name:
+            type: string
+            description: null
+            secret: false
+            required: false
+            global: false
+          email:
+            type: string
+            description: null
+            secret: false
+            required: false
+            global: false
     source:
       type: kapeta-dsl
       value: |-
@@ -41,6 +89,17 @@ spec:
         	title: string
         	description: string
         	done: boolean
+        }
+
+        UserSession {
+        	token: string
+        	user: User
+        }
+
+        User {
+        	id: string
+        	name: string
+        	email: string
         }
   providers:
     - kind: kapeta/resource-type-web-page:0.0.12

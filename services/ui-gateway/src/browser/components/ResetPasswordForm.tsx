@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useCallback, useMemo, useState } from 'react';
-import { UsersClient } from '../clients/UsersClient';
+import React, { useCallback, useState } from 'react';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import {useUsersClient} from "../auth/auth";
 
 export const ResetPasswordForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
 
-    const usersClient = useMemo(() => new UsersClient(), []);
+    const usersClient = useUsersClient();
 
     const doReset = useCallback(async () => {
         try {

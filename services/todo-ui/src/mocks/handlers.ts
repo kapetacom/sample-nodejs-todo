@@ -1,7 +1,3 @@
-//
-// GENERATED SOURCE - DO NOT EDIT
-//
-
 import { getTasksHandler } from "./handlers/tasks/getTasksHandler";
 import { addTaskHandler } from "./handlers/tasks/addTaskHandler";
 import { markAsDoneHandler } from "./handlers/tasks/markAsDoneHandler";

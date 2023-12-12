@@ -4,8 +4,7 @@
  */
 
 import React, { useCallback, useMemo, useState } from 'react';
-import { UsersClient } from '../clients/UsersClient';
-import { useAuth } from '../auth/auth';
+import {useAuth, useUsersClient} from '../auth/auth';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +14,7 @@ export const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const usersClient = useMemo(() => new UsersClient(), []);
+    const usersClient = useUsersClient();
     const auth = useAuth();
 
     const doLogin = useCallback(async () => {

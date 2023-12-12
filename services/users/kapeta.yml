@@ -15,15 +15,15 @@ spec:
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserActivation
         description: null
@@ -31,21 +31,21 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password2:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserAuthentication
         description: null
@@ -53,15 +53,15 @@ spec:
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: PasswordChangeRequest
         description: null
@@ -69,27 +69,27 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           oldPassword:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password2:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserSession
         description: null
@@ -97,9 +97,15 @@ spec:
           token:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
+          user:
+            ref: User
+            description: null
+            secret: false
+            required: false
+            global: false
       - type: dto
         name: User
         description: null
@@ -107,21 +113,21 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: Task
         description: null
@@ -129,33 +135,33 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           userId:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           title:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           description:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           done:
             type: boolean
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
     source:
       type: kapeta-dsl
       value: |-
@@ -184,6 +190,7 @@ spec:
 
         UserSession {
         	token: string
+        	user: User
         }
 
         User {
@@ -336,7 +343,8 @@ spec:
           from:
             type: string
             defaultValue: "'support@kapeta.com'"
-            description: Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
+            description: Sender for e-mails. Note that you should be allowed to send e-mails
+              from this domain and user
             properties: null
             secret: false
             required: false
@@ -363,7 +371,8 @@ spec:
           activationPath:
             type: string
             defaultValue: "'/activation/'"
-            description: ' Activation url - used for links in e-mails. Activation ID is postfixed.'
+            description: " Activation url - used for links in e-mails. Activation ID is
+              postfixed."
             properties: null
             secret: false
             required: true
@@ -372,16 +381,16 @@ spec:
       type: kapeta-dsl
       value: >-
         //Configuration for e-mails
-        
+
         EmailConfig {
             //Sender for e-mails. Note that you should be allowed to send e-mails from this domain and user
             @global
             from: string = 'support@kapeta.com'
         }
-        
-        
+
+
         //Configuration for frontend urls
-        
+
         WebConfig {
             //Web instance - used for links in e-mails
             @required
@@ -392,26 +401,24 @@ spec:
             @required
             @global
             basePath:string = '/'
-        
+
             // Activation url - used for links in e-mails. Activation ID is postfixed.
             @required
             @global
             activationPath:string = '/activation/'
-        
+
         }
-        
+
         JWT {
             @required
             issuer:string = 'https://auth.todo-sample.kapeta.com'
-        
+
             @required
             audience:string = 'https://todo-sample.kapeta.com'
-        
+
             @required
             filename:string = 'jwks.json'
         }
-
-
   icon:
     type: url
     value: https://storage.googleapis.com/asset-attachments/kapeta/nodejs-sample-users-service/icon.svg?v=1690057420502

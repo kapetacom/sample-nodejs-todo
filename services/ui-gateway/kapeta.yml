@@ -120,6 +120,12 @@ spec:
             secret: false
             required: false
             global: false
+          user:
+            ref: User
+            description: null
+            secret: false
+            required: false
+            global: false
       - type: dto
         name: UserRegistration
         description: null
@@ -202,6 +208,7 @@ spec:
         
         UserSession {
         	token: string
+        	user: User
         }
 
         UserRegistration {

@@ -7,7 +7,7 @@ import { Box, Typography, Button } from '@mui/material';
 import React from 'react';
 import { pluralize } from '../utils/utils';
 import { Filter } from '../pages/todoweb/TodowebPage';
-import { TasksClient } from '../clients/TasksClient';
+import { TasksClient } from '../.generated/clients/TasksClient';
 import { UserSession } from '../auth/auth';
 
 export interface TodoListActionsProps {

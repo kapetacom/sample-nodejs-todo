@@ -4,12 +4,12 @@
  */
 
 import React, { useMemo } from 'react';
-import { Task } from '../../entities/Task';
+import { Task } from '../../.generated/entities/Task';
 import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ClearIcon from '@mui/icons-material/Clear';
-import { TasksClient } from '../clients/TasksClient';
+import { TasksClient } from '../.generated/clients/TasksClient';
 import { UserSession } from '../auth/auth';
 
 export interface TodoItemProps {

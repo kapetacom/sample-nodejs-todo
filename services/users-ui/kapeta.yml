@@ -94,6 +94,12 @@ spec:
             secret: false
             required: false
             global: false
+          user:
+            ref: User
+            description: null
+            secret: false
+            required: false
+            global: false
       - type: dto
         name: PasswordChangeRequest
         description: null
@@ -150,9 +156,9 @@ spec:
         	email: string
         }
 
-
         UserSession {
         	token: string
+        	user: User
         }
 
 

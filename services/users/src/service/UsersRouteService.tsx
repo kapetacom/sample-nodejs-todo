@@ -217,6 +217,11 @@ export class UsersRouteService implements UsersRoutes {
 
         res.json({
             token,
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.name || user.email,
+            }
         });
     }
 

@@ -30,7 +30,7 @@ export const UserInfo = () => {
                             </InputAdornment>
                         }
                         disabled
-                        value={session.name}
+                        value={session.user.name}
                     />
                 </FormControl>
             </Paper>
