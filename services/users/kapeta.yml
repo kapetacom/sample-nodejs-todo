@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta/language-target-nodejs:0.1.14
+    kind: kapeta://kapeta/language-target-nodejs:0.2.1
   entities:
     types:
       - type: dto
@@ -15,15 +15,15 @@ spec:
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserActivation
         description: null
@@ -31,21 +31,21 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password2:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserAuthentication
         description: null
@@ -53,15 +53,15 @@ spec:
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: PasswordChangeRequest
         description: null
@@ -69,49 +69,43 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           oldPassword:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password2:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserSession
         description: null
         properties:
-          id:
+          token:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
-          userId:
-            type: string
+            global: false
+          user:
+            ref: User
             description: null
-            properties: null
             secret: false
             required: false
-          name:
-            type: string
-            description: null
-            properties: null
-            secret: false
-            required: false
+            global: false
       - type: dto
         name: User
         description: null
@@ -119,21 +113,21 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: Task
         description: null
@@ -141,33 +135,33 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           userId:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           title:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           description:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           done:
             type: boolean
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
     source:
       type: kapeta-dsl
       value: |-
@@ -195,9 +189,8 @@ spec:
         }
 
         UserSession {
-        	id: string
-        	userId: string
-        	name: string
+        	token: string
+        	user: User
         }
 
         User {
@@ -228,7 +221,7 @@ spec:
         port:
           type: smtp
   providers:
-    - kind: kapeta/resource-type-rest-api:1.0.12
+    - kind: generated://kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: users
       spec:
@@ -321,8 +314,28 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
+    - kind: kapeta://kapeta/resource-type-auth-jwt-provider:0.0.1
+      metadata:
+        name: auth
+      spec:
+        port:
+          name: jwt-auth
+          type: jwt-auth
   configuration:
     types:
+      - type: dto
+        name: JWT
+        description: JWT Provider configuration
+        properties:
+          issuer:
+            type: string
+            defaultValue: "'https://auth.todo-sample.kapeta.com'"
+          audience:
+            type: string
+            defaultValue: "'https://todo-sample.kapeta.com'"
+          file:
+            type: string
+            defaultValue: "'jwks.json'"
       - type: dto
         name: EmailConfig
         description: Configuration for e-mails
@@ -394,6 +407,17 @@ spec:
             @global
             activationPath:string = '/activation/'
 
+        }
+
+        JWT {
+            @required
+            issuer:string = 'https://auth.todo-sample.kapeta.com'
+
+            @required
+            audience:string = 'https://todo-sample.kapeta.com'
+
+            @required
+            filename:string = 'jwks.json'
         }
   icon:
     type: url

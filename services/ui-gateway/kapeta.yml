@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta/language-target-react-ts:0.0.40
+    kind: kapeta://kapeta/language-target-react-ts:0.4.0
   providers:
     - kind: kapeta/resource-type-web-page:0.0.12
       metadata:
@@ -29,7 +29,7 @@ spec:
         port:
           type: web
         path: /user
-    - kind: kapeta/resource-type-rest-client:1.0.12
+    - kind: kapeta://kapeta/resource-type-rest-client:1.0.14
       metadata:
         name: users
       spec:
@@ -114,24 +114,18 @@ spec:
         name: UserSession
         description: null
         properties:
-          id:
+          token:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
-          userId:
-            type: string
+            global: false
+          user:
+            ref: User
             description: null
-            properties: null
             secret: false
             required: false
-          name:
-            type: string
-            description: null
-            properties: null
-            secret: false
-            required: false
+            global: false
       - type: dto
         name: UserRegistration
         description: null
@@ -139,15 +133,15 @@ spec:
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserActivation
         description: null
@@ -155,21 +149,21 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password2:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: UserAuthentication
         description: null
@@ -177,15 +171,15 @@ spec:
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           password:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
       - type: dto
         name: User
         description: null
@@ -193,29 +187,28 @@ spec:
           id:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           name:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
           email:
             type: string
             description: null
-            properties: null
             secret: false
             required: false
+            global: false
     source:
       type: kapeta-dsl
       value: |-
         
         UserSession {
-        	id: string
-        	userId: string
-        	name: string
+        	token: string
+        	user: User
         }
 
         UserRegistration {

@@ -7,8 +7,8 @@ import { Box, Typography, Button } from '@mui/material';
 import React from 'react';
 import { pluralize } from '../utils/utils';
 import { Filter } from '../pages/todoweb/TodowebPage';
-import { TasksClient } from '../clients/TasksClient';
-import { UserSession } from '../auth/auth';
+import { TasksClient } from '../.generated/clients/TasksClient';
+import { UserSession } from '../../.generated/entities/UserSession';
 
 export interface TodoListActionsProps {
     apiClient: TasksClient;
@@ -25,7 +25,7 @@ export const TodoListActions = (props: TodoListActionsProps) => {
 
     const deleteAllTasks = async () => {
         try {
-            await apiClient.removeTasks(session.userId);
+            await apiClient.removeTasks(session.user.id);
             onDeleteAllTasks?.();
         } catch (e) {
             console.error(e);

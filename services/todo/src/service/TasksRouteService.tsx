@@ -3,13 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ITasksRouteService } from '../rest/ITasksRouteService';
-import { Task } from '../entities/Task';
-import { TasksDB } from '../data/TasksDB';
-import { UsersClient } from '../clients/UsersClient';
 import { RESTError } from '@kapeta/sdk-rest-route';
+import { TasksRoutes } from 'generated:rest/TasksRoutes';
+import { TasksDB } from 'generated:data/TasksDB';
+import { UsersClient } from 'generated:clients/UsersClient';
+import { Task } from 'generated:entities/Task';
+import { Request, Response } from 'express';
 
-export class TasksRouteService implements ITasksRouteService {
+export class TasksRouteService implements TasksRoutes {
     private readonly db: TasksDB;
     private readonly users: UsersClient;
 
@@ -18,10 +19,19 @@ export class TasksRouteService implements ITasksRouteService {
         this.users = new UsersClient();
     }
 
-    private async checkUser(userId: string): Promise<void> {
-        const user = await this.users.getUserById(userId);
+    private async verifyUserAccess(req: Request<{userId:string,[a:string]:string}, any, any, any, any>): Promise<void> {
+        if (!req.auth) {
+            throw new RESTError('Tasks needs authenticated request', 401);
+        }
+
+        if (req.auth.payload.sub !== req.params.userId) {
+            throw new RESTError(`Access to user ${req.params.userId} not allowed`, 401);
+        }
+
+        const user = await this.users.getUserById(req.params.userId);
+
         if (!user) {
-            throw new RESTError(`User with id ${userId} not found`, 401);
+            throw new RESTError(`User with id ${req.params.userId} not found`, 401);
         }
     }
 
@@ -29,8 +39,10 @@ export class TasksRouteService implements ITasksRouteService {
      * Add task for user
      * HTTP: POST /tasks/{userId}/{id}
      */
-    async addTask(userId: string, id: string, task: Task): Promise<void> {
-        await this.checkUser(userId);
+    async addTask(req: Request<{ userId: string; id: string }, void, Task, void>, res: Response): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId, id } = req.params;
+        const task = req.body;
 
         await this.db.client.$transaction(async (db) => {
             const existing = await db.task.findUnique({
@@ -40,7 +52,7 @@ export class TasksRouteService implements ITasksRouteService {
             });
 
             if (existing) {
-                throw new Error(`Task with id ${id} already exists`);
+                throw new RESTError(`Task with id ${id} already exists`, 409);
             }
 
             await db.task.create({
@@ -53,14 +65,17 @@ export class TasksRouteService implements ITasksRouteService {
                 },
             });
         });
+
+        res.status(201).end();
     }
 
     /**
      * Mark task as done
      * HTTP: POST /tasks/{id}/done
      */
-    async markAsDone(userId: string, id: string): Promise<void> {
-        await this.checkUser(userId);
+    async markAsDone(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId, id } = req.params;
         await this.db.client.task.updateMany({
             where: {
                 id,
@@ -70,10 +85,13 @@ export class TasksRouteService implements ITasksRouteService {
                 done: true,
             },
         });
+
+        res.status(201).end();
     }
 
-    async markAsUndone(userId: string, id: string): Promise<void> {
-        await this.checkUser(userId);
+    async markAsUndone(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId, id } = req.params;
         await this.db.client.task.updateMany({
             where: {
                 id,
@@ -83,43 +101,54 @@ export class TasksRouteService implements ITasksRouteService {
                 done: false,
             },
         });
+
+        res.status(201).end();
     }
 
-    async removeTask(userId: string, id: string): Promise<void> {
-        await this.checkUser(userId);
+    async removeTask(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId, id } = req.params;
         await this.db.client.task.deleteMany({
             where: {
                 id,
                 userId,
             },
         });
+
+        res.status(201).end();
     }
 
-    async getTasks(userId: string): Promise<Task[]> {
-        await this.checkUser(userId);
+    async getTasks(req: Request<{ userId: string }, Task[], void, void>, res: Response<Task[]>): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId } = req.params;
         const tasks = await this.db.client.task.findMany({
             where: {
                 userId,
             },
         });
 
-        return tasks.map((task) => {
-            return {
-                id: task.id,
-                userId: task.userId,
-                title: task.title,
-                description: task.description,
-                done: task.done,
-            };
-        });
+        res.json(
+            tasks.map((task) => {
+                return {
+                    id: task.id,
+                    userId: task.userId,
+                    title: task.title,
+                    description: task.description,
+                    done: task.done,
+                };
+            })
+        );
     }
 
-    async removeTasks(userId: string): Promise<void> {
-        await this.checkUser(userId);
+    async removeTasks(req: Request<{ userId: string }, void, void, void>, res: Response): Promise<void> {
+        await this.verifyUserAccess(req);
+        const { userId } = req.params;
         await this.db.client.task.deleteMany({
             where: {
                 userId,
             },
         });
+
+        res.status(201).end();
     }
 }

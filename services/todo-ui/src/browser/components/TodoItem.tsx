@@ -4,13 +4,14 @@
  */
 
 import React, { useMemo } from 'react';
-import { Task } from '../../entities/Task';
+import { Task } from '../../.generated/entities/Task';
 import { ListItem, ListItemIcon, ListItemText, ListItemSecondaryAction, IconButton } from '@mui/material';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ClearIcon from '@mui/icons-material/Clear';
-import { TasksClient } from '../clients/TasksClient';
-import { UserSession } from '../auth/auth';
+import { TasksClient } from '../.generated/clients/TasksClient';
+import { UserSession } from '../../.generated/entities/UserSession';
+import {useTaskClient} from "../auth/auth";
 
 export interface TodoItemProps {
     todo: Task;
@@ -22,14 +23,14 @@ export interface TodoItemProps {
 export const TodoItem = (props: TodoItemProps) => {
     const { todo, onDelete, onToggleDone, session } = props;
 
-    const taskClient = useMemo(() => new TasksClient(), []);
+    const taskClient = useTaskClient();
 
     const toggleDone = async (task: Task) => {
         try {
             if (task.done) {
-                await taskClient.markAsUndone(session.userId, task.id);
+                await taskClient.markAsUndone(session.user.id, task.id);
             } else {
-                await taskClient.markAsDone(session.userId, task.id);
+                await taskClient.markAsDone(session.user.id, task.id);
             }
             onToggleDone?.();
         } catch (e) {
@@ -39,7 +40,7 @@ export const TodoItem = (props: TodoItemProps) => {
 
     const deleteTask = async (id: string) => {
         try {
-            await taskClient.removeTask(session.userId, id);
+            await taskClient.removeTask(session.user.id, id);
             onDelete?.();
         } catch (e) {
             console.error(e);

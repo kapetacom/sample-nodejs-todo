@@ -1,19 +1,15 @@
-/**
- * Copyright 2023 Kapeta Inc.
- * SPDX-License-Identifier: MIT
- */
+import { ConfigProvider, runApp } from "@kapeta/sdk-config";
+import { createServer } from "./server";
+import { createRoutes } from "./.generated/routes";
+import Path from "node:path";
 
-import Path from 'path';
-import { Server } from '@kapeta/sdk-server';
-const server = new Server('kapeta/nodejs-sample-user-ui', Path.resolve(__dirname, '../..'));
-import { UsersProxyRoute } from './proxies/rest/UsersProxyRoute';
+const BASE_DIR = Path.resolve(__dirname, "../../dist");
+runApp(async (configProvider: ConfigProvider) => {
+    const server = await createServer(configProvider);
 
-const devMode = process.env.NODE_ENV && process.env.NODE_ENV.toLowerCase() === 'development';
+    server.use(await createRoutes(configProvider));
+    const webpackConfig = require("../../webpack.development.config");
+    server.configureAssets(BASE_DIR, webpackConfig);
 
-server.addRoute(new UsersProxyRoute());
-
-const BASE_DIR = Path.resolve(__dirname, '../../dist');
-const webpackConfig = require('../../webpack.development.config');
-server.configureAssets(BASE_DIR, webpackConfig);
-
-server.start('web');
+    server.start("web");
+}, Path.resolve(__dirname, "../../"));

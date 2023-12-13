@@ -2,7 +2,6 @@
     "name": "@kapeta/nodejs-sample-user-ui",
     "version": "0.0.1",
     "main": "src/server/index.js",
-    "type": "commonjs",
     "scripts": {
         "clean": "rm -rf dist",
         "start:dev": "NODE_ENV=development nodemon --ext ts,tsx,js,json,yaml,yml --watch '**/*' src/server/index.ts",
@@ -21,14 +20,16 @@
         ]
     },
     "dependencies": {
-        "@kapeta/sdk-config": "<2",
-        "@kapeta/sdk-proxy-route": "<2",
-        "@kapeta/sdk-rest-client": "<2",
-        "@kapeta/sdk-rest-route": "<2",
-        "@kapeta/sdk-server": "<2",
+        "@kapeta/sdk-config": "^2",
+        "@kapeta/sdk-proxy-route": "^2",
+        "@kapeta/sdk-rest-client": "^2",
+        "@kapeta/sdk-rest-route": "^2",
+        "@kapeta/sdk-server": "^2",
         "ts-node": "^10.9.1",
         "typescript": "^5.2.2",
-        "@tsconfig/node18": "^18.2.2"
+        "@tsconfig/node18": "^18.2.2",
+        "@types/node": "^20.2.5",
+        "@tsconfig/create-react-app": "^2.0.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.23.0",
@@ -75,6 +76,12 @@
         "webpack-dev-middleware": "^6.1.1",
         "webpack-hot-middleware": "^2.25.4",
         "sass": "^1.69.4",
-        "@kapeta/sdk-web-rest-client": "<2"
-    }
+        "@kapeta/sdk-web-rest-client": "^1",
+        "copy-webpack-plugin": "^11.0.0",
+        "msw": "^2.0.6"
+    },
+    "msw": {
+        "workerDirectory": "src/mocks/.generated"
+    },
+    "type": "commonjs"
 }

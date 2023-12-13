@@ -5,9 +5,9 @@
 
 import { Box, TextField, InputAdornment } from '@mui/material';
 import React, { useRef } from 'react';
-import { TasksClient } from '../clients/TasksClient';
-import { UserSession } from '../auth/auth';
+import { TasksClient } from '../.generated/clients/TasksClient';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import {UserSession} from "../../.generated/entities/UserSession";
 
 interface NewTodoProps {
     apiClient: TasksClient;
@@ -25,11 +25,11 @@ export const NewTodo = (props: NewTodoProps) => {
         }
         try {
             const id = window.crypto.randomUUID();
-            await apiClient.addTask(session.userId, id, {
+            await apiClient.addTask(session.user.id, id, {
                 title: title,
                 done: false,
                 id,
-                userId: session.userId,
+                userId: session.user.id,
                 description: '',
             });
             onNewTodo?.();

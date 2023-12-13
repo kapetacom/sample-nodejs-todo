@@ -4,12 +4,18 @@
  */
 
 import { EmailClient, SendMailOptions } from '@kapeta/sdk-smtp-client';
-import Config from '@kapeta/sdk-config';
+import { EmailConfigConfig, getEmailConfigConfig } from 'generated:config/EmailConfigConfig';
 
 export class EmailService extends EmailClient {
+    private config: EmailConfigConfig;
+
+    constructor() {
+        super();
+        this.config = getEmailConfigConfig({ from: 'support@kapeta.com' });
+    }
+
     async send(email: SendMailOptions) {
-        const emailFrom = Config.get('EmailConfig.from', 'support@kapeta.com');
-        email.from = email.from || emailFrom!;
+        email.from = email.from || this.config.from;
         return super.send(email);
     }
 }

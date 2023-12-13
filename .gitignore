@@ -30,3 +30,5 @@ node_modules
 dist/
 *.iml
 *.tar.gz
+.idea/*
+**/.idea/*

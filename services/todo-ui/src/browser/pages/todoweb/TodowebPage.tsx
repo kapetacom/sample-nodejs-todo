@@ -4,7 +4,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
-import { getCurrentSession } from '../../auth/auth';
+import { getCurrentSession, useTaskClient } from '../../auth/auth';
 import { useAsyncRetry } from 'react-use';
 import { Box, Typography } from '@mui/material';
 import { TodoIllustration } from '../../components/TodoIllustration';
@@ -12,23 +12,23 @@ import { TodoItem } from '../../components/TodoItem';
 import { TodoList } from '../../components/TodoList';
 import { NewTodo } from '../../components/NewTodo';
 import { TodoListActions } from '../../components/TodoListActions';
-import { TasksClient } from '../../clients/TasksClient';
+import { TasksClient } from '../../.generated/clients/TasksClient';
 import { NotLoggedInAlert } from '../../components/NotLoggedInAlert';
 
 export const filters = ['All', 'Active', 'Completed'] as const;
 export type Filter = (typeof filters)[number];
 
 export const TodowebPage = () => {
-    const apiClient = useMemo(() => new TasksClient(), []);
     const session = getCurrentSession();
+    const apiClient = useTaskClient();
     const [filter, setFilter] = useState<Filter>('All');
 
     const tasksLoader = useAsyncRetry(async () => {
-        if (!session?.userId) {
+        if (!session?.user.id) {
             return null;
         }
-        return apiClient.getTasks(session?.userId);
-    }, [session?.userId]);
+        return apiClient.getTasks(session?.user.id);
+    }, [session?.user.id]);
 
     const filteredTasks = useMemo(() => {
         const tasks = tasksLoader.value || [];
