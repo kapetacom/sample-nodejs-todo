@@ -56,11 +56,11 @@ const Layout = () => {
         <Box
             component="main"
             sx={{
-                minHeight: '100%',
+                minHeight: '100vh',
                 width: '100%',
             }}
         >
-            <Stack direction={'row'} sx={{ minHeight: '100%' }}>
+            <Stack direction={'row'} sx={{ minHeight: '100vh' }}>
                 <Box sx={{ width: drawerWidth }}>
                     <Drawer
                         variant="permanent"
