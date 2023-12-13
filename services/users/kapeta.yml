@@ -221,7 +221,7 @@ spec:
         port:
           type: smtp
   providers:
-    - kind: generated://kapeta/resource-type-rest-api:1.0.14
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.14
       metadata:
         name: users
       spec:
