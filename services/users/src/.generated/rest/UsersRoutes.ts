@@ -1,17 +1,15 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import type { RequestHandler } from "express";
-import { UserRegistration } from "generated:entities/UserRegistration";
-import { UserActivation } from "generated:entities/UserActivation";
-import { UserSession } from "generated:entities/UserSession";
-import { UserAuthentication } from "generated:entities/UserAuthentication";
-import { PasswordChangeRequest } from "generated:entities/PasswordChangeRequest";
-import { User } from "generated:entities/User";
+import type { RequestHandler } from 'express';
+import { UserRegistration } from 'generated:entities/UserRegistration';
+import { UserActivation } from 'generated:entities/UserActivation';
+import { UserSession } from 'generated:entities/UserSession';
+import { UserAuthentication } from 'generated:entities/UserAuthentication';
+import { PasswordChangeRequest } from 'generated:entities/PasswordChangeRequest';
+import { User } from 'generated:entities/User';
 
-export interface UsersRoutes<
-    Locals extends Record<string, any> = Record<string, any>
-> {
+export interface UsersRoutes<Locals extends Record<string, any> = Record<string, any>> {
     /**
      * Register new user
      * HTTP: POST /register
@@ -28,13 +26,7 @@ export interface UsersRoutes<
      * Authenticate user
      * HTTP: POST /authenticate
      */
-    authenticationUser: RequestHandler<
-        void,
-        UserSession,
-        UserAuthentication,
-        void,
-        Locals
-    >;
+    authenticationUser: RequestHandler<void, UserSession, UserAuthentication, void, Locals>;
 
     /**
      * Reset password for user
@@ -46,13 +38,7 @@ export interface UsersRoutes<
      * Change password for user
      * HTTP: POST /change_password
      */
-    changePassword: RequestHandler<
-        void,
-        void,
-        PasswordChangeRequest,
-        void,
-        Locals
-    >;
+    changePassword: RequestHandler<void, void, PasswordChangeRequest, void, Locals>;
 
     /**
      * Get user by id

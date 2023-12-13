@@ -1,5 +1,5 @@
-import Config from "@kapeta/sdk-config";
-import { InstanceValue } from "@kapeta/sdk-config";
+import Config from '@kapeta/sdk-config';
+import { InstanceValue } from '@kapeta/sdk-config';
 
 export interface WebConfigConfig {
     instance: InstanceValue;
@@ -7,8 +7,6 @@ export interface WebConfigConfig {
     activationPath: string;
 }
 
-export const getWebConfigConfig = (
-    defaultValue: WebConfigConfig
-): WebConfigConfig => {
-    return Config.getOrDefault<WebConfigConfig>("WebConfig", defaultValue);
+export const getWebConfigConfig = (defaultValue: WebConfigConfig): WebConfigConfig => {
+    return Config.getOrDefault<WebConfigConfig>('WebConfig', defaultValue);
 };

@@ -1,4 +1,4 @@
-import Config from "@kapeta/sdk-config";
+import Config from '@kapeta/sdk-config';
 
 export interface JWTConfig {
     issuer: string;
@@ -7,5 +7,5 @@ export interface JWTConfig {
 }
 
 export const getJWTConfig = (defaultValue: JWTConfig): JWTConfig => {
-    return Config.getOrDefault<JWTConfig>("JWT", defaultValue);
+    return Config.getOrDefault<JWTConfig>('JWT', defaultValue);
 };
