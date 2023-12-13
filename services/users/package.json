@@ -33,12 +33,12 @@
         "tsconfig-paths": "^4.2.0"
     },
     "dependencies": {
-        "@kapeta/sdk-auth-jwt": "<2",
-        "@kapeta/sdk-config": "<2",
-        "@kapeta/sdk-rest-route": "<2",
-        "@kapeta/sdk-server": "<2",
-        "@kapeta/sdk-smtp-client": "<2",
-        "@kapeta/sdk-sqldb-postgresql": "<2",
+        "@kapeta/sdk-auth-jwt": "^2",
+        "@kapeta/sdk-config": "^2",
+        "@kapeta/sdk-rest-route": "^2",
+        "@kapeta/sdk-server": "^2",
+        "@kapeta/sdk-smtp-client": "^2",
+        "@kapeta/sdk-sqldb-postgresql": "^2",
         "@prisma/client": "^5.6.0",
         "@react-email/button": "^0.0.8",
         "@react-email/html": "^0.0.4",

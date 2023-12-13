@@ -24,7 +24,8 @@ export const LoginForm = () => {
                 password,
                 email,
             });
-            if (!session) {
+
+            if (!session?.token) {
                 setError('Invalid credentials');
                 return;
             }

@@ -1,4 +1,4 @@
-kind: kapeta/block-type-gateway-http:local
+kind: kapeta://kapeta/block-type-gateway-http:2.0.6
 metadata:
   name: kapeta/nodejs-sample-web-gateway
   title: Web Gateway
