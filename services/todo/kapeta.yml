@@ -94,7 +94,7 @@ spec:
       spec:
         port:
           type: mongodb
-    - kind: kapeta://kapeta/resource-type-auth-jwt-consumer:0.0.1
+    - kind: kapeta://kapeta/resource-type-auth-jwt-consumer:0.0.2
       metadata:
         name: auth
       spec:

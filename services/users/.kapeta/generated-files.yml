@@ -33,91 +33,91 @@ assets:
     mode: write-always
     checksum: 6bd176992d799d2a32f3cf7cee4953ac8e6249e3
     permissions: "644"
-    modified: 1702476478027
+    modified: 1702567272425
     merged: false
   - filename: src/.generated/config/JWTConfig.ts
     mode: write-always
     checksum: 83b5bf6cb254ea0e0ee7252f7570f7679314f6ca
     permissions: "644"
-    modified: 1702476478028
+    modified: 1702567272426
     merged: false
   - filename: src/.generated/config/EmailConfigConfig.ts
     mode: write-always
     checksum: 1eb9506d59ab66a5b62e4ad0ffc09acc1e50813f
     permissions: "644"
-    modified: 1702476478028
+    modified: 1702567272426
     merged: false
   - filename: src/.generated/config/WebConfigConfig.ts
     mode: write-always
     checksum: 1bdb7a26ee373224425861ad31e5ca90254a061c
     permissions: "644"
-    modified: 1702476478028
+    modified: 1702567272426
     merged: false
   - filename: .devcontainer/devcontainer.json
     mode: merge
     checksum: 9e10283a57fecd600331c07b64b9fd3097731429
     permissions: "644"
-    modified: 1702476478028
+    modified: 1702567272427
     merged: false
   - filename: src/.generated/README.md
     mode: write-always
     checksum: f747fbef384c18e93f42f2605e3033b3637b16be
     permissions: "644"
-    modified: 1702476478029
+    modified: 1702567272427
     merged: false
   - filename: .gitignore
     mode: create-only
     checksum: d4c8b777c459dac5320b0a300d5527edcd70cdb0
     permissions: "644"
-    modified: 1702476478029
+    modified: 1702567272427
     merged: false
   - filename: index.ts
     mode: create-only
     checksum: fe1662922a86a5e22c14e1e6d6b43d87932dadf1
     permissions: "644"
-    modified: 1702476478029
+    modified: 1702567272428
     merged: false
   - filename: package.json
     mode: merge
     checksum: 7f3aa6524f0ae072365eadbc589121cb775be9be
     permissions: "644"
-    modified: 1702476478030
+    modified: 1702567272428
     merged: true
   - filename: src/.generated/routes.ts
     mode: write-always
     checksum: bad25f4e54428d959d1398a93bfe54a1638bedcb
     permissions: "644"
-    modified: 1702476478030
+    modified: 1702567272428
     merged: false
   - filename: src/server.ts
     mode: create-only
     checksum: 3c939c900df0da66542370b02e522ea7f9a1cce6
     permissions: "644"
-    modified: 1702476478031
+    modified: 1702567272428
     merged: false
   - filename: scripts/start-dev.cmd
     mode: write-always
     checksum: f5efe6c80b73c4400e29aec36cca020ad46cef53
     permissions: "644"
-    modified: 1702476478031
+    modified: 1702567272429
     merged: false
   - filename: scripts/start-dev.sh
     mode: write-always
     checksum: 8bb4c43338530bcf52a90856a12ae7678e6dfa7e
     permissions: "755"
-    modified: 1702476478031
+    modified: 1702567272429
     merged: false
   - filename: scripts/start-prod.cmd
     mode: write-always
     checksum: 06ff0f754b28ebc523ef68e34fe6a207ac737c88
     permissions: "644"
-    modified: 1702476478032
+    modified: 1702567272429
     merged: false
   - filename: scripts/start-prod.sh
     mode: write-always
     checksum: ff7c972647cef628b4140248f754144e097a69ac
     permissions: "755"
-    modified: 1702476478032
+    modified: 1702567272429
     merged: false
   - filename: tsconfig.json
     mode: create-only
@@ -129,55 +129,55 @@ assets:
     mode: write-always
     checksum: 9f44c5c623ae6072a51ed00dec267bcc8c2ab2ac
     permissions: "644"
-    modified: 1702476478032
+    modified: 1702567272430
     merged: false
   - filename: src/.generated/entities/UserActivation.ts
     mode: write-always
     checksum: e53d8316dcc70fa27e3c91f40fd2cfb3d0d11e67
     permissions: "644"
-    modified: 1702476478032
+    modified: 1702567272430
     merged: false
   - filename: src/.generated/entities/UserAuthentication.ts
     mode: write-always
     checksum: 24ded141469884e52083b02b3ab2710dbf83ae70
     permissions: "644"
-    modified: 1702476478033
+    modified: 1702567272430
     merged: false
   - filename: src/.generated/entities/PasswordChangeRequest.ts
     mode: write-always
     checksum: f325921b492575512640d2c0840cb4706d7db592
     permissions: "644"
-    modified: 1702476478034
+    modified: 1702567272431
     merged: false
   - filename: src/.generated/entities/UserSession.ts
     mode: write-always
     checksum: 6bd31b615e27f48358c01d91727c277b6212e6c2
     permissions: "644"
-    modified: 1702476478034
+    modified: 1702567272431
     merged: false
   - filename: src/.generated/entities/User.ts
     mode: write-always
     checksum: 6d0d61d1b139805c5e223cecd025b06f1c2fccb7
     permissions: "644"
-    modified: 1702476478035
+    modified: 1702567272431
     merged: false
   - filename: src/.generated/entities/Task.ts
     mode: write-always
     checksum: 66009ec2259d1601cc14dc95ce0c40461c55a8bc
     permissions: "644"
-    modified: 1702476478035
+    modified: 1702567272433
     merged: false
   - filename: src/.generated/data/.gitignore
     mode: create-only
     checksum: d1358fcb7b5f8a3dab2f4a4dee14c6288c92ec0d
     permissions: "644"
-    modified: 1702476478035
+    modified: 1702567272434
     merged: false
   - filename: src/.generated/data/UsersDB.ts
     mode: write-always
     checksum: fc1d9e16500e4d1943af1c26383e8e854bbfc3d6
     permissions: "644"
-    modified: 1702476478035
+    modified: 1702567272434
     merged: false
   - filename: src/.generated/data/clients/users/index.d.ts
     mode: create-only
@@ -201,13 +201,13 @@ assets:
     mode: write-always
     checksum: 17b1b9c938688ad7ece53b4fe6865d9a246eb375
     permissions: "644"
-    modified: 1702476478037
+    modified: 1702567272436
     merged: false
   - filename: src/.generated/rest/users-routes.ts
     mode: write-always
     checksum: 9af407f6ba16d1f9257ee25afdcfc6f33883e9d1
     permissions: "644"
-    modified: 1702476478037
+    modified: 1702567272437
     merged: false
   - filename: src/service/UsersRouteService.tsx
     mode: create-only
@@ -219,5 +219,5 @@ assets:
     mode: write-always
     checksum: 0da8a2c313b447db9accc6c749061fc73c2539a9
     permissions: "644"
-    modified: 1702476478038
+    modified: 1702567272437
     merged: false

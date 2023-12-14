@@ -314,7 +314,7 @@ spec:
             //Get user by id
             @GET("/users/{id}")
             getUser(@Path id:string):User
-    - kind: kapeta://kapeta/resource-type-auth-jwt-provider:0.0.1
+    - kind: kapeta://kapeta/resource-type-auth-jwt-provider:1.0.0
       metadata:
         name: auth
       spec:
