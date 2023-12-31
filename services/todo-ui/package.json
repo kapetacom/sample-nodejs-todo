@@ -29,7 +29,8 @@
         "typescript": "^5.2.2",
         "@tsconfig/node18": "^18.2.2",
         "@types/node": "^20.2.5",
-        "@tsconfig/create-react-app": "^2.0.1"
+        "@tsconfig/create-react-app": "^2.0.1",
+        "@types/express": "^4"
     },
     "devDependencies": {
         "@babel/cli": "^7.23.0",
@@ -86,7 +87,7 @@
         "msw": "^2.0.6"
     },
     "msw": {
-        "workerDirectory": "src/mocks/.generated"
+        "workerDirectory": "src/mocks"
     },
     "type": "commonjs"
 }

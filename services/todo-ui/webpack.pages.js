@@ -3,9 +3,9 @@
 //
 const webPages = [];
 webPages.push({
-    name: "todoweb",
-    path: "/",
-    localPath: "todoweb",
+    name: 'todoweb',
+    path: '/',
+    localPath: 'todoweb',
 });
 
 module.exports = webPages;
