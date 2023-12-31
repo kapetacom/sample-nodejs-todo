@@ -17,6 +17,8 @@ export const UserwebFragment = (props: Omit<FragmentProps, 'basePath'>) => {
     return (
         <Box
             sx={{
+                width: '100%',
+                height: '100%',
                 '& > iframe': {
                     width: '100%',
                     height: '100%',
