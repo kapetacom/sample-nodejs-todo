@@ -250,5 +250,5 @@ spec:
         resourceName: auth
         blockId: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
       port:
-        name: jwt-auth
-        type: jwt-auth
+        name: http
+        type: http

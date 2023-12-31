@@ -319,8 +319,8 @@ spec:
         name: auth
       spec:
         port:
-          name: jwt-auth
-          type: jwt-auth
+          name: http
+          type: http
   configuration:
     types:
       - type: dto
