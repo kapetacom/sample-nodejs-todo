@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta://kapeta/language-target-react-ts:0.6.1
+    kind: kapeta://kapeta/language-target-react-ts:2.0.2
   entities:
     types:
       - type: dto
@@ -16,31 +16,31 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           userId:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           title:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           description:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           done:
             type: boolean
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: UserSession
@@ -50,13 +50,13 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           user:
             ref: User
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: User
@@ -66,19 +66,19 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           name:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           email:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
     source:
       type: kapeta-dsl
@@ -90,6 +90,7 @@ spec:
         	description: string
         	done: boolean
         }
+
 
         UserSession {
         	token: string
@@ -110,7 +111,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta://kapeta/resource-type-rest-client:1.0.16
+    - kind: kapeta://kapeta/resource-type-rest-client:1.0.18
       metadata:
         name: tasks
       spec:

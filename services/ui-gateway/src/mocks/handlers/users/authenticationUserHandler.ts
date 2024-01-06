@@ -5,7 +5,7 @@ import { http, passthrough } from 'msw';
  * HTTP: POST /api/rest/users/authenticate
  * Response type: UserSession
  */
-export const authenticationUserHandler = http.post('*/api/rest/users/authenticate', () => {
+export const users_authenticationUserHandler = http.post('*/api/rest/users/authenticate', () => {
     // TODO: Return a response of type UserSession
     return passthrough();
 });

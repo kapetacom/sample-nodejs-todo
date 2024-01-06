@@ -21,6 +21,6 @@ export function getCurrentSession() {
 export function useTaskClient() {
     const session = getCurrentSession();
     return useMemo(() => {
-        return new TasksClient().withBearerToken(session?.token);
+        return new TasksClient().$withBearerToken(session?.token);
     }, [session?.token]);
 }

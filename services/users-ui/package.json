@@ -21,8 +21,8 @@
     },
     "dependencies": {
         "@kapeta/sdk-config": "^2",
-        "@kapeta/sdk-proxy-route": "^2",
-        "@kapeta/sdk-rest-client": "^2",
+        "@kapeta/sdk-proxy-route": "^2.1.1",
+        "@kapeta/sdk-rest-client": "^3.0.1",
         "@kapeta/sdk-rest-route": "^2",
         "@kapeta/sdk-server": "^2",
         "ts-node": "^10.9.1",
@@ -77,7 +77,7 @@
         "webpack-dev-middleware": "^6.1.1",
         "webpack-hot-middleware": "^2.25.4",
         "sass": "^1.69.4",
-        "@kapeta/sdk-web-rest-client": "^1",
+        "@kapeta/sdk-web-rest-client": "^2.0.1",
         "copy-webpack-plugin": "^11.0.0",
         "msw": "^2.0.6"
     },

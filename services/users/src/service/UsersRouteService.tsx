@@ -192,7 +192,7 @@ export class UsersRouteService implements UsersRoutes {
 
         const [seed] = user.password.split(':');
 
-        if (user.password !== toPassword(seed, req.body.password)) {
+        if (!req.body.password || user.password !== toPassword(seed, req.body.password)) {
             res.sendError('Invalid password', 401);
             return;
         }
@@ -317,7 +317,7 @@ export class UsersRouteService implements UsersRoutes {
         }
 
         let [seed] = user.password.split(':');
-        if (user.password !== toPassword(seed, req.body.oldPassword)) {
+        if (!req.body.password || user.password !== toPassword(seed, req.body.oldPassword)) {
             res.sendError('Invalid password', 401);
             return;
         }

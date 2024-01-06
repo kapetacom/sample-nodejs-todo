@@ -1,16 +1,30 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { ConfigProvider } from '@kapeta/sdk-config';
+import { ProxyRouteOptions } from '@kapeta/sdk-proxy-route';
 
 import { createUsersRouter } from './proxies/rest/Users-routes';
 import { createTodowebRouter } from './proxies/fragments/Todoweb-routes';
 
 import { createUserwebRouter } from './proxies/fragments/Userweb-routes';
 
-export const createRoutes = async (config: ConfigProvider): Promise<Router> => {
+export const createRoutes = async (config: ConfigProvider, opts: ProxyRouteOptions = {}): Promise<Router> => {
     const routes = Router();
-    routes.use(await createUsersRouter(config));
-    routes.use(await createTodowebRouter(config));
+    const restApis = Router();
+    restApis.use(await createUsersRouter(config, opts));
 
-    routes.use(await createUserwebRouter(config));
+    // Catch all unknown routes and return 418 I'm a teapot
+    restApis.all('/*', (req: Request, res: Response, next: NextFunction) => {
+        res.status(418).json({
+            error: 'API endpoint not found',
+        });
+    });
+
+    routes.use('/api/rest', restApis);
+
+    const fragments = Router();
+    fragments.use(await createTodowebRouter(config, opts));
+
+    fragments.use(await createUserwebRouter(config, opts));
+    routes.use('/fragments', fragments);
     return routes;
 };

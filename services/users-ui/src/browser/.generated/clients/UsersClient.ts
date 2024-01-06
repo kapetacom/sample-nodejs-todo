@@ -20,7 +20,7 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/register
      */
     async registerUser(user: UserRegistration): Promise<void> {
-        await this.execute<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
+        await this.$execute<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
     }
 
     /**
@@ -29,10 +29,10 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /register
+     * HTTP: POST /api/rest/users/register
      */
     registerUserRequest(user: UserRegistration): RestClientRequest<void> {
-        return this.create<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
     }
 
     /**
@@ -40,7 +40,7 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/activate
      */
     async activateUser(user: UserActivation): Promise<void> {
-        await this.execute<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        await this.$execute<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
     }
 
     /**
@@ -49,10 +49,10 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /activate
+     * HTTP: POST /api/rest/users/activate
      */
     activateUserRequest(user: UserActivation): RestClientRequest<void> {
-        return this.create<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
     }
 
     /**
@@ -60,7 +60,7 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/authenticate
      */
     async authenticationUser(user: UserAuthentication): Promise<UserSession | null> {
-        const result = await this.execute<UserSession>('POST', '/authenticate', [
+        const result = await this.$execute<UserSession>('POST', '/authenticate', [
             { name: 'user', value: user, transport: 'BODY' },
         ]);
 
@@ -76,10 +76,10 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /authenticate
+     * HTTP: POST /api/rest/users/authenticate
      */
     authenticationUserRequest(user: UserAuthentication): RestClientRequest<UserSession | null> {
-        return this.create<UserSession>('POST', '/authenticate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<UserSession>('POST', '/authenticate', [{ name: 'user', value: user, transport: 'BODY' }]);
     }
 
     /**
@@ -87,7 +87,7 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/reset_password
      */
     async resetPassword(email: string): Promise<void> {
-        await this.execute<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
+        await this.$execute<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
     }
 
     /**
@@ -96,10 +96,10 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /reset_password
+     * HTTP: POST /api/rest/users/reset_password
      */
     resetPasswordRequest(email: string): RestClientRequest<void> {
-        return this.create<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
+        return this.$create<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
     }
 
     /**
@@ -107,7 +107,7 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/change_password
      */
     async changePassword(change: PasswordChangeRequest): Promise<void> {
-        await this.execute<void>('POST', '/change_password', [{ name: 'change', value: change, transport: 'BODY' }]);
+        await this.$execute<void>('POST', '/change_password', [{ name: 'change', value: change, transport: 'BODY' }]);
     }
 
     /**
@@ -116,10 +116,10 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: POST /change_password
+     * HTTP: POST /api/rest/users/change_password
      */
     changePasswordRequest(change: PasswordChangeRequest): RestClientRequest<void> {
-        return this.create<void>('POST', '/change_password', [{ name: 'change', value: change, transport: 'BODY' }]);
+        return this.$create<void>('POST', '/change_password', [{ name: 'change', value: change, transport: 'BODY' }]);
     }
 
     /**
@@ -127,7 +127,7 @@ export class UsersClient extends RestClient {
      * HTTP: GET /api/rest/users/users/{id}
      */
     async getUser(id: string): Promise<User | null> {
-        const result = await this.execute<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        const result = await this.$execute<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
 
         if (result === null) {
             return null;
@@ -141,9 +141,9 @@ export class UsersClient extends RestClient {
      * Throws if service responds with a status code higher than 399 and not 404.
      * For 404 responses, null is returned.
      *
-     * HTTP: GET /users/{id}
+     * HTTP: GET /api/rest/users/users/{id}
      */
     getUserRequest(id: string): RestClientRequest<User | null> {
-        return this.create<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        return this.$create<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
     }
 }

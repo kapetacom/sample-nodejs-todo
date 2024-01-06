@@ -1,15 +1,14 @@
-import { getTasksHandler } from '../handlers/tasks/getTasksHandler';
-import { addTaskHandler } from '../handlers/tasks/addTaskHandler';
-import { markAsDoneHandler } from '../handlers/tasks/markAsDoneHandler';
-import { markAsUndoneHandler } from '../handlers/tasks/markAsUndoneHandler';
-import { removeTaskHandler } from '../handlers/tasks/removeTaskHandler';
-import { removeTasksHandler } from '../handlers/tasks/removeTasksHandler';
-
+import { tasks_getTasksHandler } from '../handlers/tasks/getTasksHandler';
+import { tasks_addTaskHandler } from '../handlers/tasks/addTaskHandler';
+import { tasks_markAsDoneHandler } from '../handlers/tasks/markAsDoneHandler';
+import { tasks_markAsUndoneHandler } from '../handlers/tasks/markAsUndoneHandler';
+import { tasks_removeTaskHandler } from '../handlers/tasks/removeTaskHandler';
+import { tasks_removeTasksHandler } from '../handlers/tasks/removeTasksHandler';
 export const handlers = [
-    getTasksHandler,
-    addTaskHandler,
-    markAsDoneHandler,
-    markAsUndoneHandler,
-    removeTaskHandler,
-    removeTasksHandler,
+    tasks_getTasksHandler,
+    tasks_addTaskHandler,
+    tasks_markAsDoneHandler,
+    tasks_markAsUndoneHandler,
+    tasks_removeTaskHandler,
+    tasks_removeTasksHandler,
 ];

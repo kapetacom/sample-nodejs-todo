@@ -1,15 +1,14 @@
-import { registerUserHandler } from '../handlers/users/registerUserHandler';
-import { activateUserHandler } from '../handlers/users/activateUserHandler';
-import { authenticationUserHandler } from '../handlers/users/authenticationUserHandler';
-import { resetPasswordHandler } from '../handlers/users/resetPasswordHandler';
-import { changePasswordHandler } from '../handlers/users/changePasswordHandler';
-import { getUserHandler } from '../handlers/users/getUserHandler';
-
+import { users_registerUserHandler } from '../handlers/users/registerUserHandler';
+import { users_activateUserHandler } from '../handlers/users/activateUserHandler';
+import { users_authenticationUserHandler } from '../handlers/users/authenticationUserHandler';
+import { users_resetPasswordHandler } from '../handlers/users/resetPasswordHandler';
+import { users_changePasswordHandler } from '../handlers/users/changePasswordHandler';
+import { users_getUserHandler } from '../handlers/users/getUserHandler';
 export const handlers = [
-    registerUserHandler,
-    activateUserHandler,
-    authenticationUserHandler,
-    resetPasswordHandler,
-    changePasswordHandler,
-    getUserHandler,
+    users_registerUserHandler,
+    users_activateUserHandler,
+    users_authenticationUserHandler,
+    users_resetPasswordHandler,
+    users_changePasswordHandler,
+    users_getUserHandler,
 ];

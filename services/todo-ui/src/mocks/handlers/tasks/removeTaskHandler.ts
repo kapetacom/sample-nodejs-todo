@@ -5,6 +5,6 @@ import { http, HttpResponse } from 'msw';
  * HTTP: DELETE /api/rest/tasks/tasks/:userId/:id
  * Response type: void
  */
-export const removeTaskHandler = http.delete('*/api/rest/tasks/tasks/:userId/:id', () => {
+export const tasks_removeTaskHandler = http.delete('*/api/rest/tasks/tasks/:userId/:id', () => {
     return new HttpResponse(null, { status: 200 });
 });

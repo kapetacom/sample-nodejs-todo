@@ -11,8 +11,8 @@ spec:
       name: Todo Service
       dimensions:
         height: -1
-        top: 184
-        left: 716
+        top: 173.81764051779246
+        left: 738.9103088349669
         width: 150
       id: 3f07dd67-c117-6789-0a8d-3ddeaa86c79f
     - block:

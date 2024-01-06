@@ -21,7 +21,7 @@ function getCurrentSession() {
 export function useUsersClient() {
     const session = getCurrentSession();
     return useMemo(() => {
-        return new UsersClient().withBearerToken(session?.token);
+        return new UsersClient().$withBearerToken(session?.token);
     }, [session?.token]);
 }
 

@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta://kapeta/language-target-nodejs:0.3.1
+    kind: kapeta://kapeta/language-target-nodejs:1.1.2
   entities:
     types:
       - type: dto
@@ -16,13 +16,13 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           email:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: UserActivation
@@ -32,19 +32,19 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           password:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           password2:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: UserAuthentication
@@ -54,13 +54,13 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           password:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: PasswordChangeRequest
@@ -70,25 +70,25 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           oldPassword:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           password:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           password2:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: UserSession
@@ -98,13 +98,13 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           user:
             ref: User
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: User
@@ -114,19 +114,19 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           name:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           email:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
       - type: dto
         name: Task
@@ -136,31 +136,31 @@ spec:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           userId:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           title:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           description:
             type: string
             description: null
             secret: false
-            required: false
+            required: true
             global: false
           done:
             type: boolean
             description: null
             secret: false
-            required: false
+            required: true
             global: false
     source:
       type: kapeta-dsl
@@ -221,7 +221,7 @@ spec:
         port:
           type: smtp
   providers:
-    - kind: kapeta://kapeta/resource-type-rest-api:1.0.16
+    - kind: kapeta://kapeta/resource-type-rest-api:1.0.18
       metadata:
         name: users
       spec:
@@ -238,6 +238,7 @@ spec:
               user:
                 ref: UserRegistration
                 transport: BODY
+                optional: false
           activateUser:
             responseType:
               type: void
@@ -248,6 +249,7 @@ spec:
               user:
                 ref: UserActivation
                 transport: BODY
+                optional: false
           authenticationUser:
             responseType:
               ref: UserSession
@@ -258,6 +260,7 @@ spec:
               user:
                 ref: UserAuthentication
                 transport: BODY
+                optional: false
           resetPassword:
             responseType:
               type: void
@@ -268,6 +271,7 @@ spec:
               email:
                 type: string
                 transport: QUERY
+                optional: false
           changePassword:
             responseType:
               type: void
@@ -278,6 +282,7 @@ spec:
               change:
                 ref: PasswordChangeRequest
                 transport: BODY
+                optional: false
           getUser:
             responseType:
               ref: User
@@ -288,6 +293,7 @@ spec:
               id:
                 type: string
                 transport: PATH
+                optional: false
         source:
           type: kapeta-dsl
           value: |-

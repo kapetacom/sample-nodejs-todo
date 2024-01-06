@@ -5,6 +5,6 @@ import { http, HttpResponse } from 'msw';
  * HTTP: POST /api/rest/users/reset_password
  * Response type: void
  */
-export const resetPasswordHandler = http.post('*/api/rest/users/reset_password', () => {
+export const users_resetPasswordHandler = http.post('*/api/rest/users/reset_password', () => {
     return new HttpResponse(null, { status: 200 });
 });
