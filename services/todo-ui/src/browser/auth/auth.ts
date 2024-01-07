@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 import {UserSession} from "../../.generated/entities/UserSession";
-import {useMemo} from "react";
-import {TasksClient} from "../.generated/clients/TasksClient";
+import {useCallback} from "react";
+import {TasksClient, useTasksClient} from "../.generated/clients/TasksClient";
 
 const SESSION_KEY = 'SESSION';
 
@@ -18,9 +18,11 @@ export function getCurrentSession() {
     return JSON.parse(json) as UserSession;
 }
 
-export function useTaskClient() {
+export function useAuthenticatedTaskClient() {
     const session = getCurrentSession();
-    return useMemo(() => {
-        return new TasksClient().$withBearerToken(session?.token);
+    const withBearerWhenAvailable = useCallback((client:TasksClient) => {
+        return session?.token ? client.$withBearerToken(session.token) : client;
     }, [session?.token]);
+
+    return useTasksClient(withBearerWhenAvailable);
 }

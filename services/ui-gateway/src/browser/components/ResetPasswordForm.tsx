@@ -6,14 +6,14 @@
 import React, { useCallback, useState } from 'react';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import {useUsersClient} from "../auth/auth";
+import {useAuthenticatedUsersClient} from "../auth/auth";
 
 export const ResetPasswordForm = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
 
-    const usersClient = useUsersClient();
+    const usersClient = useAuthenticatedUsersClient();
 
     const doReset = useCallback(async () => {
         try {

@@ -6,7 +6,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
-import {useUsersClient} from "../auth/auth";
+import {useAuthenticatedUsersClient} from "../auth/auth";
 
 export const ActivateForm = () => {
     const { id } = useParams();
@@ -19,7 +19,7 @@ export const ActivateForm = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
-    const usersClient = useUsersClient();
+    const usersClient = useAuthenticatedUsersClient();
 
     const doActivate = useCallback(async () => {
         setFormState('loading');

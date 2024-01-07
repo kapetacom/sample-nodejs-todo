@@ -11,7 +11,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ClearIcon from '@mui/icons-material/Clear';
 import { TasksClient } from '../.generated/clients/TasksClient';
 import { UserSession } from '../../.generated/entities/UserSession';
-import {useTaskClient} from "../auth/auth";
+import {useAuthenticatedTaskClient} from "../auth/auth";
 
 export interface TodoItemProps {
     todo: Task;
@@ -23,7 +23,7 @@ export interface TodoItemProps {
 export const TodoItem = (props: TodoItemProps) => {
     const { todo, onDelete, onToggleDone, session } = props;
 
-    const taskClient = useTaskClient();
+    const taskClient = useAuthenticatedTaskClient();
 
     const toggleDone = async (task: Task) => {
         try {

@@ -4,7 +4,7 @@
  */
 
 import React, { useCallback, useMemo, useState } from 'react';
-import {getCurrentSession, useUsersClient} from '../auth/auth';
+import {getCurrentSession, useAuthenticatedUsersClient} from '../auth/auth';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 
 export const ChangePasswordForm = () => {
@@ -18,7 +18,7 @@ export const ChangePasswordForm = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
-    const usersClient = useUsersClient();
+    const usersClient = useAuthenticatedUsersClient();
 
     const doChangePassword = useCallback(async () => {
         try {

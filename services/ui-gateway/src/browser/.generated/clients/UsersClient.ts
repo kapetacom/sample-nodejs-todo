@@ -2,6 +2,7 @@
 // GENERATED SOURCE - DO NOT EDIT
 //
 
+import { useMemo } from 'react';
 import { RestClient, RestClientRequest } from '@kapeta/sdk-web-rest-client';
 import { UserRegistration } from '../../../.generated/entities/UserRegistration';
 import { UserActivation } from '../../../.generated/entities/UserActivation';
@@ -9,6 +10,30 @@ import { UserSession } from '../../../.generated/entities/UserSession';
 import { UserAuthentication } from '../../../.generated/entities/UserAuthentication';
 import { User } from '../../../.generated/entities/User';
 
+export type ConfigureUsersClient = (client: UsersClient) => UsersClient;
+
+/**
+ * Creates a new UsersClient for React components.
+ * The client is configured with the provided configuration function.
+ *
+ * It is wrapped in a useMemo hook to ensure that the client is only created once.
+ */
+export const useUsersClient = (configure?: ConfigureUsersClient): UsersClient => {
+    return useMemo(() => {
+        const client = new UsersClient();
+        if (configure) {
+            return configure(client);
+        }
+        return client;
+    }, [configure]);
+};
+
+/**
+ * A client for the Users API.
+ * Use the useUsersClient hook to create a client in React.
+ *
+ * Use the UsersClient directly in other contexts.
+ */
 export class UsersClient extends RestClient {
     constructor() {
         super('api/rest/users');

@@ -6,7 +6,7 @@
 import React, { useCallback, useState } from 'react';
 import { Alert, Box, Button, Paper, Stack, TextField, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import {useUsersClient} from "../auth/auth";
+import {useAuthenticatedUsersClient} from "../auth/auth";
 
 export const SignupForm = () => {
     const [formState, setFormState] = useState<'pending' | 'loading' | 'submitted'>('pending');
@@ -17,7 +17,7 @@ export const SignupForm = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
 
-    const usersClient = useUsersClient();
+    const usersClient = useAuthenticatedUsersClient();
 
     const doSignUp = useCallback(async () => {
         setFormState('loading');

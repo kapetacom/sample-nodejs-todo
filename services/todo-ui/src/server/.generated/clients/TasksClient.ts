@@ -2,11 +2,34 @@
 // GENERATED SOURCE - DO NOT EDIT
 //
 import { RestClient, RestClientRequest } from '@kapeta/sdk-rest-client';
+import { ConfigProvider } from '@kapeta/sdk-config';
 import { Task } from '../../../.generated/entities/Task';
 
+/**
+ * Creates a new ready TasksClient.
+ *
+ * See https://github.com/kapetacom/sdk-nodejs-rest-client for more information.
+ */
+export async function createTasksClient(configProvider: ConfigProvider): Promise<TasksClient> {
+    return new TasksClient(false).$withConfigProvider(configProvider);
+}
+
+/**
+ * A client for the tasks API.
+ *
+ * Note that this client is not ready to use until it is configured with a ```ConfigProvider```.
+ * This happens automatically when using the ```createTasksClient``` function or
+ * setting ```autoInit``` to true (the default).
+ *
+ * If you want to configure the client manually, set autoInit to false and call ```$withConfigProvider```.
+ *
+ * Recommended method is using ```createTasksClient(configProvider:ConfigProvider)```;
+ *
+ * See https://github.com/kapetacom/sdk-nodejs-rest-client for more information.
+ */
 export class TasksClient extends RestClient {
-    constructor() {
-        super('tasks');
+    constructor(autoInit: boolean = true) {
+        super('tasks', autoInit);
     }
 
     /**
@@ -31,8 +54,7 @@ export class TasksClient extends RestClient {
     /**
      * Get all tasks for user
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: GET /tasks/{userId}
      */
@@ -59,8 +81,7 @@ export class TasksClient extends RestClient {
     /**
      * Add task for user
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: POST /tasks/{userId}/{id}
      */
@@ -90,8 +111,7 @@ export class TasksClient extends RestClient {
     /**
      * Mark task as done
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: POST /tasks/{userId}/{id}/done
      */
@@ -120,8 +140,7 @@ export class TasksClient extends RestClient {
     /**
      * Mark task as undone
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: POST /tasks/{userId}/{id}/undone
      */
@@ -150,8 +169,7 @@ export class TasksClient extends RestClient {
     /**
      * Delete task
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: DELETE /tasks/{userId}/{id}
      */
@@ -177,8 +195,7 @@ export class TasksClient extends RestClient {
     /**
      * Delete all tasks for user
      *
-     * Throws if service responds with a status code higher than 399 and not 404.
-     * For 404 responses, null is returned.
+     * Creates a request that can be manipulated before sending it with the ```call()``` method.
      *
      * HTTP: DELETE /tasks/{userId}
      */

@@ -4,7 +4,7 @@
  */
 
 import React, { useMemo, useState } from 'react';
-import { getCurrentSession, useTaskClient } from '../../auth/auth';
+import { getCurrentSession, useAuthenticatedTaskClient } from '../../auth/auth';
 import { useAsyncRetry } from 'react-use';
 import { Box, Typography } from '@mui/material';
 import { TodoIllustration } from '../../components/TodoIllustration';
@@ -20,7 +20,7 @@ export type Filter = (typeof filters)[number];
 
 export const TodowebPage = () => {
     const session = getCurrentSession();
-    const apiClient = useTaskClient();
+    const apiClient = useAuthenticatedTaskClient();
     const [filter, setFilter] = useState<Filter>('All');
 
     const tasksLoader = useAsyncRetry(async () => {
