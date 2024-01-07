@@ -6,7 +6,7 @@
 import React, { PropsWithChildren, useCallback, useEffect, useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { UserSession } from '../../.generated/entities/UserSession';
-import {UsersClient} from "../.generated/clients/UsersClient";
+import {UsersClient, useUsersClient} from "../.generated/clients/UsersClient";
 
 const SESSION_KEY = 'SESSION';
 function getCurrentSession() {
@@ -18,11 +18,13 @@ function getCurrentSession() {
 }
 
 
-export function useUsersClient() {
+export function useAuthenticatedUsersClient() {
     const session = getCurrentSession();
-    return useMemo(() => {
-        return new UsersClient().$withBearerToken(session?.token);
+    const withBearerWhenAvailable = useCallback((client:UsersClient) => {
+        return session?.token ? client.$withBearerToken(session.token) : client;
     }, [session?.token]);
+
+    return useUsersClient(withBearerWhenAvailable);
 }
 
 function setCurrentSession(token: UserSession) {
