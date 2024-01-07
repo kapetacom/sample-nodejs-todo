@@ -3,15 +3,20 @@
 //
 import { Router } from 'express';
 import { asyncHandler } from '@kapeta/sdk-server';
+import { ConfigProvider } from '@kapeta/sdk-config';
 import { restAPIMiddleware } from '@kapeta/sdk-rest-route';
-import { TasksRouteService } from '../../service/TasksRouteService';
+import { createTasksRouteService } from '../../service/TasksRouteService';
 import { json } from 'body-parser';
-export const createTasksRouter = () => {
+
+/**
+ * creates all routes for the tasks API
+ */
+export const createTasksRouter = async (configProvider: ConfigProvider) => {
     const router = Router();
     router.use(json());
     router.use(restAPIMiddleware);
 
-    const service = new TasksRouteService();
+    const service = await createTasksRouteService(configProvider);
 
     // getTasks: Verify the method is available
     if (!service.getTasks) {

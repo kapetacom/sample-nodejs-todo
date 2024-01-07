@@ -22,7 +22,7 @@
     "dependencies": {
         "@kapeta/sdk-config": "^2",
         "@kapeta/sdk-proxy-route": "^2.1.1",
-        "@kapeta/sdk-rest-client": "^3.1",
+        "@kapeta/sdk-rest-client": "^3.1.1",
         "@kapeta/sdk-rest-route": "^2",
         "@kapeta/sdk-server": "^3.2",
         "@mui/icons-material": "^5.14.8",

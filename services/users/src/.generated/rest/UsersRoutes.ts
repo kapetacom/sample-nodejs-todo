@@ -9,6 +9,9 @@ import { UserAuthentication } from 'generated:entities/UserAuthentication';
 import { PasswordChangeRequest } from 'generated:entities/PasswordChangeRequest';
 import { User } from 'generated:entities/User';
 
+/**
+ * Defines the methods and routes for the users API
+ */
 export interface UsersRoutes<Locals extends Record<string, any> = Record<string, any>> {
     /**
      * Register new user
