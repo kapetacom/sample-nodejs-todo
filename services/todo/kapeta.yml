@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta://kapeta/language-target-nodejs:2.0.1
+    kind: kapeta://kapeta/language-target-nodejs:2.1.0
   entities:
     types:
       - type: dto
@@ -112,7 +112,7 @@ spec:
       spec:
         port:
           type: mongodb
-    - kind: kapeta://kapeta/resource-type-auth-jwt-consumer:0.0.3
+    - kind: kapeta://kapeta/resource-type-auth-jwt-consumer:0.0.4
       metadata:
         name: auth
       spec:

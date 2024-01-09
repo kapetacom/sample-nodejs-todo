@@ -3,44 +3,45 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { RESTError } from '@kapeta/sdk-rest-route';
-import { TasksRoutes } from 'generated:rest/TasksRoutes';
-import {createTasksDBClient} from 'generated:data/TasksDB';
+import {RESTError} from '@kapeta/sdk-rest-route';
+import {TasksRoutes} from 'generated:rest/TasksRoutes';
+import {createTasksDBClient, TasksDBClient} from 'generated:data/TasksDB';
 import {createUsersClient} from 'generated:clients/UsersClient';
-import { Task } from 'generated:entities/Task';
-import { Request, Response } from 'express';
+import {Request} from 'express';
 import {ConfigProvider} from "@kapeta/sdk-config";
 
-export const createTasksRouteService = async (config:ConfigProvider): Promise<TasksRoutes> => {
+export const createTasksRouteService = async (config: ConfigProvider): Promise<TasksRoutes> => {
     const db = await createTasksDBClient(config);
     const usersClient = await createUsersClient(config);
 
-    class TasksRouteService implements TasksRoutes {
-    
-        private async verifyUserAccess(req: Request<{userId:string,[a:string]:string}, any, any, any, any>): Promise<void> {
-            if (!req.auth) {
-                throw new RESTError('Tasks needs authenticated request', 401);
-            }
-
-            if (req.auth.payload.sub !== req.params.userId) {
-                throw new RESTError(`Access to user ${req.params.userId} not allowed`, 401);
-            }
-
-
-            const user = await usersClient.getUserById(req.params.userId);
-
-            if (!user) {
-                throw new RESTError(`User with id ${req.params.userId} not found`, 401);
-            }
+    async function verifyUserAccess(req: Request<{userId:string}, any, any, any, any>): Promise<void> {
+        if (!req.auth) {
+            throw new RESTError('Tasks needs authenticated request', 401);
         }
+
+        if (req.auth.payload.sub !== req.params.userId) {
+            throw new RESTError(`Access to user ${req.params.userId} not allowed`, 401);
+        }
+
+
+        const user = await usersClient.getUserById(req.params.userId);
+
+        if (!user) {
+            throw new RESTError(`User with id ${req.params.userId} not found`, 401);
+        }
+    }
+
+    return {
+
 
         /**
          * Add task for user
          * HTTP: POST /tasks/{userId}/{id}
          */
-        async addTask(req: Request<{ userId: string; id: string }, void, Task, void>, res: Response): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId, id } = req.params;
+        async addTask(req, res): Promise<void> {
+            await verifyUserAccess(req);
+
+            const {userId, id} = req.params;
             const task = req.body;
 
             await db.$transaction(async (db) => {
@@ -66,15 +67,15 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
             });
 
             res.status(201).end();
-        }
+        },
 
         /**
          * Mark task as done
          * HTTP: POST /tasks/{id}/done
          */
-        async markAsDone(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId, id } = req.params;
+        async markAsDone(req, res): Promise<void> {
+            await verifyUserAccess(req);
+            const {userId, id} = req.params;
             await db.task.updateMany({
                 where: {
                     id,
@@ -86,11 +87,11 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
             });
 
             res.status(201).end();
-        }
+        },
 
-        async markAsUndone(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId, id } = req.params;
+        async markAsUndone(req, res): Promise<void> {
+            await verifyUserAccess(req);
+            const {userId, id} = req.params;
             await db.task.updateMany({
                 where: {
                     id,
@@ -102,11 +103,11 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
             });
 
             res.status(201).end();
-        }
+        },
 
-        async removeTask(req: Request<{ userId: string; id: string }, void, void, void>, res: Response): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId, id } = req.params;
+        async removeTask(req, res): Promise<void> {
+            await verifyUserAccess(req);
+            const {userId, id} = req.params;
             await db.task.deleteMany({
                 where: {
                     id,
@@ -115,11 +116,11 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
             });
 
             res.status(201).end();
-        }
+        },
 
-        async getTasks(req: Request<{ userId: string }, Task[], void, void>, res: Response<Task[]>): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId } = req.params;
+        async getTasks(req, res): Promise<void> {
+            await verifyUserAccess(req);
+            const {userId} = req.params;
             const tasks = await db.task.findMany({
                 where: {
                     userId,
@@ -137,11 +138,11 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
                     };
                 })
             );
-        }
+        },
 
-        async removeTasks(req: Request<{ userId: string }, void, void, void>, res: Response): Promise<void> {
-            await this.verifyUserAccess(req);
-            const { userId } = req.params;
+        async removeTasks(req, res): Promise<void> {
+            await verifyUserAccess(req);
+            const {userId} = req.params;
             await db.task.deleteMany({
                 where: {
                     userId,
@@ -151,7 +152,4 @@ export const createTasksRouteService = async (config:ConfigProvider): Promise<Ta
             res.status(201).end();
         }
     }
-
-    return new TasksRouteService();
 }
-

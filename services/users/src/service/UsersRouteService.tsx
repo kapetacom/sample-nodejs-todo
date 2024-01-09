@@ -14,13 +14,7 @@ import { EmailService } from './EmailService';
 import { ActivationEmail } from '../emails/ActivationEmail';
 import { RegistrationEmail } from '../emails/RegistrationEmail';
 import { ResetPasswordEmail } from '../emails/PasswordReset';
-import {createUsersDBClient, UsersDB} from 'generated:data/UsersDB';
-import { UserActivation } from 'generated:entities/UserActivation';
-import { UserAuthentication } from 'generated:entities/UserAuthentication';
-import { UserSession } from 'generated:entities/UserSession';
-import { User } from 'generated:entities/User';
-import { PasswordChangeRequest } from 'generated:entities/PasswordChangeRequest';
-import { UserRegistration } from 'generated:entities/UserRegistration';
+import {createUsersDBClient} from 'generated:data/UsersDB';
 import { UsersRoutes } from 'generated:rest/UsersRoutes';
 import { getWebConfigConfig } from "generated:config/WebConfigConfig";
 
@@ -37,13 +31,13 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
         basePath: '',
     });
 
-    class UsersRouteService implements UsersRoutes {
+    return {
 
         /**
          * Register new user
          * HTTP: POST /register
          */
-        async registerUser(req: Request<void, void, UserRegistration, void>, res: Response) {
+        async registerUser(req, res) {
             if (req.auth) {
                 res.sendError('Already authenticated', 400);
                 return;
@@ -95,13 +89,13 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
             });
 
             res.status(201).end();
-        }
+        },
 
         /**
          * Activate user registration
          * HTTP: POST /activate
          */
-        async activateUser(req: Request<void, void, UserActivation, void>, res: Response) {
+        async activateUser(req, res) {
             if (req.auth) {
                 res.sendError('Already authenticated', 400);
                 return;
@@ -150,15 +144,15 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
             });
 
             res.status(201).end();
-        }
+        },
 
         /**
          * Authenticate user
          * HTTP: POST /authenticate
          */
         async authenticationUser(
-            req: Request<void, UserSession, UserAuthentication, void>,
-            res: Response<UserSession>
+            req,
+            res
         ): Promise<void> {
             if (req.auth) {
                 res.sendError('Already authenticated', 400);
@@ -216,13 +210,13 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
                     name: user.name || user.email,
                 }
             });
-        }
+        },
 
         /**
          * Reset password for user
          * HTTP: POST /reset_password
          */
-        async resetPassword(req: Request<void, void, void, { email: string }>, res: Response) {
+        async resetPassword(req, res) {
             if (req.auth) {
                 res.sendError('Already authenticated', 400);
                 return;
@@ -256,9 +250,9 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
             });
 
             res.status(201).end();
-        }
+        },
 
-        async getUser(req: Request<{ id: string }, User, void, void>, res: Response<User>) {
+        async getUser(req, res) {
             if (!req.auth) {
                 res.sendError('Authentication required to access user', 401);
                 return;
@@ -285,9 +279,9 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
                 email: user.email,
                 name: user.name || user.email,
             });
-        }
+        },
 
-        async changePassword(req: Request<void, void, PasswordChangeRequest, void>, res: Response): Promise<void> {
+        async changePassword(req, res): Promise<void> {
             if (req.auth?.payload.sub !== req.body.id) {
                 res.sendError('Not authorized', 403);
                 return;
@@ -329,8 +323,6 @@ export const createUsersRouteService = async (config:ConfigProvider):Promise<Use
 
             res.status(201).end();
         }
-    }
-
-    return new UsersRouteService();
+    };
 };
 
