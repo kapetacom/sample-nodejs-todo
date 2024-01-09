@@ -4,16 +4,20 @@
 
 This is a sample plan designed to showcase a simple TODO system.
 
-## Email Simulation with gosmtpd
+## Email Simulation with MailDev
 
-When running locally, this system uses gosmtpd to simulate email sending. gosmtpd doesn't actually send any emails but provides a web interface where you can view the emails that would have been sent.
+When running locally, this system uses MailDev to simulate email sending. 
+[MailDev](https://github.com/maildev/maildev) doesn't actually send any emails but provides a w
+eb interface where you can view the emails that would have been sent.
 
-### Accessing the gosmtpd Web Interface
+Read more here: https://github.com/maildev/maildev
 
-Run the following command in the root of this repository to open the gosmtpd web interface:
+### Accessing the MailDev Web Interface
+
+Run the following command in the root of this repository to open the MailDev web interface:
 
 ```bash
-sh open-gosmtpd-inbox.sh
+sh open-inbox.sh
 ```
 
 A browser window will appear, displaying the web interface. Any emails sent by the system will appear here for your review.
