@@ -3,7 +3,8 @@
 //
 
 import { useMemo } from 'react';
-import { RestClient, RestClientRequest } from '@kapeta/sdk-web-rest-client';
+import { RestClient } from '@kapeta/sdk-web-rest-client';
+import { RestClientRequest } from '@kapeta/sdk-rest';
 import { UserRegistration } from '../../../.generated/entities/UserRegistration';
 import { UserActivation } from '../../../.generated/entities/UserActivation';
 import { UserSession } from '../../../.generated/entities/UserSession';
@@ -41,10 +42,13 @@ export class UsersClient extends RestClient {
 
     /**
      * Register new user
+     *
      * HTTP: POST /api/rest/users/register
      */
     async registerUser(user: UserRegistration): Promise<void> {
-        await this.$execute<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
+        await this.$execute<void>('POST', '/register', [
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserRegistration' },
+        ]);
     }
 
     /**
@@ -56,15 +60,20 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/register
      */
     registerUserRequest(user: UserRegistration): RestClientRequest<void> {
-        return this.$create<void>('POST', '/register', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<void>('POST', '/register', [
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserRegistration' },
+        ]);
     }
 
     /**
      * Activate user registration
+     *
      * HTTP: POST /api/rest/users/activate
      */
     async activateUser(user: UserActivation): Promise<void> {
-        await this.$execute<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        await this.$execute<void>('POST', '/activate', [
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserActivation' },
+        ]);
     }
 
     /**
@@ -76,16 +85,19 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/activate
      */
     activateUserRequest(user: UserActivation): RestClientRequest<void> {
-        return this.$create<void>('POST', '/activate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<void>('POST', '/activate', [
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserActivation' },
+        ]);
     }
 
     /**
      * Authenticate user
+     *
      * HTTP: POST /api/rest/users/authenticate
      */
     async authenticationUser(user: UserAuthentication): Promise<UserSession | null> {
         const result = await this.$execute<UserSession>('POST', '/authenticate', [
-            { name: 'user', value: user, transport: 'BODY' },
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserAuthentication' },
         ]);
 
         if (result === null) {
@@ -103,15 +115,20 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/authenticate
      */
     authenticationUserRequest(user: UserAuthentication): RestClientRequest<UserSession | null> {
-        return this.$create<UserSession>('POST', '/authenticate', [{ name: 'user', value: user, transport: 'BODY' }]);
+        return this.$create<UserSession>('POST', '/authenticate', [
+            { name: 'user', value: user, transport: 'BODY', typeName: 'UserAuthentication' },
+        ]);
     }
 
     /**
      * Reset password for user
+     *
      * HTTP: POST /api/rest/users/reset_password
      */
     async resetPassword(email: string): Promise<void> {
-        await this.$execute<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
+        await this.$execute<void>('POST', '/reset_password', [
+            { name: 'email', value: email, transport: 'QUERY', typeName: 'string' },
+        ]);
     }
 
     /**
@@ -123,15 +140,20 @@ export class UsersClient extends RestClient {
      * HTTP: POST /api/rest/users/reset_password
      */
     resetPasswordRequest(email: string): RestClientRequest<void> {
-        return this.$create<void>('POST', '/reset_password', [{ name: 'email', value: email, transport: 'QUERY' }]);
+        return this.$create<void>('POST', '/reset_password', [
+            { name: 'email', value: email, transport: 'QUERY', typeName: 'string' },
+        ]);
     }
 
     /**
      * Get user by id
+     *
      * HTTP: GET /api/rest/users/users/{id}
      */
     async getUser(id: string): Promise<User | null> {
-        const result = await this.$execute<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        const result = await this.$execute<User>('GET', '/users/{id}', [
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+        ]);
 
         if (result === null) {
             return null;
@@ -148,6 +170,8 @@ export class UsersClient extends RestClient {
      * HTTP: GET /api/rest/users/users/{id}
      */
     getUserRequest(id: string): RestClientRequest<User | null> {
-        return this.$create<User>('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        return this.$create<User>('GET', '/users/{id}', [
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 }

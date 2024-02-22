@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta://kapeta/language-target-nodejs:2.1.0
+    kind: kapeta://kapeta/language-target-nodejs:3.1.0
   entities:
     types:
       - type: dto
@@ -82,7 +82,7 @@ spec:
         	email: string
         }
   consumers:
-    - kind: kapeta://kapeta/resource-type-rest-client:1.0.18
+    - kind: kapeta://kapeta/resource-type-rest-client:1.1.1
       metadata:
         name: users
       spec:
@@ -106,7 +106,7 @@ spec:
             //Get users by id
             @GET("/users/{id}")
             getUserById(@Path id:string):User
-    - kind: kapeta/resource-type-mongodb:0.0.11
+    - kind: kapeta://kapeta/resource-type-mongodb:0.0.12
       metadata:
         name: tasks
       spec:
@@ -120,7 +120,7 @@ spec:
           name: http
           type: http
   providers:
-    - kind: kapeta://kapeta/resource-type-rest-api:1.0.18
+    - kind: kapeta://kapeta/resource-type-rest-api:1.1.1
       metadata:
         name: tasks
       spec:

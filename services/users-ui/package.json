@@ -22,7 +22,7 @@
     "dependencies": {
         "@kapeta/sdk-config": "^2",
         "@kapeta/sdk-proxy-route": "^2.1.1",
-        "@kapeta/sdk-rest-client": "^3.1.1",
+        "@kapeta/sdk-rest-client": "^3.2",
         "@kapeta/sdk-rest-route": "^2",
         "@kapeta/sdk-server": "^3.2",
         "ts-node": "^10.9.1",
@@ -30,7 +30,8 @@
         "@tsconfig/node18": "^18.2.2",
         "@types/node": "^20.2.5",
         "@tsconfig/create-react-app": "^2.0.1",
-        "@types/express": "^4"
+        "@types/express": "^4",
+        "@kapeta/sdk-rest": "^1.0.1"
     },
     "devDependencies": {
         "@babel/cli": "^7.23.0",
@@ -77,7 +78,7 @@
         "webpack-dev-middleware": "^6.1.1",
         "webpack-hot-middleware": "^2.25.4",
         "sass": "^1.69.4",
-        "@kapeta/sdk-web-rest-client": "^2.0.1",
+        "@kapeta/sdk-web-rest-client": "^2.1",
         "copy-webpack-plugin": "^11.0.0",
         "msw": "^2.0.6"
     },

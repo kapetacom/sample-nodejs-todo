@@ -5,7 +5,7 @@ metadata:
   visibility: public
 spec:
   target:
-    kind: kapeta://kapeta/language-target-react-ts:2.0.7
+    kind: kapeta://kapeta/language-target-react-ts:3.0.3
   entities:
     types:
       - type: dto
@@ -165,7 +165,7 @@ spec:
         	password2: string
         }
   providers:
-    - kind: kapeta/resource-type-web-page:0.0.12
+    - kind: kapeta://kapeta/resource-type-web-page:0.0.13
       metadata:
         name: userweb
       spec:
@@ -173,7 +173,7 @@ spec:
           type: web
         path: /
   consumers:
-    - kind: kapeta://kapeta/resource-type-rest-client:1.0.18
+    - kind: kapeta://kapeta/resource-type-rest-client:1.1.1
       metadata:
         name: users
       spec:

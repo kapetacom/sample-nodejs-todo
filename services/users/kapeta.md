@@ -162,4 +162,3 @@ It has a web interface and API where you can see the e-mails that would have bee
 Read more here:
 https://gitlab.com/sorenmat/gosmtpd
 
-

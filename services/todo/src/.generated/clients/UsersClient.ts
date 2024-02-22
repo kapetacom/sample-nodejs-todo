@@ -1,9 +1,10 @@
 //
 // GENERATED SOURCE - DO NOT EDIT
 //
-import { RestClient, RestClientRequest } from '@kapeta/sdk-rest-client';
+import { RestClient } from '@kapeta/sdk-rest-client';
 import { ConfigProvider } from '@kapeta/sdk-config';
-import { User } from '../entities/User';
+import { RestClientRequest } from '@kapeta/sdk-rest';
+import { User } from 'generated:entities/User';
 import { getJWTToken } from '@kapeta/sdk-auth-jwt';
 
 /**
@@ -55,7 +56,9 @@ export class UsersClient extends RestClient {
      * HTTP: GET /users/{id}
      */
     async getUserById(id: string): Promise<User | null> {
-        const result = await this.$execute('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        const result = await this.$execute('GET', '/users/{id}', [
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+        ]);
 
         if (result === null) {
             return null;
@@ -71,6 +74,6 @@ export class UsersClient extends RestClient {
      * HTTP: GET /users/{id}
      */
     getUserByIdRequest(id: string): RestClientRequest<User | null> {
-        return this.$create('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH' }]);
+        return this.$create('GET', '/users/{id}', [{ name: 'id', value: id, transport: 'PATH', typeName: 'string' }]);
     }
 }

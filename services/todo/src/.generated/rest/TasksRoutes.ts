@@ -59,7 +59,7 @@ export type RemoveTasksRequest<Locals extends Record<string, any> = Record<strin
 export type RemoveTasksResponse<Locals extends Record<string, any> = Record<string, any>> = Response<void, Locals>;
 
 /**
- * Defines the methods and routes for the tasks API
+ * Defines the types for methods and routes of the Tasks API
  */
 export interface TasksRoutes<Locals extends Record<string, any> = Record<string, any>> {
     /**

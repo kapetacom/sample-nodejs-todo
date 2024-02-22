@@ -67,7 +67,7 @@ export type GetUserRequest<Locals extends Record<string, any> = Record<string, a
 export type GetUserResponse<Locals extends Record<string, any> = Record<string, any>> = Response<User, Locals>;
 
 /**
- * Defines the methods and routes for the users API
+ * Defines the types for methods and routes of the Users API
  */
 export interface UsersRoutes<Locals extends Record<string, any> = Record<string, any>> {
     /**

@@ -145,4 +145,3 @@ Run the following command to apply the migration to your database:
 npm run migrate
 ```
 
-
