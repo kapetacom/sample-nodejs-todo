@@ -1,14 +1,16 @@
-import { users_registerUserHandler } from '../handlers/users/registerUserHandler';
-import { users_activateUserHandler } from '../handlers/users/activateUserHandler';
-import { users_authenticationUserHandler } from '../handlers/users/authenticationUserHandler';
-import { users_resetPasswordHandler } from '../handlers/users/resetPasswordHandler';
-import { users_changePasswordHandler } from '../handlers/users/changePasswordHandler';
-import { users_getUserHandler } from '../handlers/users/getUserHandler';
-export const handlers = [
-    users_registerUserHandler,
-    users_activateUserHandler,
-    users_authenticationUserHandler,
-    users_resetPasswordHandler,
-    users_changePasswordHandler,
-    users_getUserHandler,
-];
+import { sortHandlersByPathSpecificity } from './sortHandlers';
+import { Users_registerUserHandler } from '../handlers/users/registerUserHandler';
+import { Users_activateUserHandler } from '../handlers/users/activateUserHandler';
+import { Users_authenticationUserHandler } from '../handlers/users/authenticationUserHandler';
+import { Users_resetPasswordHandler } from '../handlers/users/resetPasswordHandler';
+import { Users_changePasswordHandler } from '../handlers/users/changePasswordHandler';
+import { Users_getUserHandler } from '../handlers/users/getUserHandler';
+
+export const handlers = sortHandlersByPathSpecificity([
+    Users_registerUserHandler,
+    Users_activateUserHandler,
+    Users_authenticationUserHandler,
+    Users_resetPasswordHandler,
+    Users_changePasswordHandler,
+    Users_getUserHandler,
+]);

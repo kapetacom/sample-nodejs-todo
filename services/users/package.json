@@ -35,7 +35,7 @@
     "dependencies": {
         "@kapeta/sdk-auth-jwt": "^2.1",
         "@kapeta/sdk-config": "^2",
-        "@kapeta/sdk-rest-route": "^2",
+        "@kapeta/sdk-rest-route": "^2.1",
         "@kapeta/sdk-server": "^3.2",
         "@kapeta/sdk-smtp-client": "^2",
         "@kapeta/sdk-sqldb-postgresql": "^2.1",
@@ -51,6 +51,7 @@
         "react": "^18.2.0",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.2.0",
-        "typescript": "^5.3.2"
+        "typescript": "^5.3.2",
+        "@kapeta/sdk-rest": "^1.0.1"
     }
 }

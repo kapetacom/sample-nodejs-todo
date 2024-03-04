@@ -4,12 +4,26 @@
 import { Router } from 'express';
 import { asyncHandler } from '@kapeta/sdk-server';
 import { ConfigProvider } from '@kapeta/sdk-config';
-import { restAPIMiddleware } from '@kapeta/sdk-rest-route';
+import { restAPIMiddleware, createRESTParameterParser } from '@kapeta/sdk-rest-route';
 import { createTasksRouteService } from '../../service/TasksRouteService';
+import {
+    GetTasksRequest,
+    GetTasksResponse,
+    AddTaskRequest,
+    AddTaskResponse,
+    MarkAsDoneRequest,
+    MarkAsDoneResponse,
+    MarkAsUndoneRequest,
+    MarkAsUndoneResponse,
+    RemoveTaskRequest,
+    RemoveTaskResponse,
+    RemoveTasksRequest,
+    RemoveTasksResponse,
+} from './TasksRoutes';
 import { json } from 'body-parser';
 
 /**
- * creates all routes for the tasks API
+ * creates all routes for the Tasks API
  */
 export const createTasksRouter = async (configProvider: ConfigProvider) => {
     const router = Router();
@@ -24,7 +38,14 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: GET /tasks/:userId');
-    router.get('/tasks/:userId', asyncHandler(service.getTasks.bind(service)));
+
+    router.get(
+        '/tasks/:userId',
+        createRESTParameterParser<GetTasksRequest, GetTasksResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+        ]),
+        asyncHandler(service.getTasks.bind(service))
+    );
 
     // addTask: Verify the method is available
     if (!service.addTask) {
@@ -32,7 +53,16 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: POST /tasks/:userId/:id');
-    router.post('/tasks/:userId/:id', asyncHandler(service.addTask.bind(service)));
+
+    router.post(
+        '/tasks/:userId/:id',
+        createRESTParameterParser<AddTaskRequest, AddTaskResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+            { name: 'id', transport: 'PATH', typeName: 'string' },
+            { name: 'task', transport: 'BODY', typeName: 'Task' },
+        ]),
+        asyncHandler(service.addTask.bind(service))
+    );
 
     // markAsDone: Verify the method is available
     if (!service.markAsDone) {
@@ -40,7 +70,15 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: POST /tasks/:userId/:id/done');
-    router.post('/tasks/:userId/:id/done', asyncHandler(service.markAsDone.bind(service)));
+
+    router.post(
+        '/tasks/:userId/:id/done',
+        createRESTParameterParser<MarkAsDoneRequest, MarkAsDoneResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+            { name: 'id', transport: 'PATH', typeName: 'string' },
+        ]),
+        asyncHandler(service.markAsDone.bind(service))
+    );
 
     // markAsUndone: Verify the method is available
     if (!service.markAsUndone) {
@@ -48,7 +86,15 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: POST /tasks/:userId/:id/undone');
-    router.post('/tasks/:userId/:id/undone', asyncHandler(service.markAsUndone.bind(service)));
+
+    router.post(
+        '/tasks/:userId/:id/undone',
+        createRESTParameterParser<MarkAsUndoneRequest, MarkAsUndoneResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+            { name: 'id', transport: 'PATH', typeName: 'string' },
+        ]),
+        asyncHandler(service.markAsUndone.bind(service))
+    );
 
     // removeTask: Verify the method is available
     if (!service.removeTask) {
@@ -56,7 +102,15 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: DELETE /tasks/:userId/:id');
-    router.delete('/tasks/:userId/:id', asyncHandler(service.removeTask.bind(service)));
+
+    router.delete(
+        '/tasks/:userId/:id',
+        createRESTParameterParser<RemoveTaskRequest, RemoveTaskResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+            { name: 'id', transport: 'PATH', typeName: 'string' },
+        ]),
+        asyncHandler(service.removeTask.bind(service))
+    );
 
     // removeTasks: Verify the method is available
     if (!service.removeTasks) {
@@ -64,7 +118,14 @@ export const createTasksRouter = async (configProvider: ConfigProvider) => {
     }
 
     console.log('Publishing REST method: DELETE /tasks/:userId');
-    router.delete('/tasks/:userId', asyncHandler(service.removeTasks.bind(service)));
+
+    router.delete(
+        '/tasks/:userId',
+        createRESTParameterParser<RemoveTasksRequest, RemoveTasksResponse>([
+            { name: 'userId', transport: 'PATH', typeName: 'string' },
+        ]),
+        asyncHandler(service.removeTasks.bind(service))
+    );
 
     return router;
 };

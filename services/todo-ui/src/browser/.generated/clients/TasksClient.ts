@@ -3,7 +3,8 @@
 //
 
 import { useMemo } from 'react';
-import { RestClient, RestClientRequest } from '@kapeta/sdk-web-rest-client';
+import { RestClient } from '@kapeta/sdk-web-rest-client';
+import { RestClientRequest } from '@kapeta/sdk-rest';
 import { Task } from '../../../.generated/entities/Task';
 
 export type ConfigureTasksClient = (client: TasksClient) => TasksClient;
@@ -37,11 +38,12 @@ export class TasksClient extends RestClient {
 
     /**
      * Get all tasks for user
+     *
      * HTTP: GET /api/rest/tasks/tasks/{userId}
      */
     async getTasks(userId: string): Promise<Task[] | null> {
         const result = await this.$execute<Task[]>('GET', '/tasks/{userId}', [
-            { name: 'userId', value: userId, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
         ]);
 
         if (result === null) {
@@ -59,18 +61,21 @@ export class TasksClient extends RestClient {
      * HTTP: GET /api/rest/tasks/tasks/{userId}
      */
     getTasksRequest(userId: string): RestClientRequest<Task[] | null> {
-        return this.$create<Task[]>('GET', '/tasks/{userId}', [{ name: 'userId', value: userId, transport: 'PATH' }]);
+        return this.$create<Task[]>('GET', '/tasks/{userId}', [
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 
     /**
      * Add task for user
+     *
      * HTTP: POST /api/rest/tasks/tasks/{userId}/{id}
      */
     async addTask(userId: string, id: string, task: Task): Promise<void> {
         await this.$execute<void>('POST', '/tasks/{userId}/{id}', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
-            { name: 'task', value: task, transport: 'BODY' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+            { name: 'task', value: task, transport: 'BODY', typeName: 'Task' },
         ]);
     }
 
@@ -84,20 +89,21 @@ export class TasksClient extends RestClient {
      */
     addTaskRequest(userId: string, id: string, task: Task): RestClientRequest<void> {
         return this.$create<void>('POST', '/tasks/{userId}/{id}', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
-            { name: 'task', value: task, transport: 'BODY' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
+            { name: 'task', value: task, transport: 'BODY', typeName: 'Task' },
         ]);
     }
 
     /**
      * Mark task as done
+     *
      * HTTP: POST /api/rest/tasks/tasks/{userId}/{id}/done
      */
     async markAsDone(userId: string, id: string): Promise<void> {
         await this.$execute<void>('POST', '/tasks/{userId}/{id}/done', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
@@ -111,19 +117,20 @@ export class TasksClient extends RestClient {
      */
     markAsDoneRequest(userId: string, id: string): RestClientRequest<void> {
         return this.$create<void>('POST', '/tasks/{userId}/{id}/done', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
     /**
      * Mark task as undone
+     *
      * HTTP: POST /api/rest/tasks/tasks/{userId}/{id}/undone
      */
     async markAsUndone(userId: string, id: string): Promise<void> {
         await this.$execute<void>('POST', '/tasks/{userId}/{id}/undone', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
@@ -137,19 +144,20 @@ export class TasksClient extends RestClient {
      */
     markAsUndoneRequest(userId: string, id: string): RestClientRequest<void> {
         return this.$create<void>('POST', '/tasks/{userId}/{id}/undone', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
     /**
      * Delete task
+     *
      * HTTP: DELETE /api/rest/tasks/tasks/{userId}/{id}
      */
     async removeTask(userId: string, id: string): Promise<void> {
         await this.$execute<void>('DELETE', '/tasks/{userId}/{id}', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
@@ -163,17 +171,20 @@ export class TasksClient extends RestClient {
      */
     removeTaskRequest(userId: string, id: string): RestClientRequest<void> {
         return this.$create<void>('DELETE', '/tasks/{userId}/{id}', [
-            { name: 'userId', value: userId, transport: 'PATH' },
-            { name: 'id', value: id, transport: 'PATH' },
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+            { name: 'id', value: id, transport: 'PATH', typeName: 'string' },
         ]);
     }
 
     /**
      * Delete all tasks for user
+     *
      * HTTP: DELETE /api/rest/tasks/tasks/{userId}
      */
     async removeTasks(userId: string): Promise<void> {
-        await this.$execute<void>('DELETE', '/tasks/{userId}', [{ name: 'userId', value: userId, transport: 'PATH' }]);
+        await this.$execute<void>('DELETE', '/tasks/{userId}', [
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 
     /**
@@ -185,6 +196,8 @@ export class TasksClient extends RestClient {
      * HTTP: DELETE /api/rest/tasks/tasks/{userId}
      */
     removeTasksRequest(userId: string): RestClientRequest<void> {
-        return this.$create<void>('DELETE', '/tasks/{userId}', [{ name: 'userId', value: userId, transport: 'PATH' }]);
+        return this.$create<void>('DELETE', '/tasks/{userId}', [
+            { name: 'userId', value: userId, transport: 'PATH', typeName: 'string' },
+        ]);
     }
 }

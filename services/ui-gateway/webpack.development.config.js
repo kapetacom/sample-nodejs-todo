@@ -8,8 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const PAGES = require('./webpack.pages.js');
 
-const HotMiddlewareScript =
-    'webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&dynamicPublicPath=true&reload=true';
+const HotMiddlewareScript = 'webpack-hot-middleware/client?path=__webpack_hmr&timeout=20000&reload=true';
 
 const devMode = process.env.NODE_ENV === 'development';
 
@@ -46,7 +45,7 @@ const config = {
     output: {
         path: Path.join(__dirname, 'dist'),
         filename: '[name].[contenthash].bundle.js',
-        publicPath: '',
+        publicPath: '/dist/',
     },
     entry: entries,
     devtool: devMode ? 'inline-source-map' : false,
@@ -99,12 +98,7 @@ if (devMode) {
     config.plugins.unshift(new webpack.HotModuleReplacementPlugin(), new ReactRefreshWebpackPlugin());
     config.plugins.push(
         new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: Path.resolve(__dirname, 'src/mocks/.generated/mockServiceWorker.js'),
-                    to: 'mockServiceWorker.js',
-                },
-            ],
+            patterns: [{ from: Path.resolve(__dirname, 'src/mocks/mockServiceWorker.js'), to: 'mockServiceWorker.js' }],
         })
     );
 } else {
